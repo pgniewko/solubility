@@ -21,6 +21,7 @@ To be written.
 Antonio Llinàs, Robert C. Glen and Jonathan M. Goodman   
 *J. Chem. Inf. Modeling 2008, 48, 1289-1303*     
 [[paper]](https://pubs.acs.org/doi/10.1021/ci800058v)
+[[website]](http://www-jmg.ch.cam.ac.uk/data/solubility/)
 **Note:In the test set, SMILES strings for probenecid and pseudoephedrine swapped. Use only soldataswap.xls file.**
 
 ### Methods    
