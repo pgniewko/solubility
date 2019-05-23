@@ -12,18 +12,19 @@ To be written.
 
 ### References
 
-[Datasets](#datasets)  
-[Methods](#methods)
+[Datasets](#datasets)    
+[Methods](#methods)   
 
 ### Datasets
 
-**Title**
-Authors.
-*Journal, year*
-[[arxiv]](https://)
+**Can You Predict Solubilities of Thirty-Two Molecules Using a Database of One Hundred Reliable Measurements?**
+Antonio Llinàs, Robert C. Glen and Jonathan M. Goodman   
+*J. Chem. Inf. Modeling 2008, 48, 1289-1303*     
+[[paper]](https://pubs.acs.org/doi/10.1021/ci800058v)
+**Note:In the test set, SMILES strings for probenecid and pseudoephedrine swapped. Use only soldataswap.xls file.**
 
-### Methods
-Authors.
-*Journal, year*
-[[arxiv]](https://)
+### Methods    
+Authors.    
+*Journal, year*    
+[[arxiv]](https://)    
 
