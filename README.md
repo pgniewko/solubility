@@ -38,6 +38,21 @@ Jarmo Huuskonen
 [[website]](http://cheminformatics.org/datasets/huuskonen/index.html)     
 **Note: Quite a few repeats from Delaney Set. Different measurements though.**     
 
+4. **ADME evaluation in drug discovery. 4. Prediction of aqueous solubility based on atom contribution approach**
+Tingjun Hou, Ke Xia, Wei Zhang, Xiaojie Xu     
+*Journal of Chemical Information and Computer Sciences, 2004, 44, 266-275*       
+[[paper]](https://pubs.acs.org/doi/abs/10.1021/ci034184n)     
+[[website]](http://modem.ucsd.edu/adme/databases/databases_logS.htm)      
+
+5. **Development of reliable aqueous solubility models and their application in drug-like analysis**
+Junmei Wang, George Krudy, Tingjun Hou, George Holland, Xiaojie Xu
+*Journal of Chemical Information and Modeling, 2007, 47, 1395-1404*
+[[paper]](https://pubs.acs.org/doi/10.1021/ci700096r)     
+[[website]](http://modem.ucsd.edu/adme/databases/databases_logS.htm)     
+
+
+**Note: In logS database, the aqueous solubility was expressed as logS, where S is the solubility at a temperature of 20-25°C in mol/L. These are two databases for our modeling. In reference [4], the data afforded by Tetko was used. This database includes 1290 organic compounds. The data set was converted from the SMILES flat file representation to the MACCS/sdf structured data file. In reference [5], some new molecules collected from literature were added. This database includes 1708 molecules.**
+
 
 ### Methods    
 Authors.    
