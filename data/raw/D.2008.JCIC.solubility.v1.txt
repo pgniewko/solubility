@@ -1,4 +1,4 @@
-Compound ID,measured log(solubility:mol/L),ESOL predicted log(solubility:mol/L),SMILES
+#Compound ID,measured log(solubility:mol/L),ESOL predicted log(solubility:mol/L),SMILES
 "1,1,1,2-Tetrachloroethane",-2.18,-2.794,ClCC(Cl)(Cl)Cl
 "1,1,1-Trichloroethane",-2,-2.232,CC(Cl)(Cl)Cl
 "1,1,2,2-Tetrachloroethane",-1.74,-2.549,ClC(Cl)C(Cl)Cl

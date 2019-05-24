@@ -31,6 +31,13 @@ John S. Delaney
 **Note: There are two files D.2008.JCIC.solubility.v[1-2].txt. These files are the same but come from two 
 different sources: (i) [Pat Walters Blog](https://github.com/PatWalters/solubility) (ii) [ChemDB](ftp://ftp.ics.uci.edu/pub/baldig/learning/Delaney/)**      
 
+3. **Can You Predict Solubilities of Thirty-Two Molecules Using a Database of One Hundred Reliable Measurements?**     
+Jarmo Huuskonen
+*J. Chem. Inf. Comput. Sci. 2000, 40, 773-777*      
+[[paper]](https://pubs.acs.org/doi/10.1021/ci9901338)     
+[[website]](http://cheminformatics.org/datasets/huuskonen/index.html)     
+**Note: Quite a few repeats from Delaney Set. Different measurements though.**     
+
 
 ### Methods    
 Authors.    
