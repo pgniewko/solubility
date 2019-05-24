@@ -29,7 +29,7 @@ John S. Delaney
 *J. Chem. Inf. Comput. Sci. 2004, 44, 1000-1005*      
 [[paper]](https://pubs.acs.org/doi/10.1021/ci034243x)    
 **Note: There are two files D.2008.JCIC.solubility.v[1-2].txt. These files are the same but come from two 
-different sources: (i) [[Pat Walters Blog]](https://github.com/PatWalters/solubility) (ii) [[ChemDB]](http://cdb.ics.uci.edu/cgibin/LearningDatasetsWeb.py)**
+different sources: (i) [Pat Walters Blog](https://github.com/PatWalters/solubility) (ii) [ChemDB](ftp://ftp.ics.uci.edu/pub/baldig/learning/Delaney/)**      
 
 
 ### Methods    
