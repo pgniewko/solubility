@@ -56,7 +56,7 @@ Samuel Boobier, Anne Osbourn and John B. O. Mitchell
 *Journal of Cheminformatics20179:63*    
 [[paper]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)     
 [[website]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)
-
+**Note: Source code accompany the paper.**
 
 
 
