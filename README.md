@@ -126,6 +126,6 @@ Daniel Probst, Jean-Louis Reymond
 [[paper]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0321-8)   
 [[source code]](https://github.com/reymond-group/mhfp)    
 
-2. SMILES standarizer.   
-[[source code]]()    
-
+2. Compounds standardiser.   
+[[GitHub]](https://github.com/flatkinson/standardiser)    
+[[slides]](./papers/standardiser.pdf)
