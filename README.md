@@ -17,6 +17,15 @@ To be written.
 
 ### Results
 
+For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org/doi/full/10.1021/acscentsci.8b00507)
+
+| Network       | Valid RMSE | Test RMSE |
+| ------------- |:----------:| ---------:|
+| PotentialNet  | 0.517      |  0.490    |
+| Weave         | 0.549      |  0.553    |
+| GraphConv     | 0.721      |  0.648    |
+| XGBoost       | 1.182      |  0.912    |
+
 ### References
 
 [Datasets](#datasets)    
