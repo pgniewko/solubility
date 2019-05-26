@@ -7,6 +7,10 @@ Put here an example (table) where I show how solubility changes with pH.
 
 The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345). 
 
+### Potential sources of bulk data
+1. [PubChem](https://pubchem.ncbi.nlm.nih.gov/)
+2. [OCHEM](https://ochem.eu/home/show.do)
+3. [DrugBank](https://www.drugbank.ca/)
 
 ### This work
 To be written.
@@ -24,8 +28,10 @@ To be written.
 Antonio Llinàs, Robert C. Glen and Jonathan M. Goodman    
 *J. Chem. Inf. Modeling 2008, 48, 1289-1303*      
 [[paper]](https://pubs.acs.org/doi/10.1021/ci800058v)     
+[[paper]](https://pubs.acs.org/doi/10.1021/ci800436c)
 [[website]](http://www-jmg.ch.cam.ac.uk/data/solubility/)     
-**Note: In the test set, SMILES strings for probenecid and pseudoephedrine swapped. Use only soldataswap.xls file.**
+**Note 1: In the test set, SMILES strings for probenecid and pseudoephedrine swapped. Use only soldataswap.xls file.**
+**Note 2: Solubility for 32 compounds taken from HEL.2009.JCIM.pdf**
 
 2. **ESOL: Estimating Aqueous Solubility Directly from Molecular Structure**    
 John S. Delaney           
@@ -59,8 +65,47 @@ Samuel Boobier, Anne Osbourn and John B. O. Mitchell
 *Journal of Cheminformatics, 2017, 9:63*       
 [[paper]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)      
 [[website]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)     
-**Note: Source code accompany the paper.**
+**Note: Source code accompany the paper.**      
 
+
+7. **pH-metric solubility. 3. Dissolution titration template method for solubility determination**      
+Alex Avdeef, Cynthia M. Berger     
+*European Journal of Pharmaceutical Sciences 14 (2001) 281–29*       
+[[paper]](https://www.ncbi.nlm.nih.gov/pubmed/11684402)      
+
+
+8. **pH-Metric Solubility. 2: Correlation Between the Acid-Base Titration and the Saturation Shake-Flask Solubility-pH Methods**    
+Alex Avdeef, Cynthia M. Berger, and Charles Brownell         
+*Pharmaceutical Research, Vol. 17, No. 1, 2000*      
+[[paper]](https://www.ncbi.nlm.nih.gov/pubmed/10714613)      
+
+
+9. **Online chemical modeling environment (OCHEM): web platform for data storage, model development and publishing of chemical information**
+Iurii Sushko et al.,     
+*J Comput Aided Mol Des (2011) 25:533–554*      
+[[paper]](https://www.ncbi.nlm.nih.gov/pubmed/21660515)      
+[[server]](https://ochem.eu/home/show.do)      
+**Note: Reference for OCHEM. Not yet sure how to download the data :-( **    
+
+
+10. **Solubility Challenge revisited after 10 years, with multi-lab shake- flask data, using tight (SD ~0.17 log) and loose (SD ~0.62 log) test sets**   
+Antonio Llinas, and Alex Avdeef      
+[[paper]](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345)     
+**Note: The reference for the new challange.**      
+
+
+11. **Random Forest Models To Predict Aqueous Solubility**      
+David S. Palmer, Noel M. O’Boyle, Robert C. Glen, and John B. O. Mitchell       
+*J. Chem. Inf. Model.2007,471, 150-158*      
+[[paper]](https://pubs.acs.org/doi/10.1021/ci060164k)    
+**Note: Data extracted from pdfs**     
+
+
+12. **Deep Architectures and Deep Learning in Chemoinformatics**      
+Alessandro Lusci, Gianluca Pollastri, and Pierre Baldi     
+*J. Chem. Inf. Model.2013,537, 1563-1575*       
+[[paper]](https://pubs.acs.org/doi/abs/10.1021/ci400187y)      
+**Note:Some of the files/data are duplicates**       
 
 
 ### Methods    
