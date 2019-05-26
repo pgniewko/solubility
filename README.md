@@ -1,6 +1,9 @@
 ## Solubility Challange
 
 ### Background
+Intrinsic solubility (water solubility): solubility of non-charged molecules, i.e. free acid and base free form. It is required that the solubility is determined in the presence of solid substance.     
+
+Put here an example (table) where I show how solubility changes with pH.     
 
 The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345). 
 
@@ -53,15 +56,22 @@ Junmei Wang, George Krudy, Tingjun Hou, George Holland, Xiaojie Xu
 
 6. **Can human experts predict solubility better than computers?**      
 Samuel Boobier, Anne Osbourn and John B. O. Mitchell    
-*Journal of Cheminformatics20179:63*    
-[[paper]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)     
-[[website]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)
+*Journal of Cheminformatics, 2017, 9:63*       
+[[paper]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)      
+[[website]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)     
 **Note: Source code accompany the paper.**
 
 
 
 ### Methods    
-Authors.    
-*Journal, year*    
-[[arxiv]](https://)    
+
+1. MHFP fingerprints; to be tested as an alternative for ECFP4    
+**A probabilistic molecular fingerprint for big data settings**    
+Daniel Probst, Jean-Louis Reymond    
+*Journal of Cheminformatics, 2018, 10:66*     
+[[paper]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0321-8)   
+[[source code]](https://github.com/reymond-group/mhfp)    
+
+2. SMILES standarizer.   
+[[source code]]()    
 
