@@ -1,5 +1,4 @@
-﻿# SMILES, Interlab.SD, Num.Lit.Sources,	Experimental.MP.(*C),log.Poct-water.calc.in.RDKit, log.S0.calc.by.GSE
-C12(N)CC3CC(C1)CC(C2)C3,0.50,3,180,1.91,-2.96
+﻿C12(N)CC3CC(C1)CC(C2)C3,0.50,3,180,1.91,-2.96
 C1=CC=CC2=C1C(=C(O2)CCCC)C(=O)C3=CC(=C(OCCN(CC)CC)C(=C3)I)I,0.50,5,156,6.94,-7.75
 C1=CC(=CC2=NC=CC(=C12)NC3=CC=C(C(=C3)CN(CC)CC)O)Cl,0.65,3,208,5.18,-6.51
 CC(C)NCC(COc1ccc(cc1)COCCOC(C)C)O,0.59,3,100,2.37,-2.62

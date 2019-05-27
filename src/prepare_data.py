@@ -7,6 +7,7 @@ from rdkit import Chem
 
 DATA_PATH="/Users/pawel/Projects/solubility/data/raw"
 PROCESSED_PATH="/Users/pawel/Projects/solubility/data/processed"
+TEST_PATH="/Users/pawel/Projects/solubility/data/test"
 
 def process_AB_2001_EJPS():
     fname = f"{DATA_PATH}/AB.2001.EJPS.txt"
@@ -329,6 +330,75 @@ def process_WKH_2007_JCIM():
     logging.info(f"Saved to {fout}")
 
 
+def process_test_100():
+    """
+    # SMILES, Interlab.SD, Num.Lit.Sources, Experimental.MP.(*C),log.Poct-water.calc.in.RDKit, log.S0.calc.by.GSE
+    """
+    fname = f"{TEST_PATH}/set_100.csv"
+    fout = f"{TEST_PATH}/test_100.smi"
+    fout_gse = f"{TEST_PATH}/test_100.with.gse.smi"
+    logging.info(f"Processing {fname}")
+
+    cmpd_list = []
+    with open(fname, 'r') as fin:
+        cnt=0
+        for line in fin:
+            if not line.startswith("#"):
+                pairs = line.rstrip('\n').split(',')
+                canon_smiles = canonicalize_smiles(pairs[0])
+                logS = float(pairs[5])
+                cmpd_list.append((canon_smiles ,logS))
+                cnt+=1
+
+    with open(fout, 'w', encoding="ascii") as fo:
+        for el in cmpd_list:
+            smiles = el[0]
+            fo.write(f"{smiles}\n")
+
+    with open(fout_gse, 'w', encoding="ascii") as fo:
+        for el in cmpd_list:
+            smiles = el[0]
+            logS = el[1]
+            fo.write(f"{smiles},{logS}\n")
+    
+    logging.info(f"Saved {fout}")
+
+
+
+def process_test_32():
+    """
+    # SMILES, Interlab.SD, Num.Lit.Sources, Experimental.MP.(*C),log.Poct-water.calc.in.RDKit, log.S0.calc.by.GSE
+    """
+    fname = f"{TEST_PATH}/set_32.csv"
+    fout = f"{TEST_PATH}/test_32.smi"
+    fout_gse = f"{TEST_PATH}/test_32.with.gse.smi"
+    logging.info(f"Processing {fname}")
+
+    cmpd_list = []
+    with open(fname, 'r') as fin:
+        cnt=0
+        for line in fin:
+            if not line.startswith("#"):
+                pairs = line.rstrip('\n').split(',')
+                canon_smiles = canonicalize_smiles(pairs[0])
+                logS = float(pairs[5])
+                cmpd_list.append((canon_smiles ,logS))
+                cnt+=1
+
+    with open(fout, 'w', encoding="ascii") as fo:
+        for el in cmpd_list:
+            smiles = el[0]
+            fo.write(f"{smiles}\n")
+
+    with open(fout_gse, 'w', encoding="ascii") as fo:
+        for el in cmpd_list:
+            smiles = el[0]
+            logS = el[1]
+            fo.write(f"{smiles},{logS}\n")
+    
+    logging.info(f"Saved {fout}")
+
+
 def main():
     process_AB_2001_EJPS()
     process_ABB_2000_PR()
@@ -344,6 +414,9 @@ def main():
     process_POG_2007_JCIM_test()
     process_POG_2007_JCIM_train()
     process_WKH_2007_JCIM()
+
+    process_test_100()
+    process_test_32()
 
 if __name__ == "__main__":
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
