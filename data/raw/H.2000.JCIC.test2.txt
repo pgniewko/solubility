@@ -1,8 +1,8 @@
-# CAS,name,logS,XXX,YYY,SMILES
+# CAS,name,logS(mol/L),XXX,YYY,SMILES
 1 37680-73-2 2,2´,4,5,5´-PCB -7.89 ? 6.98	Clc1ccc(Cl)c(c1)c2cc(Cl)c(Cl)cc2Cl
 2 94-09-7 benzocaine -2.32 ? 1.80	O=C(OCC)c(ccc(N)c1)c1
 3 50-78-2 acetylsalicylic_acid -1.72 135 1.13	O=C(Oc(c(ccc1)C(=O)O)c1)C
-4 58-55-9 theophylline -1.39 272 -0.39	CN1C(=O)N(C)c2ncnc2C1(=O)
+#4 58-55-9 theophylline -1.39 272 -0.39	CN1C(=O)N(C)c2ncnc2C1(=O)
 5 60-80-0 antipyrine -0.56 114 0.59	c1ccccc1N2C(=O)C=C(C)N2C
 6 1912-24-9 atrazine -3.85 176 2.82	n(c(nc(n1)NC(C)C)NCC)c1Cl
 7 50-06-6 phenobarbital -2.34 ? 1.33	CCC1(C(=O)NC(=O)NC1=O)c2ccccc2

@@ -1,4 +1,4 @@
-# CAS,name,logS,XXX,YYY,SMILES
+# CAS,name,logS(mol/L),XXX,YYY,SMILES
 5 96-14-0 3-methylpentane -3.68 liq 3.21 	CCC(C)CC
 10 108-08-7 2,4-dimethylpentane -4.26 liq 3.63 	CC(C)CC(C)C
 15 109-67-1 1-pentene -2.68 liq 2.66 	CCCC=C
@@ -18,7 +18,7 @@
 85 781-43-1 9,10-dimethylanthracene -6.57 182 5.44	Cc2c1ccccc1c(C)c3ccccc23
 90 92-24-0 naphthacene -8.60 341 5.52	c(c(cc(c1ccc2)c2)cc(c3ccc4)c4)(c1)c3
 95 218-01-9 chrysene -8.06 199 5.52	c1ccc2ccc3c4ccccc4ccc3c2c1
-100 230-46-6 1,7-phenantroline -2.68 80 2.29 diaz	c1ccc2ccc3nccnc3c2c1
+100 230-46-6 1,7-phenantroline -2.68 80 2.29 	c1ccc2ccc3nccnc3c2c1
 105 2642-98-0 6-aminochrysene -6.20 210 4.60	Nc3cc2c1ccccc1ccc2c4ccccc34
 110 56-49-5 3-methylcholanthrene -7.92 179 7.05	c(c(ccc1C)cc(c2ccc3cccc4)c34)(c1CC5)c25
 115 74-95-3 dibromomethane -1.17 liq 1.52	BrCBr
@@ -118,7 +118,7 @@
 586 119-65-3 isoquinoline -1.45 liq 2.14	c1ccc2cnccc2c1
 591 59-67-6 nicotinic_acid -0.84 237 0.69	O=C(O)c(cccn1)c1
 596 461-98-3 2,6-dimethyl-4-pyrimidinamine -1.28 182 0.12	n1c(C)nc(N)cc1C
-601 109-97-7 pyrrole -0.17 liq 0.88	c1cccn1(H)
+#601 109-97-7 pyrrole -0.17 liq 0.88	c1cccn1(H)
 606 149-30-4 2-mercaptobenzothiazole -3.18 181 2.86	N(c(c(S1)ccc2)c2)=C1S
 611 580-16-5 6-hydroxyquinoline -2.16 193 1.66	c1c(O)cc2cccnc2c1
 616 50-11-3 metharbital -2.23 155 0.82	CCC1(CC)C(=O)NC(=O)N(C)C1=O
@@ -139,7 +139,7 @@
 692 3772-76-7 sulfamethomidine -2.54 146 0.75	c1cc(N)ccc1S(=O)(=O)Nc2nc(C)nc(OC)c2
 697 5259-88-1 oxycarboxin -2.43 129 1.41	c1ccccc1NC(=O)C2=C(C)OCCS2(=O)=O
 702 22071-15-4 ketoprofen -3.70 94 3.00	O=C(c(cccc1C(C(=O)O)C)c1)c(cccc2)c2
-707 51481-61-9 cimetidine -1.35 142 0.57	CNC(NCCSCc1ncnc1C)=NC#N
+#707 51481-61-9 cimetidine -1.35 142 0.57	CNC(NCCSCc1ncnc1C)=NC#N
 712 58-08-2 caffeine -0.97 238 0.16	CN1C(=O)N(C)c2ncn(C)c2C1(=O)
 717 66-81-9 cycloheximide -1.13 116 0.08	CC1CC(C)C(=O)C(C1)C(O)CC2CC(=O)NC(=O)C2
 722 110-85-0 piperazine 1.07 liq -0.80	N(CCNC1)C1
@@ -186,14 +186,14 @@
 928 140-67-0 estragole -2.92 liq 3.47	O(c(ccc(c1)CC=C)c1)C
 933 2539-17-5 tetrachloroguaiacol -4.02 121 3.92	Clc1c(Cl)c(Cl)c(Cl)c(O)c1OC
 938 141-84-4 Rhodanine -1.77 170 -1.00	O=C(NC(=S)S1)C1
-943 87-58-1 2,3,4,5-Tetraiodpyrrol -3.46 liq 5.55	Ic1c(nc(c1I)I)I
+#943 87-58-1 2,3,4,5-Tetraiodpyrrol -3.46 liq 5.55	Ic1c(nc(c1I)I)I
 948 71-30-7 Cytosine -1.14 liq -1.47	N1C(=O)N=C(N)C=C1
 953 70-47-3 L-Asparagine -0.74 235 -4.99	O=C(O)C(N)CC(=O)N
 958 597-35-3 Diethyl_Sulfone 0.04 73 -0.12	CCS(=O)(=O)CC
 963 626-64-2 4-Hydroxypyridine 1.02 liq 0.32	n1ccc(O)cc1
 968 626-48-2 6-Methyluracil -1.26 liq? -0.32	N1C(=O)NC(=O)C=C1C
 973 87-72-9 L-Arabinose 0.39 158 -2.91	O(C(O)C(O)C(O)C1O)C1
-978 ? 2-Mercaptopteridine-2.36 ? -0.24	c1cnc2c(S)ncnc2n1
+978 ? 2-Mercaptopteridine -2.36 ? -0.24	c1cnc2c(S)ncnc2n1
 983 98-10-2 Benzenesulfonamide -1.56 liq? 0.37	O=S(=O)(N)c(cccc1)c1
 988 137-26-8 Thiram -3.90 155.5 1.70	N(C(=S)SSC(N(C)C)=S)(C)C
 993 2815-34-1 trans-2,5-Dimethylpiperazine 0.49 liq? 0.04	N1C(C)CNC(C)C1
@@ -228,7 +228,7 @@
 1138 23947-60-6 Ethirimol -3.02 159.5 3.40	CCCCc1c(C)nc(NCC)nc1O
 1143 27541-88-4 Quinonamid -5.03 212.5 2.51	c1ccc2C(=O)C(Cl)=C(NC(=O)C(Cl)Cl)C(=O)c2c1
 1148 106-34-3 Quinhydrone -1.73 171 0.16	O=C1C=CC(c2cc(ccc2O)O)(C=C1)O
-1153 2235-90-7 Etryptamine -2.57 97 2.17	c1ccc2c(CC(CC)N)cn(H)c2c1
+#1153 2235-90-7 Etryptamine -2.57 97 2.17	c1ccc2c(CC(CC)N)cn(H)c2c1
 1158 136-77-6 4-Hexylresorcinol -2.59 68 4.04	Oc(c(ccc1O)CCCCCC)c1
 1163 15310-01-7 Benodanil -4.21 137 3.87	Ic1ccccc1C(=O)Nc2ccccc2
 1168 1861-40-1 Benfluralin -5.53 65 5.31	CCCCN(CC)c1c(cc(cc1N(=O)=O)C(F)(F)F)N(=O)=O
@@ -247,7 +247,7 @@
 1233 91-75-8 Antazoline -2.60 120 3.38	N1CCN=C1CN(c2ccccc2)Cc3ccccc3
 1237 84-17-3 Dienestrol -4.95 227.5 5.32	c1cc(O)ccc1C(C=C)C(C=C)c2ccc(O)cc2
 1242 84-16-2 Hexestrol -4.43 186.5 5.60	c1cc(O)ccc1C(CC)C(CC)c2ccc(O)cc2
-1247 50-59-9 Cephaloridine -1.32 liq? -1.38	OC(=O)C2=C(CSC3C(NC(=O)Cc1cccs1)C(=O)N23)Cn4(H)ccccc4
+#1247 50-59-9 Cephaloridine -1.32 liq? -1.38	OC(=O)C2=C(CSC3C(NC(=O)Cc1cccs1)C(=O)N23)Cn4(H)ccccc4
 1253 485-65-4 Hydrocinchonine -2.63 268 3.35	c12ccccc1nccc2C(O)C3N(C4)CCC(C4CC)C3
 1258 2363-58-8 Epitiostanol -5.41 127 4.45	C1(S5)C5CC2CCC3C4CCC(O)C4(C)CCC3C2(C)C1
 1264 58-38-8 Prochlorperazine -4.40 228 4.79	CN4CCN(CCCN2c1ccccc1Sc3ccc(Cl)cc23)CC4

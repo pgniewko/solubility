@@ -1,13 +1,13 @@
-#Name, SMILES S0(ml/L)
-Atenolol,CC(C)NCC(COC1=CC=C(C=C1)CC(=O)N)O,13300.0
-Diclofenac sodium,C1=CC=C(C(=C1)CC(=O)[O-])NC2=C(C=CC=C2Cl)Cl.[Na+],0.82
-Famotidine,C1=C(N=C(S1)N=C(N)N)CSCCC(=NS(=O)(=O)N)N,1100
-Flurbiprofen,CC(C1=CC(=C(C=C1)C2=CC=CC=C2)F)C(=O)O,10.6
-Furosemide,C1=COC(=C1)CNC2=CC(=C(C=C2C(=O)O)S(=O)(=O)N)Cl,5.9
-Hydrochlorothiazide,C1NC2=CC(=C(C=C2S(=O)(=O)N1)S(=O)(=O)N)Cl,700
-Ibuprofen,CC(C)CC1=CC=C(C=C1)C(C)C(=O)O,49
-Ketoprofen,CC(C1=CC=CC(=C1)C(=O)C2=CC=CC=C2)C(=O)O,118
-Labetolol.HCl,CC(CCC1=CC=CC=C1)NCC(C2=CC(=C(C=C2)O)C(=O)N)O,128
-Naproxen,CC(C1=CC2=C(C=C1)C=C(C=C2)OC)C(=O)O,14.0
-Phenytoin,C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3,19
-Propranolol.HCl,CC(C)NCC(COC1=CC=CC2=CC=CC=C21)O,70
+#Name, SMILES, S0(mol/L)
+Atenolol,CC(C)NCC(COC1=CC=C(C=C1)CC(=O)N)O,-1.30
+Diclofenac sodium,C1=CC=C(C(=C1)CC(=O)[O-])NC2=C(C=CC=C2Cl)Cl.[Na+],-5.59
+Famotidine,C1=C(N=C(S1)N=C(N)N)CSCCC(=NS(=O)(=O)N)N,-2.48
+Flurbiprofen,CC(C1=CC(=C(C=C1)C2=CC=CC=C2)F)C(=O)O,-4.36
+Furosemide,C1=COC(=C1)CNC2=CC(=C(C=C2C(=O)O)S(=O)(=O)N)Cl,-4.75
+Hydrochlorothiazide,C1NC2=CC(=C(C=C2S(=O)(=O)N1)S(=O)(=O)N)Cl,-2.63
+Ibuprofen,CC(C)CC1=CC=C(C=C1)C(C)C(=O)O,-3.62
+Ketoprofen,CC(C1=CC=CC(=C1)C(=O)C2=CC=CC=C2)C(=O)O,-3.33
+Labetolol.HCl,CC(CCC1=CC=CC=C1)NCC(C2=CC(=C(C=C2)O)C(=O)N)O,-3.45
+Naproxen,CC(C1=CC2=C(C=C1)C=C(C=C2)OC)C(=O)O,-4.21
+Phenytoin,C1=CC=C(C=C1)C2(C(=O)NC(=O)N2)C3=CC=CC=C3,-4.13
+Propranolol.HCl,CC(C)NCC(COC1=CC=CC2=CC=CC=C21)O,-3.62
