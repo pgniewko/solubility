@@ -36,10 +36,10 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 1. **Can You Predict Solubilities of Thirty-Two Molecules Using a Database of One Hundred Reliable Measurements?**     
 Antonio Llinàs, Robert C. Glen and Jonathan M. Goodman    
 *J. Chem. Inf. Modeling 2008, 48, 1289-1303*      
-[[paper]](https://pubs.acs.org/doi/10.1021/ci800058v)     
-[[paper]](https://pubs.acs.org/doi/10.1021/ci800436c)
-[[website]](http://www-jmg.ch.cam.ac.uk/data/solubility/)     
-**Note 1: In the test set, SMILES strings for probenecid and pseudoephedrine swapped. Use only soldataswap.xls file.**
+[[paper 1]](https://pubs.acs.org/doi/10.1021/ci800058v)      
+[[paper 2]](https://pubs.acs.org/doi/10.1021/ci800436c)    
+[[website]](http://www-jmg.ch.cam.ac.uk/data/solubility/)      
+**Note 1: In the test set, SMILES strings for probenecid and pseudoephedrine were swapped. Use only soldataswap.xls file.**
 **Note 2: Solubility for 32 compounds taken from HEL.2009.JCIM.pdf**
 
 2. **ESOL: Estimating Aqueous Solubility Directly from Molecular Structure**    
@@ -47,7 +47,7 @@ John S. Delaney
 *J. Chem. Inf. Comput. Sci. 2004, 44, 1000-1005*      
 [[paper]](https://pubs.acs.org/doi/10.1021/ci034243x)    
 **Note: There are two files D.2008.JCIC.solubility.v[1-2].txt. These files are the same but come from two 
-different sources: (i) [Pat Walters Blog](https://github.com/PatWalters/solubility) (ii) [ChemDB](ftp://ftp.ics.uci.edu/pub/baldig/learning/Delaney/)**      
+different sources: (i) [Pat Walters Blog](https://github.com/PatWalters/solubility) (ii) [ChemDB](ftp://ftp.ics.uci.edu/pub/baldig/learning/Delaney)**      
 
 3. **Can You Predict Solubilities of Thirty-Two Molecules Using a Database of One Hundred Reliable Measurements?**     
 Jarmo Huuskonen
@@ -74,7 +74,7 @@ Samuel Boobier, Anne Osbourn and John B. O. Mitchell
 *Journal of Cheminformatics, 2017, 9:63*       
 [[paper]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)      
 [[website]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-017-0250-y)     
-**Note: Source code accompany the paper.**      
+**Note: Source codes accompany the paper.**      
 
 
 7. **pH-metric solubility. 3. Dissolution titration template method for solubility determination**      
@@ -116,6 +116,12 @@ Alessandro Lusci, Gianluca Pollastri, and Pierre Baldi
 [[paper]](https://pubs.acs.org/doi/abs/10.1021/ci400187y)      
 **Note:Some of the files/data are duplicates**       
 
+13. **Is Experimental Data Quality the Limiting Factor in Predicting the
+Aqueous Solubility of Druglike Molecules?**    
+David S. Palmer and John B. O. Mitchell      
+*Mol. Pharmaceutics 2014, 11, 2962−2972*      
+[[pape]](https://pubs.acs.org/doi/10.1021/mp500103r)      
+**Note:  Good overview of the sources of the errors in solubility prediction.**      
 
 ### Methods    
 
