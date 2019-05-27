@@ -110,10 +110,14 @@ def process_H_2000_JCIC_test1():
     with open(fname, 'r', encoding="ISO-8859-1") as fin:
         for line in fin:
             if not line.startswith("#"): 
-                pairs = line.rstrip('\n').split()
-                canon_smiles = canonicalize_smiles(pairs[6])
-                logS = float(pairs[3])
-                cmpd_list.append((canon_smiles,logS))
+                try:
+                    pairs = line.rstrip('\n').split()
+                    canon_smiles = canonicalize_smiles(pairs[6])
+                    logS = float(pairs[3])
+                    cmpd_list.append((canon_smiles,logS))
+                except:
+                    smiles = pairs[6]
+                    logging.info(f"Failed to process {smiles}")
 
     with open(fout, 'w', encoding='ascii') as fo:
         for el in cmpd_list:
@@ -133,10 +137,14 @@ def process_H_2000_JCIC_test2():
     with open(fname, 'r', encoding="ISO-8859-1") as fin:
         for line in fin:
             if not line.startswith("#"):
-                pairs = line.rstrip('\n').split()
-                canon_smiles = canonicalize_smiles(pairs[6])
-                logS = float(pairs[3])
-                cmpd_list.append((canon_smiles,logS))
+                try:
+                    pairs = line.rstrip('\n').split()
+                    canon_smiles = canonicalize_smiles(pairs[6])
+                    logS = float(pairs[3])
+                    cmpd_list.append((canon_smiles,logS))
+                except:
+                    smiles = pairs[6]
+                    logging.info(f"Failed to process {smiles}")
                 
     with open(fout, 'w', encoding='ascii') as fo:
         for el in cmpd_list:
@@ -156,10 +164,14 @@ def process_H_2000_JCIC_train():
     with open(fname, 'r', encoding="ISO-8859-1") as fin:
         for line in fin:
             if not line.startswith("#"):
-                pairs = line.rstrip('\n').split()
-                canon_smiles = canonicalize_smiles(pairs[6])
-                logS = float(pairs[3])
-                cmpd_list.append((canon_smiles,logS))
+                try:
+                    pairs = line.rstrip('\n').split()
+                    canon_smiles = canonicalize_smiles(pairs[6])
+                    logS = float(pairs[3])
+                    cmpd_list.append((canon_smiles,logS))
+                except:
+                    smiles = pairs[6]
+                    logging.info(f"Failed to process {smiles}")
 
     with open(fout, 'w', encoding="ascii") as fo:
         for el in cmpd_list:
@@ -177,14 +189,16 @@ def process_HXZ_2004_JCIC_data():
 
     cmpd_list = []
     with open(fname, 'r') as fin:
-        cnt=0
         for line in fin:
             if not line.startswith("#"):
-                pairs = line.rstrip('\n').split()
-                canon_smiles = canonicalize_smiles(pairs[0])
-                logS = float(pairs[2])
-                cmpd_list.append((canon_smiles,logS))
-                cnt+=1
+                try:
+                    pairs = line.rstrip('\n').split()
+                    canon_smiles = canonicalize_smiles(pairs[0])
+                    logS = float(pairs[2])
+                    cmpd_list.append((canon_smiles,logS))
+                except:
+                    smiles = pairs[0]
+                    logging.info(f"Failed to process {smiles}")
 
     with open(fout, 'w', encoding="ascii") as fo:
         for el in cmpd_list:
@@ -254,14 +268,16 @@ def process_POG_2007_JCIM_test():
 
     cmpd_list = []
     with open(fname, 'r') as fin:
-        cnt=0
         for line in fin:
             if not line.startswith("#"):
-                pairs = line.rstrip('\n').split(";")
-                canon_smiles = canonicalize_smiles(pairs[1].strip("\""))
-                logS = float(pairs[4])
-                cmpd_list.append((canon_smiles,logS))
-                cnt+=1
+                try:
+                    pairs = line.rstrip('\n').split(";")
+                    canon_smiles = canonicalize_smiles(pairs[1].strip("\""))
+                    logS = float(pairs[4])
+                    cmpd_list.append((canon_smiles,logS))
+                except:
+                    smiles = pairs[1]
+                    logging.info(f"Failed to process {smiles}")
 
     with open(fout, 'w', encoding="ascii") as fo:
         for el in cmpd_list:
@@ -279,14 +295,16 @@ def process_POG_2007_JCIM_train():
 
     cmpd_list = []
     with open(fname, 'r') as fin:
-        cnt=0
         for line in fin:
             if not line.startswith("#"):
-                pairs = line.rstrip('\n').split(";")
-                canon_smiles = canonicalize_smiles(pairs[1].strip("\""))
-                logS = float(pairs[4])
-                cmpd_list.append((canon_smiles,logS))
-                cnt+=1
+                try:
+                    pairs = line.rstrip('\n').split(";")
+                    canon_smiles = canonicalize_smiles(pairs[1].strip("\""))
+                    logS = float(pairs[4])
+                    cmpd_list.append((canon_smiles,logS))
+                except:
+                    smiles = pairs[1]
+                    logging.info(f"Failed to process {smiles}")
 
     with open(fout, 'w', encoding="ascii") as fo:
         for el in cmpd_list:
@@ -329,6 +347,32 @@ def process_WKH_2007_JCIM():
 
     logging.info(f"Saved to {fout}")
 
+def process_OCHEM():
+    fname = f"{DATA_PATH}/OCHEM.Water.Solublity.05.27.2019.txt"
+    fout = f"{PROCESSED_PATH}/OCHEM.Water.Solublity.05.27.2019.smi"
+    logging.info(f"Processing {fname}")
+
+    cmpd_list = []
+    with open(fname, 'r') as fin:
+        for line in fin:
+            try:
+                pairs = line.rstrip('\n').split(",")
+                canon_smiles = canonicalize_smiles(pairs[0])
+                logS = float(pairs[1])
+                cmpd_list.append((canon_smiles,logS))
+            except:
+                smiles = pairs[0]
+                logging.info(f"Failed to process {smiles}")
+
+    with open(fout, 'w', encoding='ascii') as fo:
+        for el in cmpd_list:
+            smiles = el[0]
+            logS = el[1]
+            fo.write(f"{smiles},{logS}\n")
+
+    logging.info(f"Saved {fout}")
+
+
 
 def process_test_100():
     """
@@ -341,14 +385,12 @@ def process_test_100():
 
     cmpd_list = []
     with open(fname, 'r') as fin:
-        cnt=0
         for line in fin:
             if not line.startswith("#"):
                 pairs = line.rstrip('\n').split(',')
                 canon_smiles = canonicalize_smiles(pairs[0])
                 logS = float(pairs[5])
                 cmpd_list.append((canon_smiles ,logS))
-                cnt+=1
 
     with open(fout, 'w', encoding="ascii") as fo:
         for el in cmpd_list:
@@ -376,14 +418,12 @@ def process_test_32():
 
     cmpd_list = []
     with open(fname, 'r') as fin:
-        cnt=0
         for line in fin:
             if not line.startswith("#"):
                 pairs = line.rstrip('\n').split(',')
                 canon_smiles = canonicalize_smiles(pairs[0])
                 logS = float(pairs[5])
                 cmpd_list.append((canon_smiles ,logS))
-                cnt+=1
 
     with open(fout, 'w', encoding="ascii") as fo:
         for el in cmpd_list:
@@ -414,6 +454,7 @@ def main():
     process_POG_2007_JCIM_test()
     process_POG_2007_JCIM_train()
     process_WKH_2007_JCIM()
+    process_OCHEM()
 
     process_test_100()
     process_test_32()

@@ -77,9 +77,9 @@
 94 192-97-2 benzo(e)pyrene -7.80 178.5 6.11	c1ccc2c(c1)c4cccc5ccc3cccc2c3c45
 96 198-55-0 perylene -8.80 277 6.11	c(c(ccc1)ccc2)(c1c(c(c(cc3)ccc4)c45)c3)c25
 97 191-24-2 benzo(ghi)perylene -9.03 277 6.70	c16cccc2ccc3ccc4ccc5cccc6c5c4c3c12
-#98 86-74-8 carbazole -4.97 245 3.23	n(H)(c(c(c1cccc2)ccc3)c3)c12
+98 86-74-8 carbazole -4.97 245 3.23	n(H)(c(c(c1cccc2)ccc3)c3)c12
 99 132-65-0 dibenzothiophene -4.38 97 4.17	s(c(c(c1cccc2)ccc3)c3)c12
-#101 239-64-5 13H-dibenzo(a,i)carbazole -7.42 220 5.58	c1ccc4c(c1)ccc5c3ccc2ccccc2c3n(H)c45
+101 239-64-5 13H-dibenzo(a,i)carbazole -7.42 220 5.58	c1ccc4c(c1)ccc5c3ccc2ccccc2c3n(H)c45
 102 260-94-6 acridine -3.67 106 3.32 n(c(c(ccc1)cc2cccc3)c1)c23
 103 578-06-3 1-aminoacridine -4.22 183 2.40 c1ccc2nc3cccc(N)c3cc2c1
 104 613-13-8 2-aminoanthracene -5.17 238 3.43	Nc3ccc2cc1ccccc1cc2c3
@@ -335,7 +335,7 @@
 418 76-93-7 benzilic_acid -2.21 150 2.24	O=C(O)C(O)(c(cccc1)c1)c(cccc2)c2
 419 77-06-5 gibberellic_acid -1.84 227 0.45	O=C(OC(C1C(C2(CC(O)(C3=C)CC4)C3)C(=O)O)(C24)C=CC5O)C15C
 420 79-31-2 isobutyric_acid 0.28 liq 1.00	O=C(O)C(C)C
-#422 87-51-4 indole-3-acetic_acid -2.07 169 1.49	O=C(O)CC(c(c(N1(H))ccc2)c2)=C1
+422 87-51-4 indole-3-acetic_acid -2.07 169 1.49	O=C(O)CC(c(c(N1(H))ccc2)c2)=C1
 423 88-09-5 2-ethylbutyric_acid -0.81 liq 1.98	O=C(O)C(CC)CC
 424 99-66-1 valproic_acid -1.86 liq 2.96	CCCC(CCC)C(O)=O
 425 98-89-5 cyclohexanecarboxylic_acid -1.45 32 2.36	O=C(O)C(CCCC1)C1
@@ -475,19 +475,19 @@
 593 100-55-0 3-pyridinemethanol 0.96 liq -0.11	n(cccc1CO)c1
 594 98-96-4 2-pyrazinecarboxamide -0.91 190 -0.53	O=C(N)c(nccn1)c1
 595 289-95-2 pyrimidine 1.10 liq -0.06	n(cccn1)c1
-#597 83-34-1 3-methylindole -2.42 95 2.60	c1ccc2c(C)cn(H)c2c1
+597 83-34-1 3-methylindole -2.42 95 2.60	c1ccc2c(C)cn(H)c2c1
 598 85-02-9 benzo(f)quinoline -3.36 93 3.32	c1ccc2c(c1)ccc3ncccc23
-#599 95-14-7 benzotriazole -0.78 99 1.17	c1ccc2n(H)nnc2c1
+599 95-14-7 benzotriazole -0.78 99 1.17	c1ccc2n(H)nnc2c1
 600 95-16-9 benzothiazole -1.50 liq 2.17	c1ccc2ncsc2c1
 602 110-02-1 thiophene -1.45 liq 1.81	s1cccc1
 603 119-91-5 biquinoline -5.40 193 4.06	n(c(c(ccc1)cc2)c1)c2c(nc(c(ccc3)c4)c3)c4
-#604 120-72-9 indole -1.52 52 2.05	c1ccc2ccn(H)c2c1
+604 120-72-9 indole -1.52 52 2.05	c1ccc2ccn(H)c2c1
 605 148-24-3 8-quinolinol -2.42 176 1.66	n(c(c(ccc1)cc2)c1O)c2
-#607 271-44-3 indazole -2.16 147 1.23	c2ccc1nncc1c2
+607 271-44-3 indazole -2.16 147 1.23	c2ccc1nncc1c2
 608 273-53-0 benzoxazole -1.16 31 1.72	o(c(c(n1)ccc2)c2)c1
 609 289-80-5 pyridazine 1.10 liq -0.06	n(nccc1)c1
 610 578-67-6 5-hydroxyquinoline -2.54 223 1.66	c1cc2ncccc2c(O)c1
-#612 615-15-6 2-methylbenzimidazole -1.96 44 1.78	N(c(c(N1(H))ccc2)c2)=C1C
+612 615-15-6 2-methylbenzimidazole -1.96 44 1.78	N(c(c(N1(H))ccc2)c2)=C1C
 613 616-44-4 3-methylthiophene -2.39 liq 2.36	C1(C)=CSC=C1
 614 872-55-9 2-ethylthiophene -2.59 liq 2.85	C1=CSC(CC)=C1
 615 10004-44-1 3-hydroxy-5-methylisoxazole -0.07 86 1.03	Cc1cc(O)no1
@@ -537,7 +537,7 @@
 671 144-80-9 sulfanilacetamide -1.23 183 -0.60	O=C(NS(=O)(=O)c(ccc(N)c1)c1)C
 673 149-32-6 erythritol 0.70 122 -2.11	OCC(O)C(O)CO
 674 299-42-3 ephedrine -0.42 79 0.68	OC(c(cccc1)c1)C(NC)C
-#675 315-30-0 allopurinol -2.38 350 -0.55	c1nc(O)c2cnnc2n1
+675 315-30-0 allopurinol -2.38 350 -0.55	c1nc(O)c2cnnc2n1
 676 339-43-5 carbutamide -2.18 145 0.94	O=C(NCCCC)NS(=O)(=O)c(ccc(N)c1)c1
 678 364-62-5 metoclopramide -3.18 147 1.69	CCN(CC)CCNC(=O)c1cc(Cl)c(N)cc1OC
 679 443-48-1 metronidazole -1.26 158 0.00	Cc1ncc(N(=O)=O)n1CCO
@@ -567,7 +567,7 @@
 709 56030-54-7 sufentanil -3.71 97 3.62	C1CN(CCC2=CC=CS2)CCC1(COC)N(C(=O)CC)c3ccccc3
 710 76674-21-0 flutriafol -3.37 130 2.52	n1cncn1CC(O)(c2ccc(F)cc2)c3ccccc3F
 711 51-21-8 5-fluorouracil -1.07 282 -0.81	N1C(=O)NC(=O)C(F)=C1
-#713 59-31-4 2-(1H)quinolinone -2.14 199 1.32	c1ccc2C=CC(=O)N(H)c2c1
+713 59-31-4 2-(1H)quinolinone -2.14 199 1.32	c1ccc2C=CC(=O)N(H)c2c1
 714 60-34-4 methyl_hydrazine 1.34 liq -1.00	CNN
 715 65-71-4 5-methyluracil -1.52 316 -0.32	C1=C(C)C(=O)NC(=O)N1
 716 66-22-8 uracil -1.48 335 -0.87	C1=CC(=O)NC(=O)N1
@@ -708,7 +708,7 @@
 886 60-54-8 tetracycline -3.12 ? -1.33	CN(C)C2C1CC4C(=C(O)C1(O)C(=O)C(=C2O)C(N)=O)C(=O)c3c(O)cccc3C4(C)O
 887 79-57-2 oxytetracycline -3.14 ? -2.47	O=C(N)C(=C(O)C(N(C)C)C(C1(O)C(O)=C(C2C(O)(c(c3c(O)cc4)c4)C)C3=O)C2O)C1=O
 889 63-91-2 L-tryptophan -1.23 ? -1.28	O=C(O)C(N)Cc(cccc1)c1
-#890 31431-39-7 mebendazole -3.88 ? 2.71	c1c(C(=O)c3ccccc3)cc2nc(NC(=O)OC)n(H)c2c1
+890 31431-39-7 mebendazole -3.88 ? 2.71	c1c(C(=O)c3ccccc3)cc2nc(NC(=O)OC)n(H)c2c1
 891 957-51-7 diphenamid -2.98 ? 2.86	CN(C)C(=O)C(c1ccccc1)c2ccccc2
 892 2303-17-5 triallate -4.88 ? 4.57	CC(C)N(C(C)C)C(=O)SCC(Cl)=C(Cl)Cl
 894 63-68-3 methionine -0.42 281 -2.41	O=C(O)C(N)CCSC
@@ -764,10 +764,10 @@
 956 541-48-0 beta-Aminobutyric_Acid 1.08 193 -3.63	O=C(O)CC(N)C
 957 72-19-5 Threonine -0.09 liq -3.04	O=C(O)C(N)C(O)C
 959 65-86-1 Orotic_Acid -1.93 345.5 -0.11	C1(=O)NC(=O)NC(C(=O)O)=C1
-#960 68-94-0 Hypoxanthine -2.29 liq? -1.19	N1C=Nc2ncnc2C1(=O)
+960 68-94-0 Hypoxanthine -2.29 liq? -1.19	N1C=Nc2ncnc2C1(=O)
 961 142-08-5 2-Hydroxypyridine 1.02 106 1.07	n(c(O)ccc1)c1
 962 109-00-2 3-Hydroxypyridine -0.46 127.5 0.32	n(cccc1O)c1
-#964 73-24-5 Adenine -2.12 liq? -0.73	n(c(c(ncn1)c1n2)N)c2
+964 73-24-5 Adenine -2.12 liq? -0.73	n(c(c(ncn1)c1n2)N)c2
 965 118-52-5 1,3-Dichloro-5,5-dimethylhydantoin -2.60 132 -0.94	O=C(N(C(C1=O)(C)C)Cl)N1Cl
 966 636-26-0 5-Methyl-2-thiouracil -2.45 liq? 1.45	n(cc(c(n1)O)C)c1S
 967 56-04-2 Methylthiouracil -2.43 liq? 1.45	n(c(O)cc(n1)C)c1S
@@ -775,7 +775,7 @@
 970 554-57-4 Methazolamide -1.83 213 0.33	CC(=O)N=C1N(C)N=C(S(=O)(=O)N)S1
 971 56-85-9 Glutamine -0.55 liq? -4.49	O=C(O)C(N)CCC(=O)N
 972 533-74-4 Dazomet -2.13 106.5 0.94	N(CSC(N1C)=S)(C1)C
-#974 107-43-7 Betaine 0.72 liq? -4.93	O=C(O)CN(C)(C)C
+974 107-43-7 Betaine 0.72 liq? -4.93	O=C(O)CN(C)(C)C
 975 ? 4,5,7-Trichloro-2,1,3-benzothiadiazole -4.98 131.5 3.28	c1c(Cl)c(Cl)c2nsnc2c1Cl
 976 ? 7-Chloropteridine -0.87 ? -0.29	c1c(Cl)nc2cncnc2n1
 977 91-18-9 Pteridine 0.02 138 -0.94	c1cnc2cncnc2n1
@@ -789,7 +789,7 @@
 987 1596-84-5 Daminozide -0.20 155 -1.51	CN(C)NC(=O)CCC(O)=O
 989 488-73-3 d-Quercitol -0.17 234 -2.33	OC1C(O)C(O)C(O)C(O)C1
 990 643-12-9 D-Inositol 0.35 249.5 -2.08	OC1C(O)C(O)C(O)C(O)C1O
-#991 ? n-Amyl_Carbamate -1.47 liq ? 1.45	NC(=O)OCCCCC
+991 ? n-Amyl_Carbamate -1.47 liq ? 1.45	NC(=O)OCCCCC
 992 ? tert-Amyl_Carbamate -0.80 ? 1.34	NC(=O)OCC(C)(C)C
 994 50-70-4 Sorbitol 1.09 110 -3.01	OCC(O)C(O)C(O)C(O)CO
 995 82-68-8 Quintozene -5.82 139 5.03	O=N(=O)c(c(c(c(c1Cl)Cl)Cl)Cl)c1Cl
@@ -1010,7 +1010,7 @@
 1265 56-54-2 Quinidine -3.37 174 3.44	O(c(ccc(nccc1C(O)C(N(CCC2C3C=C)C3)C2)c14)c4)C
 1267 57-63-6 Ethinyl_Estradiol -4.30 182 4.12	OC(C#C)(C(C(C(C(c(c(cc(O)c1)C2)c1)C3)C2)C4)(C3)C)C4
 1268 4360-12-7 Ajmaline -2.82 159 1.88	c1ccc2N(C)C3C4CC5C(CC)C(O)N4C(C56)CC3(C6O)c2c1
-#1269 672-72-0 Amygdalin -0.77 223 -4.34	N#CC(c2ccccc2)OC3(C(C(O)(H)C(C(O3)(COC1(C(C(O)(H)C(C(O1)(CO)H)(O)H)(O)H)H)H)(O)H)(O)H)H
+1269 672-72-0 Amygdalin -0.77 223 -4.34	N#CC(c2ccccc2)OC3(C(C(O)(H)C(C(O3)(COC1(C(C(O)(H)C(C(O1)(CO)H)(O)H)(O)H)H)H)(O)H)(O)H)H
 1271 20168-99-4 Cinmetacin -5.54 170 3.78	c1c(OC)cc2c(CC(=O)O)c(C)n(C(=O)C=Cc3ccccc3)c2c1
 1272 52645-53-1 Permethrin -6.29 36.5 7.43	CC1(C)C(C=C(Cl)Cl)C1C(=O)OCc3cccc(Oc2ccccc2)c3
 1273 127-33-3 Demeclocycline -2.52 ? -1.14	c1cc(O)c2C(=O)C3=C(O)C4(O)C(=O)C(C(=O)N)=C(O)C(N(C)C)C4CC3C(O)c2c1Cl
