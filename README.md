@@ -39,8 +39,11 @@ Antonio Llinàs, Robert C. Glen and Jonathan M. Goodman
 [[paper 1]](https://pubs.acs.org/doi/10.1021/ci800058v)      
 [[paper 2]](https://pubs.acs.org/doi/10.1021/ci800436c)    
 [[website]](http://www-jmg.ch.cam.ac.uk/data/solubility/)      
+**Note 0: This is the reference for the original Solubility Challange**      
 **Note 1: In the test set, SMILES strings for probenecid and pseudoephedrine were swapped. Use only soldataswap.xls file.**
 **Note 2: Solubility for 32 compounds taken from HEL.2009.JCIM.pdf**
+**Note 3: Data was downloaded from the original website, but the numbers are dubious (IMO) - use CAREFULLY! **      
+
 
 2. **ESOL: Estimating Aqueous Solubility Directly from Molecular Structure**    
 John S. Delaney           
@@ -56,11 +59,13 @@ Jarmo Huuskonen
 [[website]](http://cheminformatics.org/datasets/huuskonen/index.html)     
 **Note: Quite a few repeats from Delaney Set. Different measurements though.**     
 
+
 4. **ADME evaluation in drug discovery. 4. Prediction of aqueous solubility based on atom contribution approach**
 Tingjun Hou, Ke Xia, Wei Zhang, Xiaojie Xu     
 *Journal of Chemical Information and Computer Sciences, 2004, 44, 266-275*       
 [[paper]](https://pubs.acs.org/doi/abs/10.1021/ci034184n)     
 [[website]](http://modem.ucsd.edu/adme/databases/databases_logS.htm)      
+
 
 5. **Development of reliable aqueous solubility models and their application in drug-like analysis**     
 Junmei Wang, George Krudy, Tingjun Hou, George Holland, Xiaojie Xu      
@@ -68,6 +73,7 @@ Junmei Wang, George Krudy, Tingjun Hou, George Holland, Xiaojie Xu
 [[paper]](https://pubs.acs.org/doi/10.1021/ci700096r)     
 [[website]](http://modem.ucsd.edu/adme/databases/databases_logS.htm)     
 **Note: In logS database, the aqueous solubility was expressed as logS, where S is the solubility at a temperature of 20-25°C in mol/L. These are two databases for our modeling. In reference [4], the data afforded by Tetko was used. This database includes 1290 organic compounds. The data set was converted from the SMILES flat file representation to the MACCS/sdf structured data file. In reference [5], some new molecules collected from literature were added. This database includes 1708 molecules.**
+
 
 6. **Can human experts predict solubility better than computers?**      
 Samuel Boobier, Anne Osbourn and John B. O. Mitchell    
@@ -97,8 +103,9 @@ Iurii Sushko et al.,
 **Note: Reference for OCHEM. Not yet sure how to download the data :-( **    
 
 
-10. **Solubility Challenge revisited after 10 years, with multi-lab shake- flask data, using tight (SD ~0.17 log) and loose (SD ~0.62 log) test sets**   
-Antonio Llinas, and Alex Avdeef      
+10. **Solubility Challenge revisited after 10 years, with multi-lab shake- flask data, using tight (SD 0.17 log) and loose (SD 0.62 log) test sets**   
+Antonio Llinas, and Alex Avdeef       
+*J. Chem. Inf. Model., 2019*
 [[paper]](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345)     
 **Note: The reference for the new challange.**      
 
@@ -114,7 +121,8 @@ David S. Palmer, Noel M. O’Boyle, Robert C. Glen, and John B. O. Mitchell
 Alessandro Lusci, Gianluca Pollastri, and Pierre Baldi     
 *J. Chem. Inf. Model.2013,537, 1563-1575*       
 [[paper]](https://pubs.acs.org/doi/abs/10.1021/ci400187y)      
-**Note:Some of the files/data are duplicates**       
+**Note: Some of the files/data are duplicates**       
+
 
 13. **Is Experimental Data Quality the Limiting Factor in Predicting the
 Aqueous Solubility of Druglike Molecules?**    
@@ -122,6 +130,8 @@ David S. Palmer and John B. O. Mitchell
 *Mol. Pharmaceutics 2014, 11, 2962−2972*      
 [[pape]](https://pubs.acs.org/doi/10.1021/mp500103r)      
 **Note:  Good overview of the sources of the errors in solubility prediction.**      
+
+
 
 ### Methods    
 
