@@ -1,13 +1,35 @@
+
 import sys
 import logging
+from functools import partial
+from collections import defaultdict
 
 import numpy as np
 from utils import canonicalize_smiles, mol_wt
 from rdkit import Chem
 
+
 DATA_PATH="/Users/pawel/Projects/solubility/data/raw"
 PROCESSED_PATH="/Users/pawel/Projects/solubility/data/processed"
+TRAINING_DIR="/Users/pawel/Projects/solubility/data/training"
 TEST_PATH="/Users/pawel/Projects/solubility/data/test"
+
+
+def one_outlier(num_list):
+    tot = len(num_list)
+    cnt = 0
+    for el in num_list:
+        if el > 0.0:
+            cnt += 1
+
+    if (tot - cnt) == 1 and tot > 1:
+        return (True, 0)
+    if cnt == 1 and tot > 1:
+        return (True, 1)
+
+    return (False, None)
+
+
 
 def process_AB_2001_EJPS():
     fname = f"{DATA_PATH}/AB.2001.EJPS.txt"
@@ -409,7 +431,12 @@ def process_test_100():
 
 def process_test_32():
     """
-    # SMILES, Interlab.SD, Num.Lit.Sources, Experimental.MP.(*C),log.Poct-water.calc.in.RDKit, log.S0.calc.by.GSE
+    # SMILES, 
+      Interlab.SD, 
+      Num.Lit.Sources, 
+      Experimental.MP.(*C),
+      log.Poct-water.calc.in.RDKit, 
+      log.S0.calc.by.GSE
     """
     fname = f"{TEST_PATH}/set_32.csv"
     fout = f"{TEST_PATH}/test_32.smi"
@@ -439,7 +466,118 @@ def process_test_32():
     logging.info(f"Saved {fout}")
 
 
-def main():
+def unique():
+    FILES_LIST = ['BOM.2017.JC.smi',
+                  'D.2008.JCIC.smi',
+                  'H.2000.JCIC.test1.smi',
+                  'H.2000.JCIC.test2.smi',
+                  'H.2000.JCIC.train.smi',
+                  'HXZ.2004.JCIC.data_set.smi',
+                  'HXZ.2004.JCIC.test.smi',
+                  'LGG.2008.JCIM.100.smi',
+                  'LGG.2008.JCIM.32.smi',
+                  'OCHEM.Water.Solublity.05.27.2019.smi',
+                  'POG.2007.JCIM.test.smi',
+                  'POG.2007.JCIM.train.smi',
+                  'WKH.2007.JCIM.smi']
+
+    smiles_logS = defaultdict(list)
+    for fname in FILES_LIST:
+        logging.info(f"Processing {fname} file.")
+        with open(f"{PROCESSED_PATH}/{fname}", 'r') as fin:
+            for line in fin:
+                pairs = line.rstrip('\n').split(',')
+                smiles = pairs[0]
+                logS = float(pairs[1])
+                smiles_logS[smiles].append(logS)
+
+    fout = f"{TRAINING_DIR}/solubility.uniq.smi"
+    with open(fout, 'w', encoding='ascii') as fo:
+        for key, values in smiles_logS.items():
+            values.sort()
+            vmin = values[0]
+            vmax = values[-1]
+
+            if vmin * vmax < 0:
+                if len(values) == 2:
+                    continue
+            #    flag, minmax = one_outlier(values)
+            #    if flag:
+            #        if minmax == 0:
+            #            values = values[1:]
+            #        else:
+            #            values = values[0:-1]
+
+            if (vmax - vmin) > 1.0:
+                continue
+
+            fo.write(f"{key};")
+            for val in values:
+                fo.write(f"{val},")
+            fo.write('\n')
+
+
+def exclude_test():
+    
+    TEST_32_FILE = f"{TEST_PATH}/test_32.smi"
+    TEST_100_FILE = f"{TEST_PATH}/test_100.smi"
+    UNIQUE_CMPDS = f"{TRAINING_DIR}/solubility.uniq.smi"
+
+    test_32 = []
+    test_100 = []
+
+    with open(TEST_32_FILE, 'r') as fin:
+        for line in fin:
+            smiles = line.rstrip('\n')
+            test_32.append(smiles)
+
+    with open(TEST_100_FILE, 'r') as fin:
+        for line in fin:
+            smiles = line.rstrip('\n')
+            test_100.append(smiles)
+
+    unique = {}
+    with open(UNIQUE_CMPDS, 'r') as fin:
+        for line in fin:
+            pairs = line.rstrip('\n').split(';')
+            smiles = pairs[0]
+            vals_str = pairs[1].split(',')
+            vals = [float(v) for v in vals_str[0:-1]]
+            unique[smiles] = np.mean(vals)
+
+
+
+    TEST_32_FILE_IN_TRAIN = f"{TEST_PATH}/test_32.in-train.smi"
+    with open(TEST_32_FILE_IN_TRAIN, 'w') as fo: 
+        for smiles in test_32:
+            if smiles in unique:
+                val = unique[smiles]
+                fo.write(f"{smiles},{val}\n")
+
+    TEST_100_FILE_IN_TRAIN = f"{TEST_PATH}/test_100.in-train.smi"
+    with open(TEST_100_FILE_IN_TRAIN, 'w') as fo: 
+        for smiles in test_100:
+            if smiles in unique:
+                val = unique[smiles]
+                fo.write(f"{smiles},{val}\n")
+    
+
+    UNIQUE_CMPDS_32 = f"{TRAINING_DIR}/solubility.uniq.no-in-32.smi"
+    with open(UNIQUE_CMPDS_32, 'w') as fo:
+        for key, value in unique.items():
+            if key not in test_32:
+                fo.write(f"{key},{value}\n")
+
+    UNIQUE_CMPDS_100 = f"{TRAINING_DIR}/solubility.uniq.no-in-100.smi"
+    with open(UNIQUE_CMPDS_100, 'w') as fo:
+        for key, value in unique.items():
+            if key not in test_100:
+                fo.write(f"{key},{value}\n")
+
+    return 
+
+
+def process():
     process_AB_2001_EJPS()
     process_ABB_2000_PR()
     process_BOM_2017_JC()
@@ -459,6 +597,11 @@ def main():
     process_test_100()
     process_test_32()
 
+
 if __name__ == "__main__":
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-    main()
+    
+    process()
+    unique()
+    exclude_test()
+
