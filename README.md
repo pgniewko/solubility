@@ -33,6 +33,28 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 
 ### Datasets
 
+| Dataset                   | Do I trust it? | Comments                                 |
+|---------------------------|:--------------:|:-----------------------------------------|
+| AB.2001.EJPS              | (+/-)          | Given in weird unists log(1/S0)[mol/L]?  |
+| ABB.2000.PR               | (+/-)          | Given in weird unists log(1/S0)[mol/L]?  |
+| BOM.2017.JC               | (+)            |                                          |
+| D.2008.JCIC               | (+)            |                                          |
+| H.2000.test1              | (+)            | Downloaded from the website              |
+| H.2000.test2              | (+)            | Downloaded from the website              |
+| H.2000.train              | (+)            | Downloaded from the website              |
+| HXZ.2004.JCIC.data_set    | (+)            | Downloaded from the website              |
+| HXZ.2004.JCIC.test_set1   | (+)            | Downloaded from the website              |
+| LGG.2008.JCIM.32          | (+)            |                                          |
+| LGG.2008.JCIM.100         | (+)            |                                          |
+| LPB.2013.JCIC [all]       | (-)            | Can't understand the format of the data! |
+| POG.2007.JCIM.test        | (+)            | Data obtained from authors               |
+| POG.2007.JCIM.train       | (+)            | Data obtained from authors               |
+| WKH.2007.JCIM.solubility  | (+)            | ADME website data                        |    
+| OCHEM.WaterSolubility     | (+)            | Seems to be manually curated             |
+| DrugBank                  | N/A            |                                          |
+
+
+
 1. **Can You Predict Solubilities of Thirty-Two Molecules Using a Database of One Hundred Reliable Measurements?**     
 Antonio Llinàs, Robert C. Glen and Jonathan M. Goodman    
 *J. Chem. Inf. Modeling 2008, 48, 1289-1303*      
