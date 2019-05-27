@@ -476,7 +476,7 @@ def unique():
                   'HXZ.2004.JCIC.test.smi',
                   'LGG.2008.JCIM.100.smi',
                   'LGG.2008.JCIM.32.smi',
-                  'OCHEM.Water.Solublity.05.27.2019.smi',
+                  #'OCHEM.Water.Solublity.05.27.2019.smi',
                   'POG.2007.JCIM.test.smi',
                   'POG.2007.JCIM.train.smi',
                   'WKH.2007.JCIM.smi']
@@ -511,13 +511,17 @@ def unique():
             if (vmax - vmin) > 1.0:
                 continue
 
+           
+            if sum(np.isinf(values)) != 0:
+                continue
+
             fo.write(f"{key};")
             for val in values:
                 fo.write(f"{val},")
             fo.write('\n')
 
 
-def exclude_test():
+def exclude_test(max_val=1.0):
     
     TEST_32_FILE = f"{TEST_PATH}/test_32.smi"
     TEST_100_FILE = f"{TEST_PATH}/test_100.smi"
@@ -565,13 +569,13 @@ def exclude_test():
     UNIQUE_CMPDS_32 = f"{TRAINING_DIR}/solubility.uniq.no-in-32.smi"
     with open(UNIQUE_CMPDS_32, 'w') as fo:
         for key, value in unique.items():
-            if key not in test_32:
+            if key not in test_32 and value < max_val:
                 fo.write(f"{key},{value}\n")
 
     UNIQUE_CMPDS_100 = f"{TRAINING_DIR}/solubility.uniq.no-in-100.smi"
     with open(UNIQUE_CMPDS_100, 'w') as fo:
         for key, value in unique.items():
-            if key not in test_100:
+            if key not in test_100 and value < max_val:
                 fo.write(f"{key},{value}\n")
 
     return 
