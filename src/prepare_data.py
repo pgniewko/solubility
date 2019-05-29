@@ -476,7 +476,7 @@ def unique():
                   'HXZ.2004.JCIC.test.smi',
                   'LGG.2008.JCIM.100.smi',
                   'LGG.2008.JCIM.32.smi',
-                  #'OCHEM.Water.Solublity.05.27.2019.smi',
+#                  'OCHEM.Water.Solublity.05.27.2019.smi',
                   'POG.2007.JCIM.test.smi',
                   'POG.2007.JCIM.train.smi',
                   'WKH.2007.JCIM.smi']
@@ -513,6 +513,9 @@ def unique():
 
            
             if sum(np.isinf(values)) != 0:
+                continue
+            
+            if mol_wt(key) > 600.0 or mol_wt(key) < 60.0:
                 continue
 
             fo.write(f"{key};")
@@ -607,5 +610,5 @@ if __name__ == "__main__":
     
     process()
     unique()
-    exclude_test()
+    exclude_test(max_val=5.0)
 
