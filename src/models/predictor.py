@@ -1,5 +1,3 @@
-import time
-from datetime import datetime
 import logging
 from abc import ABC, abstractmethod
 
@@ -15,9 +13,7 @@ class Predictor(ABC):
     """
 
     def __init__(self):
-        self._name = "_Preictor"
-        #self._timestamp = datetime.fromtimestamp( time.time() )
-
+        self._name = None
         pass
 
     @abstractmethod
@@ -31,13 +27,21 @@ class Predictor(ABC):
     @abstractmethod
     def predict(self):
         pass
+    
+    def _make_dirs(self):
+        return
+
+    def _pickle(self):
+        return
 
     def train(self, smiles_list, logS_list, cv=5):
         scores = []
 
-        kf = KFold(n_splits=cv)
+        kf = KFold(n_splits=cv, shuffle=True, random_state=None)
         fold = 0
         for train_index, test_index in kf.split(smiles_list):
+            print
+            logging.info('*{}* model is training {} fold'.format(self._name, fold))
             X_train = [smiles_list[idx] for idx in list(train_index)]
             y_train = [logS_list[idx] for idx in list(train_index)]
             X_test = [smiles_list[idx] for idx in list(test_index)]
@@ -45,7 +49,6 @@ class Predictor(ABC):
             self.fit(X_train, y_train)
             scores.append( self.score(X_test, y_test)  )
             fold += 1
-
 
         return np.mean(scores, axis=0), np.std(scores, axis=0)
 
@@ -59,9 +62,3 @@ class Predictor(ABC):
         return (mse, mae, r2)
 
         
-    def _make_dirs(self):
-        return
-
-    def _pickle(self):
-        return
-
