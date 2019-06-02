@@ -18,9 +18,10 @@ class RFPredictor(Predictor):
     """
     """
 
-    def __init__(self, fp='ecfp4', fp_length=1024, prop=False, n_ests=500):
+    def __init__(self, fp='ecfp', radius=2, fp_length=1024, prop=False, n_ests=500):
         self._name = "RFRegressor"
         self._fp = fp
+        self._fp_r = radius
         self._fp_length = fp_length
         self._prop = prop
         self._n_estimators = n_ests
@@ -28,10 +29,10 @@ class RFPredictor(Predictor):
 
 
     def fit(self, smiles_list, logS_list):
-        X = self.smiles_to_fps(smiles_list, 3, self._fp_length)
+        X = self.smiles_to_fps(smiles_list, self._fp_r, self._fp_length)
         y = [logS for logS in logS_list]
 
-        self.model = RandomForestRegressor(n_estimators=self._n_estimators, random_state=1123)
+        self.model = RandomForestRegressor(n_estimators=self._n_estimators, random_state=1123, max_features="auto")
         self.model.fit(X, y)
 
 

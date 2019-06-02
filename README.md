@@ -10,7 +10,6 @@ The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs
 ### Potential sources of bulk data
 1. [PubChem](https://pubchem.ncbi.nlm.nih.gov/)
 2. [OCHEM](https://ochem.eu/home/show.do)
-3. [DrugBank](https://www.drugbank.ca/)
 
 ### This work
 To be written.
@@ -26,10 +25,9 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 | GraphConv     | 0.721      |  0.648    |
 | XGBoost       | 1.182      |  0.912    |
 
-### References
 
 [Datasets](#datasets)    
-[Methods](#methods)   
+[Papers](#papers)    
 
 ### Datasets
 
@@ -50,9 +48,11 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 | POG.2007.JCIM.test        | (+)            | Data obtained from authors               |
 | POG.2007.JCIM.train       | (+)            | Data obtained from authors               |
 | WKH.2007.JCIM.solubility  | (+)            | ADME website data                        |    
-| OCHEM.WaterSolubility     | (+)            | Seems to be manually curated             |
-| DrugBank                  | N/A            |                                          |
+| OCHEM.WaterSolubility     | (+/-)          | Lots of repears, some sign error         |
+| PubChem                   | N/A            |                                          |
 
+
+### Papers          
 
 
 1. **Can You Predict Solubilities of Thirty-Two Molecules Using a Database of One Hundred Reliable Measurements?**     
@@ -134,14 +134,14 @@ Antonio Llinas, and Alex Avdeef
 
 11. **Random Forest Models To Predict Aqueous Solubility**      
 David S. Palmer, Noel M. O’Boyle, Robert C. Glen, and John B. O. Mitchell       
-*J. Chem. Inf. Model.2007,471, 150-158*      
+*J. Chem. Inf. Model. 2007,471, 150-158*      
 [[paper]](https://pubs.acs.org/doi/10.1021/ci060164k)    
 **Note: Data extracted from pdfs**     
 
 
 12. **Deep Architectures and Deep Learning in Chemoinformatics**      
 Alessandro Lusci, Gianluca Pollastri, and Pierre Baldi     
-*J. Chem. Inf. Model.2013,537, 1563-1575*       
+*J. Chem. Inf. Model. 2013,537, 1563-1575*       
 [[paper]](https://pubs.acs.org/doi/abs/10.1021/ci400187y)      
 **Note: Some of the files/data are duplicates**       
 
@@ -154,16 +154,21 @@ David S. Palmer and John B. O. Mitchell
 **Note:  Good overview of the sources of the errors in solubility prediction.**      
 
 
+14. **Convolutional Networks on Graphs for Learning Molecular Fingerprints**    
+David Duvenaud, Dougal Maclaurin, Jorge Aguilera-Iparraguirre, Rafael Gómez-Bombarelli, Timothy Hirzel, Alán Aspuru-Guzik, and Ryan P. Adams.      
+*arXiv, 2015*      
+[[pape]](https://arxiv.org/pdf/1509.09292.pdf)      
+[[code]](https://github.com/HIPS/neural-fingerprint)       
+**Note1: Original code in Python 2. In order to make it work use futurize to convert to Python 3**      
+**Note2: install with `python setup.py install`**      
 
-### Methods    
+15. **Random Forest: A Classification and Regression Tool for Compound Classification and QSAR Modeling**      
+Vladimir Svetnik, Andy Liaw, Christopher Tong, J. Christopher Culberson, Robert P. Sheridan, and Bradley P. Feuston     
+*J. Chem. Inf. Comput. Sci. 2003, 43, 1947-1958*       
+[[paper]](https://pubs.acs.org/doi/10.1021/ci034160g)      
 
-1. MHFP fingerprints; to be tested as an alternative for ECFP4    
-**A probabilistic molecular fingerprint for big data settings**    
-Daniel Probst, Jean-Louis Reymond    
-*Journal of Cheminformatics, 2018, 10:66*     
-[[paper]](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0321-8)   
-[[source code]](https://github.com/reymond-group/mhfp)    
 
-2. Compounds standardiser.   
-[[GitHub]](https://github.com/flatkinson/standardiser)    
-[[slides]](./papers/standardiser.pdf)
+
+
+
+
