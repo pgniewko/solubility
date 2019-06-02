@@ -40,7 +40,6 @@ class Predictor(ABC):
         kf = KFold(n_splits=cv, shuffle=True, random_state=None)
         fold = 0
         for train_index, test_index in kf.split(smiles_list):
-            print
             logging.info('*{}* model is training {} fold'.format(self._name, fold))
             X_train = [smiles_list[idx] for idx in list(train_index)]
             y_train = [logS_list[idx] for idx in list(train_index)]

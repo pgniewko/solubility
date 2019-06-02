@@ -8,7 +8,6 @@ import logging
 
 from rdkit import Chem
 from rdkit.Chem import Descriptors, Crippen, Lipinski
-from rdkit.Chem import PandasTools
 from sklearn.linear_model import LinearRegression
 
 from predictor import Predictor
