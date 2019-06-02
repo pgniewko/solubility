@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # Auhor: Pawel Gniewek, 2019-
-# Code is based on the original Pat Walter's blog post:
-# http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html
 
 import sys
 import logging
@@ -23,7 +21,7 @@ class ESOLCalculator(Predictor):
         self._coef = {"MW":0.0, "LogP":0.0, "RB":0.0, "AP":0.0}
         self._intercept = 0.0
         
-        # As a reference
+        # Reference params
         self._coef_esol = {"logP": -0.63, "MW": -0.0062, "RB": 0.066, "AP": -0.74}
         self._intercept_esol = 0.16
         self._coef_pat  = {"logP": -0.74, "MW": -0.0066, "RB": 0.0034, "AP": -0.42}
