@@ -19,8 +19,8 @@ from neuralfingerprint.util import rmse
 class NfpPredictor(Predictor):
     """
     """
-
     def __init__(self, radius=4, fplength=64):
+        super().__init__()
         self._name = "NfpRegressor"
 
         self.model_params = dict(
@@ -96,4 +96,6 @@ if __name__ == "__main__":
     smiles_list, logS_list = get_training_data(sys.argv[1])
     nfp_regression = NfpPredictor()
     print (nfp_regression.train(smiles_list, logS_list))
-    
+    nfp_regression.plot()
+  
+

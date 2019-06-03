@@ -16,6 +16,7 @@ class ESOLCalculator(Predictor):
     """
 
     def __init__(self):
+        super().__init__()
         self._name = "ESOLCalculator"
         self.aromatic_query = Chem.MolFromSmarts("a")
         self._coef = {"MW":0.0, "LogP":0.0, "RB":0.0, "AP":0.0}
@@ -92,4 +93,4 @@ if __name__ == "__main__":
     smiles_list, logS_list = get_training_data(sys.argv[1])
     esol_calculator = ESOLCalculator()
     print ( esol_calculator.train(smiles_list, logS_list) )
-    
+    esol_calculator.plot()    
