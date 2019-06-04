@@ -24,7 +24,6 @@ class EnsemblePredictor(Predictor):
         self._fp_length = fp_length
         self._n_estimators = n_ests
         self.model = None
-        #TODO: implement adding properties to the fingerprint
         self._prop = prop
 
 
@@ -35,6 +34,9 @@ class EnsemblePredictor(Predictor):
     def smiles_to_fps(self, smiles_list, fp_radius, fp_length):
         pass
 
+# from rdkit.Chem import rdMolDescriptors
+# self._feats = list(rdMolDescriptors.Properties().GetPropertyNames())
+##:props = [list(rdMolDescriptors.Properties([name]).ComputeProperties(molecule))[0] for name in self._feats]
 
     def predict(self, smiles_list):
         pass

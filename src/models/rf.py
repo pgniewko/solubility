@@ -17,7 +17,8 @@ from predictor import Predictor
 class RFPredictor(Predictor):
     """
     """
-    def __init__(self, fp='ecfp', radius=2, fp_length=1024, prop=False, n_ests=500):
+
+    def __init__(self, fp='ecfp', radius=2, fp_length=1024, n_ests=500):
         super().__init__()
         self._name = "RFRegressor"
         self._fp = fp
@@ -25,8 +26,6 @@ class RFPredictor(Predictor):
         self._fp_length = fp_length
         self._n_estimators = n_ests
         self.model = None
-        #TODO: implement adding properties to the fingerprint
-        self._prop = prop
 
 
     def fit(self, smiles_list, logS_list):
