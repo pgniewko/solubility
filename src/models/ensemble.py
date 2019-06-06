@@ -44,8 +44,11 @@ class EnsemblePredictor(Predictor):
 
 
     def fit(self, smiles_list, logS_list):
+        logging.info("Training ESOL model")
         self.esol_calculator.fit(smiles_list, logS_list)
+        logging.info("Training RF model")
         self.rf_regression.fit(smiles_list, logS_list)
+        logging.info("Training NFP model")
         self.nfp_regression.fit(smiles_list, logS_list)
        
         X = self._do_norm_X(smiles_list, find_norm=True)
@@ -82,7 +85,6 @@ class EnsemblePredictor(Predictor):
         y = []
         for i, smiles in enumerate(y_pred):
              y.append(y_pred[i] * self._std_logS + self._mean_logS)
-
         return y
 
  
@@ -121,9 +123,9 @@ class EnsemblePredictor(Predictor):
 
     
     def predict(self, smiles_list):     
-        X = _do_norm_X(self, smiles_list, find_norm=False)
+        X = self._do_norm_X(smiles_list, find_norm=False)
         y_vals = self.model.predict(X)
-        ypred = seld._undo_norm_y(y_vals)
+        ypred = self._undo_norm_y(y_vals)
         return ypred
 
     
