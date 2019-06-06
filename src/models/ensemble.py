@@ -7,6 +7,7 @@ import logging
 
 import numpy as np
 from scipy import stats
+from rdkit import Chem
 from rdkit.Chem import rdMolDescriptors
 
 from keras.models import Sequential
