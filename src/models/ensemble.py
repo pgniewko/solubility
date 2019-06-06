@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # Auhor: Pawel Gniewek, 2019-
 
-
 import sys
 import logging
 
@@ -12,6 +11,8 @@ from rdkit.Chem import rdMolDescriptors
 
 from keras.models import Sequential
 from keras.layers import Dense
+from keras.layers import Dropout
+from keras.regularizers import l2
 
 from predictor import Predictor
 from esol import ESOLCalculator
@@ -22,18 +23,17 @@ from nfp import NfpPredictor
 class EnsemblePredictor(Predictor):
     """
     """
-    def __init__(self, fp='ecfp', radius=2, fp_length=1024, prop=False, n_ests=500):
+    def __init__(self, fp='ecfp', radius=2, fp_length=1024, prop=False, n_ests=200):
         super().__init__()
         self._name = "EnsembleRegressor"
         self._fp = fp
         self._fp_r = radius
         self._fp_length = fp_length
-        self._n_estimators = n_ests
         self._feats = list(rdMolDescriptors.Properties().GetPropertyNames())
 
         self.model = None
         self.esol_calculator = ESOLCalculator()
-        self.rf_regression = RFPredictor()
+        self.rf_regression = RFPredictor(n_ests=n_ests)
         self.nfp_regression = NfpPredictor()
 
         self._means_logS = None
@@ -52,16 +52,26 @@ class EnsemblePredictor(Predictor):
         logging.info("Training NFP model")
         self.nfp_regression.fit(smiles_list, logS_list)
        
-        X = self._do_norm_X(smiles_list, find_norm=True)
-        y = self._do_norm_y(logS_list)
+        X_train = np.array(self._do_norm_X(smiles_list, find_norm=True))
+        y_train = np.array(self._do_norm_y(logS_list))
         
         self.model = Sequential()
-        self.model.add(Dense(50, input_dim=self._size, kernel_initializer='normal', activation='relu'))
-        self.model.add(Dense(25, kernel_initializer='normal', activation='relu'))
+        self.model.add(Dense(50, 
+                             input_dim=self._size, 
+                             kernel_initializer='normal', 
+                             activation='relu'))#, 
+                             #activity_regularizer=l2(0.0005)))
+        #self.model.add(Dropout(0.1))
+        self.model.add(Dense(25,
+                             kernel_initializer='normal', 
+                             activation='relu'))#,
+                             #activity_regularizer=l2(0.0005)))
+        self.model.add(Dropout(0.1))
         self.model.add(Dense(1, kernel_initializer='normal'))
 	    # Compile model
         self.model.compile(loss='mean_squared_error', optimizer='adam')
-        self.model.fit(X,y,X_train, y_train, epochs=self._epochs, batch_size=32,validation_split=0.0)
+        
+        self.model.fit(X_train, y_train, epochs=self._epochs, batch_size=32,validation_split=0.0)
 
  
     def _do_norm_y(self, logS_list):
@@ -77,10 +87,12 @@ class EnsemblePredictor(Predictor):
         logging.info("Std of Y")
         print(self._std_logS)
 
-        for i in range(len(y)):
-            y[i] = (y[i] - self._mean_logS) / self._std_logS
+        y_norm = []
+        for yi in y:
+            yi_n = (yi - self._mean_logS) / self._std_logS
+            y_norm.append ( yi_n)
 
-        return y
+        return y_norm
    
     def _undo_norm_y(self, y_pred):
         y = []
@@ -100,6 +112,7 @@ class EnsemblePredictor(Predictor):
             mol = Chem.MolFromSmiles(smiles)
             props = [list(rdMolDescriptors.Properties([name]).ComputeProperties(mol))[0] for name in self._feats] 
             vals = [logS_list_esol[i], logS_list_rf[i], logS_list_nfp[i]]
+            
             x_row = vals + props
             X.append(x_row)
 
@@ -117,16 +130,16 @@ class EnsemblePredictor(Predictor):
 
 
         for i in range(len(X)):
-            for j in range(X[i]):
-                X[i][j] = (X[i][j] - self._mean_props[j]) / self._std_props[j]
+            for j, X_ij in enumerate(X[i]):
+                X[i][j] = (X_ij - self._mean_props[j]) / self._std_props[j]
 
         return X
 
     
     def predict(self, smiles_list):     
-        X = self._do_norm_X(smiles_list, find_norm=False)
+        X = np.array( self._do_norm_X(smiles_list, find_norm=False))
         y_vals = self.model.predict(X)
-        ypred = self._undo_norm_y(y_vals)
+        ypred = np.array(self._undo_norm_y(y_vals))
         return ypred
 
     
