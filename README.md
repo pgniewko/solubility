@@ -48,8 +48,8 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 | POG.2007.JCIM.test        | (+)            | Data obtained from authors               |
 | POG.2007.JCIM.train       | (+)            | Data obtained from authors               |
 | WKH.2007.JCIM.solubility  | (+)            | ADME website data                        |    
-| OCHEM.WaterSolubility     | (+/-)          | Lots of repears, some sign error         |
-| PubChem                   | N/A            |                                          |
+| OCHEM.WaterSolubility     | (+/-)          | Lots of repeats, some sign error         |
+| PubChem                   | (+/-)          | Not logS0 data, but rather at pH=7.4     |
 
 
 ### Papers          
