@@ -29,18 +29,18 @@ class RFPredictor(Predictor):
 
 
     def fit(self, smiles_list, logS_list):
-        X = self.smiles_to_fps(smiles_list, self._fp_r, self._fp_length)
+        X = self.smiles_to_fps(smiles_list)
         y = [logS for logS in logS_list]
 
         self.model = RandomForestRegressor(n_estimators=self._n_estimators, random_state=1123, max_features="auto")
         self.model.fit(X, y)
 
 
-    def smiles_to_fps(self, smiles_list, fp_radius, fp_length):
+    def smiles_to_fps(self, smiles_list):
         fps = []
         for smiles in smiles_list: 
             molecule = Chem.MolFromSmiles(smiles)
-            fp = AllChem.GetMorganFingerprintAsBitVect(molecule, fp_radius, nBits=fp_length, useChirality=False)
+            fp = AllChem.GetMorganFingerprintAsBitVect(molecule, self._fp_r, nBits=self._fp_length, useChirality=False)
             fps.append(fp.ToBitString())
 	    
         fps = np.array(fps)
@@ -49,7 +49,7 @@ class RFPredictor(Predictor):
 
 
     def predict(self, smiles_list):
-        X = self.smiles_to_fps(smiles_list, 2, self._fp_length)
+        X = self.smiles_to_fps(smiles_list)
         y_pred = self.model.predict(X)
         return y_pred
 
@@ -62,4 +62,5 @@ if __name__ == "__main__":
     rf_regression = RFPredictor()
     print ( rf_regression.train(smiles_list, logS_list) )
     rf_regression.plot()
+
 
