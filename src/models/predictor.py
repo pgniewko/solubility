@@ -1,3 +1,4 @@
+import os
 import logging
 from abc import ABC, abstractmethod
 
@@ -30,13 +31,22 @@ class Predictor(ABC):
     def predict(self):
         pass
     
+    @abstractmethod
+    def _pickle(self, path, cv):
+        pass
+
     def _make_dirs(self):
         return
 
-    def _pickle(self):
-        return
 
     def train(self, smiles_list, logS_list, cv=5, save_flag=True, ensemble=False):
+        run_path = os.path.dirname(os.path.abspath(__file__))
+        saves_dir = f'{run_path}/saves'
+        try:
+            os.makedirs(saves_dir)
+        except FileExistsError:
+            logging.warning(f'Directory {saves_dir} exists')
+ 
         scores = []
 
         kf = KFold(n_splits=cv, shuffle=True, random_state=None)
@@ -48,6 +58,7 @@ class Predictor(ABC):
             X_test = [smiles_list[idx] for idx in list(test_index)]
             y_test = [logS_list[idx] for idx in list(test_index)]
             self.fit(X_train, y_train)
+            self._pickle(saves_dir, fold)
             scores.append( self.score(X_test, y_test, save_flag)  )
             fold += 1
 
