@@ -2,6 +2,7 @@
 # Auhor: Pawel Gniewek, 2019-
 
 import sys
+import pickle
 import logging
 
 from rdkit import Chem
@@ -84,6 +85,10 @@ class ESOLCalculator(Predictor):
             ypred.append(y_val)
 
         return ypred
+    
+    def _pickle(self, path, cv):
+        fname = '{}/{}.CV_{}.pckl'.format(path, self._name, cv)
+        pickle.dump([self._intercept, self._coef], open(fname, "wb"))
 
     
 if __name__ == "__main__":
