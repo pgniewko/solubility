@@ -33,7 +33,7 @@ class EnsemblePredictor(Predictor):
 
         self.model = None
         self.esol_calculator = ESOLCalculator()
-        self.rf_regression = RFPredictor(n_ests=n_ests)
+        self.rf_regression = RFPredictor(n_ests=n_ests, fp_type=self._fp)
         self.nfp_regression = NfpPredictor()
 
         self._means_logS = None
@@ -60,15 +60,11 @@ class EnsemblePredictor(Predictor):
                              input_dim=self._size, 
                              kernel_initializer='normal', 
                              activation='relu'))#, 
-                             #activity_regularizer=l2(0.0005)))
-        #self.model.add(Dropout(0.1))
         self.model.add(Dense(25,
                              kernel_initializer='normal', 
                              activation='relu'))#,
-                             #activity_regularizer=l2(0.0005)))
-        self.model.add(Dropout(0.1))
         self.model.add(Dense(1, kernel_initializer='normal'))
-	    # Compile model
+        
         self.model.compile(loss='mean_squared_error', optimizer='adam')
         
         self.model.fit(X_train, y_train, epochs=self._epochs, batch_size=32,validation_split=0.0)
@@ -83,9 +79,7 @@ class EnsemblePredictor(Predictor):
         self._std_logS  = np.std(y, axis=0)
         
         logging.info("Means of Y")
-        print(self._mean_logS)
         logging.info("Std of Y")
-        print(self._std_logS)
 
         y_norm = []
         for yi in y:
@@ -112,6 +106,7 @@ class EnsemblePredictor(Predictor):
             mol = Chem.MolFromSmiles(smiles)
             props = [list(rdMolDescriptors.Properties([name]).ComputeProperties(mol))[0] for name in self._feats] 
             vals = [logS_list_esol[i], logS_list_rf[i], logS_list_nfp[i]]
+#            vals = [logS_list_esol[i], logS_list_nfp[i]]
             
             x_row = vals + props
             X.append(x_row)
@@ -135,7 +130,9 @@ class EnsemblePredictor(Predictor):
 
         return X
 
-    
+    def _pickle(self, path, cv):
+        pass
+
     def predict(self, smiles_list):     
         X = np.array( self._do_norm_X(smiles_list, find_norm=False))
         y_vals = self.model.predict(X)
@@ -148,7 +145,7 @@ if __name__ == "__main__":
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     smiles_list, logS_list = get_training_data(sys.argv[1])
-    enseble_regression = EnsemblePredictor()
+    enseble_regression = EnsemblePredictor(fp='maccs')
     print ( enseble_regression.train(smiles_list, logS_list) )
     enseble_regression.plot()
 

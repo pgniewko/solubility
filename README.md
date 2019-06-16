@@ -49,7 +49,7 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 | POG.2007.JCIM.train       | (+)            | Data obtained from authors               |
 | WKH.2007.JCIM.solubility  | (+)            | ADME website data                        |    
 | OCHEM.WaterSolubility     | (+/-)          | Lots of repeats, some sign error         |
-| PubChem                   | (+/-)          | Not logS0 data, but rather at pH=7.4     |
+| PubChem                   | (+/-)          | No logS0 data, but rather at pH=7.4      |
 
 
 ### Papers          
@@ -62,9 +62,9 @@ Antonio Llinàs, Robert C. Glen and Jonathan M. Goodman
 [[paper 2]](https://pubs.acs.org/doi/10.1021/ci800436c)    
 [[website]](http://www-jmg.ch.cam.ac.uk/data/solubility/)      
 **Note 0: This is the reference for the original Solubility Challange**      
-**Note 1: In the test set, SMILES strings for probenecid and pseudoephedrine were swapped. Use only soldataswap.xls file.**
-**Note 2: Solubility for 32 compounds taken from HEL.2009.JCIM.pdf**
-**Note 3: Data was downloaded from the original website, but the numbers are dubious (IMO) - use CAREFULLY! **      
+**Note 1: In the test set, SMILES strings for probenecid and pseudoephedrine were swapped. Use only soldataswap.xls file.**      
+**Note 2: Solubility for 32 compounds taken from HEL.2009.JCIM.pdf**       
+**Note 3: Data was downloaded from the original website, but the numbers are dubious (IMO) - use CAREFULLY!**      
 
 
 2. **ESOL: Estimating Aqueous Solubility Directly from Molecular Structure**    

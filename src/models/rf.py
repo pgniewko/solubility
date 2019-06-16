@@ -10,6 +10,8 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from sklearn.ensemble import RandomForestRegressor
 from rdkit import Chem, DataStructs
+from rdkit.Chem import MACCSkeys
+from rdkit.Chem.Fingerprints import FingerprintMols
 
 from predictor import Predictor
 
@@ -18,9 +20,10 @@ class RFPredictor(Predictor):
     """
     """
 
-    def __init__(self, fp='ecfp', radius=2, fp_length=1024, n_ests=500):
+    def __init__(self, fp='ecfp', fp_type='ecfp', radius=2, fp_length=256, n_ests=500):
         super().__init__()
         self._name = "RFRegressor"
+        self._fp_type = fp_type
         self._fp = fp
         self._fp_r = radius
         self._fp_length = fp_length
@@ -40,13 +43,22 @@ class RFPredictor(Predictor):
         fps = []
         for smiles in smiles_list: 
             molecule = Chem.MolFromSmiles(smiles)
-            fp = AllChem.GetMorganFingerprintAsBitVect(molecule, self._fp_r, nBits=self._fp_length, useChirality=False)
+            if self._fp_type == 'ecfp':
+                fp = AllChem.GetMorganFingerprintAsBitVect(molecule, self._fp_r, nBits=self._fp_length, useChirality=False)
+            elif  self._fp_type == 'maccs':
+                fp = MACCSkeys.GenMACCSKeys(molecule)
+            else:
+                logging.error("No valid fingerpring specified")
+                sys.exit(1)
+
             fps.append(fp.ToBitString())
 	    
         fps = np.array(fps)
         fps = np.array([list(fp) for fp in fps], dtype=np.float32)
         return fps
 
+    def _pickle(self, path, cv):
+        pass
 
     def predict(self, smiles_list):
         X = self.smiles_to_fps(smiles_list)
@@ -59,7 +71,7 @@ if __name__ == "__main__":
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     smiles_list, logS_list = get_training_data(sys.argv[1])
-    rf_regression = RFPredictor()
+    rf_regression = RFPredictor(fp_type='maccs')
     print ( rf_regression.train(smiles_list, logS_list) )
     rf_regression.plot()
 

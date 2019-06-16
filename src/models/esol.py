@@ -86,9 +86,17 @@ class ESOLCalculator(Predictor):
 
         return ypred
     
+    def _copy(self):
+        esol_copy = ESOLCalculator()
+        esol_copy._coef = self._coef
+        esol_copy._intercept = self._intercept
+        
+
     def _pickle(self, path, cv):
-        fname = '{}/{}.CV_{}.pckl'.format(path, self._name, cv)
-        pickle.dump([self._intercept, self._coef], open(fname, "wb"))
+        #esol_to_pickle = self._copy
+        pass
+        #fname = '{}/{}.CV_{}.pckl'.format(path, self._name, cv)
+        #pickle.dump([self._intercept, self._coef], open(fname, "wb"))
 
     
 if __name__ == "__main__":
