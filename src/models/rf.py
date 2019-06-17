@@ -13,7 +13,7 @@ from rdkit import Chem, DataStructs
 from rdkit.Chem import MACCSkeys
 from rdkit.Chem.Fingerprints import FingerprintMols
 
-from predictor import Predictor
+from .predictor import Predictor
 
 
 class RFPredictor(Predictor):
@@ -57,8 +57,6 @@ class RFPredictor(Predictor):
         fps = np.array([list(fp) for fp in fps], dtype=np.float32)
         return fps
 
-    def _pickle(self, path, cv):
-        pass
 
     def predict(self, smiles_list):
         X = self.smiles_to_fps(smiles_list)

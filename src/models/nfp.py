@@ -4,7 +4,7 @@
 import sys
 import logging
 
-from predictor import Predictor
+from .predictor import Predictor
 
 from autograd import grad
 import autograd.numpy as np
@@ -81,10 +81,6 @@ class NfpPredictor(Predictor):
 
          
         self.model = (undo_norm, trained_weights, pred_fun) 
-
-
-    def _pickle(self, path, cv):
-        pass
 
 
     def predict(self, smiles_list):

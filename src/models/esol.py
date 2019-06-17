@@ -9,7 +9,7 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors, Crippen, Lipinski
 from sklearn.linear_model import LinearRegression
 
-from predictor import Predictor
+from .predictor import Predictor
 
 
 class ESOLCalculator(Predictor):
@@ -86,19 +86,8 @@ class ESOLCalculator(Predictor):
 
         return ypred
     
-    def _copy(self):
-        esol_copy = ESOLCalculator()
-        esol_copy._coef = self._coef
-        esol_copy._intercept = self._intercept
-        
 
-    def _pickle(self, path, cv):
-        #esol_to_pickle = self._copy
-        pass
-        #fname = '{}/{}.CV_{}.pckl'.format(path, self._name, cv)
-        #pickle.dump([self._intercept, self._coef], open(fname, "wb"))
 
-    
 if __name__ == "__main__":
     from model_utils import get_training_data
 

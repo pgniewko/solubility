@@ -14,10 +14,10 @@ from keras.layers import Dense
 from keras.layers import Dropout
 from keras.regularizers import l2
 
-from predictor import Predictor
-from esol import ESOLCalculator
-from rf import RFPredictor
-from nfp import NfpPredictor
+from .predictor import Predictor
+from .esol import ESOLCalculator
+from .rf import RFPredictor
+from .nfp import NfpPredictor
 
 
 class EnsemblePredictor(Predictor):
@@ -47,8 +47,8 @@ class EnsemblePredictor(Predictor):
     def fit(self, smiles_list, logS_list):
         logging.info("Training ESOL model")
         self.esol_calculator.fit(smiles_list, logS_list)
-        logging.info("Training RF model")
-        self.rf_regression.fit(smiles_list, logS_list)
+#        logging.info("Training RF model")
+#        self.rf_regression.fit(smiles_list, logS_list)
         logging.info("Training NFP model")
         self.nfp_regression.fit(smiles_list, logS_list)
        
@@ -99,14 +99,14 @@ class EnsemblePredictor(Predictor):
         X = []
 
         logS_list_esol = self.esol_calculator.predict(smiles_list)
-        logS_list_rf   = self.rf_regression.predict(smiles_list)
+#        logS_list_rf   = self.rf_regression.predict(smiles_list)
         logS_list_nfp  = self.nfp_regression.predict(smiles_list)
 
         for i,smiles in enumerate(smiles_list):
             mol = Chem.MolFromSmiles(smiles)
             props = [list(rdMolDescriptors.Properties([name]).ComputeProperties(mol))[0] for name in self._feats] 
-            vals = [logS_list_esol[i], logS_list_rf[i], logS_list_nfp[i]]
-#            vals = [logS_list_esol[i], logS_list_nfp[i]]
+#            vals = [logS_list_esol[i], logS_list_rf[i], logS_list_nfp[i]]
+            vals = [logS_list_esol[i], logS_list_nfp[i]]
             
             x_row = vals + props
             X.append(x_row)
@@ -129,9 +129,6 @@ class EnsemblePredictor(Predictor):
                 X[i][j] = (X_ij - self._mean_props[j]) / self._std_props[j]
 
         return X
-
-    def _pickle(self, path, cv):
-        pass
 
     def predict(self, smiles_list):     
         X = np.array( self._do_norm_X(smiles_list, find_norm=False))
