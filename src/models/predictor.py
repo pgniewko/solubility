@@ -30,39 +30,45 @@ class Predictor(ABC):
     @abstractmethod
     def predict(self):
         pass
-    
-    @abstractmethod
-    def _pickle(self, path, cv):
-        pass
-
-    def _make_dirs(self):
-        return
 
 
-    def train(self, smiles_list, logS_list, cv=5, save_flag=True, ensemble=False):
-        run_path = os.path.dirname(os.path.abspath(__file__))
-        saves_dir = f'{run_path}/saves'
-        try:
-            os.makedirs(saves_dir)
-        except FileExistsError:
-            logging.warning(f'Directory {saves_dir} exists')
- 
+    def train(self, train_smiles, logS_list, cv=5):
         scores = []
 
         kf = KFold(n_splits=cv, shuffle=True, random_state=None)
         fold = 0
-        for train_index, test_index in kf.split(smiles_list):
+        for train_index, validate_index in kf.split(smiles_list):
             logging.info('*{}* model is training {} fold'.format(self._name, fold))
-            X_train = [smiles_list[idx] for idx in list(train_index)]
+            X_train = [train_smiles[idx] for idx in list(train_index)]
             y_train = [logS_list[idx] for idx in list(train_index)]
-            X_test = [smiles_list[idx] for idx in list(test_index)]
-            y_test = [logS_list[idx] for idx in list(test_index)]
+            X_validate = [train_smiles[idx] for idx in list(validate_index)]
+            y_validate = [logS_list[idx] for idx in list(validate_index)]
             self.fit(X_train, y_train)
-            self._pickle(saves_dir, fold)
-            scores.append( self.score(X_test, y_test, save_flag)  )
+            scores.append( self.score(X_validate, y_validate, save_flag)  )
             fold += 1
 
         return np.mean(scores, axis=0), np.std(scores, axis=0)
+
+    
+    def test(self, train_smiles, logS_list, test_smiles, cv=5):
+        predictions = []
+
+        kf = KFold(n_splits=cv, shuffle=True, random_state=None)
+        fold = 0
+        for train_index, validate_index in kf.split(train_smiles):
+            logging.info('*{}* model is training {} fold'.format(self._name, fold))
+            X_train = [train_smiles[idx] for idx in list(train_index)]
+            y_train = [logS_list[idx] for idx in list(train_index)]
+            X_validate = [train_smiles[idx] for idx in list(validate_index)]
+            y_validate = [logS_list[idx] for idx in list(validate_index)]
+            self.fit(X_train, y_train)
+
+            # Don't do validation - go to testing with the model at hand
+            y_pred = self.predict(test_smiles)
+            predictions.append(y_pred)
+            fold+= 1
+
+        return predictions 
 
 
     def score(self, smiles_list, y_true, save_flag=True):
@@ -76,6 +82,7 @@ class Predictor(ABC):
             self._logS_exp_data  += list(y_true)
 
         return (mse, mae, r2)
+
 
     def plot(self):
         plt.figure(figsize=(7,7))

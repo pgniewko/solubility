@@ -15,4 +15,14 @@ def get_training_data(fname):
 
 
 
+def get_test_data(fname):
+    cmpds_list = []
+    with open(fname, 'r') as fin:
+        for line in fin:
+            smiles = line.rstrip('\n')
+            cmpds_list.append(smiles)
+
+    return cmpds_list
+
+
 

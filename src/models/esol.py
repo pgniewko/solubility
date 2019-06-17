@@ -2,7 +2,6 @@
 # Auhor: Pawel Gniewek, 2019-
 
 import sys
-import pickle
 import logging
 
 from rdkit import Chem
