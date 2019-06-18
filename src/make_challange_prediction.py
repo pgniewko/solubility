@@ -14,9 +14,9 @@ def save_predictions(test_smiles, results_data, fname):
     num_folds = len(results_data)
     with open(fname, 'w') as fout:
         for i, smiles in enumerate(test_smiles):
-            fout.write(f'{smiles} ')
+            fout.write(f'{smiles},')
             for j in range(num_folds):
-                fout.write("{} ".format(results_data[j][i]))
+                fout.write("{},".format(float(results_data[j][i])))
             fout.write('\n')
                 
 
@@ -27,7 +27,8 @@ if __name__ == "__main__":
     test_smiles = get_test_data(sys.argv[2])
     
     production_model = EnsemblePredictor(fp='maccs')
+    #production_model = ESOLCalculator()
     results_data = production_model.test(train_smiles, logS_list, test_smiles)
-    save_predictions(test_smiles, results_data, sys.argv[3], m_name)
+    save_predictions(test_smiles, results_data, sys.argv[3])
    
 
