@@ -173,9 +173,11 @@ Cheng, T., Li, Q., Wang, Y., and Bryant, S.H.
 [[paper]](https://pubs.acs.org/doi/10.1021/ci100364a)    
 **Note: The measurements come from BioAssay AID:1996, and are done at pH=7.4. Not very useful for logS0 estimations.**              
 
-
-
-
+17. **Aqueous Solubility Prediction Based on Weighted Atom Type Counts and Solvent
+Accessible Surface Areas**      
+Junmei Wang, Tingjun Hou, and Xiaojie Xu      
+*J. Chem. Inf. Model. 2009, 49, 571–581*
+[[paper]](https://pubs.acs.org/doi/abs/10.1021/ci800406y)       
 
 
 
