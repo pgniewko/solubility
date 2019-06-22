@@ -49,8 +49,7 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 | POG.2007.JCIM.train       | (+)            | Data obtained from authors               |
 | WKH.2007.JCIM.solubility  | (+)            | ADME website data                        |    
 | OCHEM.WaterSolubility     | (+/-)          | Lots of repeats, some sign error         |
-| PubChem                   | (+/-)          | No logS0 data, but rather at pH=7.4      |
-
+| PubChem                   | (+/-)          | No logS0 data, Measurements at pH=7.4    |
 
 ### Papers          
 
@@ -150,14 +149,14 @@ Alessandro Lusci, Gianluca Pollastri, and Pierre Baldi
 Aqueous Solubility of Druglike Molecules?**    
 David S. Palmer and John B. O. Mitchell      
 *Mol. Pharmaceutics 2014, 11, 2962−2972*      
-[[pape]](https://pubs.acs.org/doi/10.1021/mp500103r)      
+[[paper]](https://pubs.acs.org/doi/10.1021/mp500103r)      
 **Note:  Good overview of the sources of the errors in solubility prediction.**      
 
 
 14. **Convolutional Networks on Graphs for Learning Molecular Fingerprints**    
 David Duvenaud, Dougal Maclaurin, Jorge Aguilera-Iparraguirre, Rafael Gómez-Bombarelli, Timothy Hirzel, Alán Aspuru-Guzik, and Ryan P. Adams.      
 *arXiv, 2015*      
-[[pape]](https://arxiv.org/pdf/1509.09292.pdf)      
+[[paper]](https://arxiv.org/pdf/1509.09292.pdf)      
 [[code]](https://github.com/HIPS/neural-fingerprint)       
 **Note1: Original code in Python 2. In order to make it work use futurize to convert to Python 3**      
 **Note2: install with `python setup.py install`**      
@@ -166,6 +165,14 @@ David Duvenaud, Dougal Maclaurin, Jorge Aguilera-Iparraguirre, Rafael Gómez-Bom
 Vladimir Svetnik, Andy Liaw, Christopher Tong, J. Christopher Culberson, Robert P. Sheridan, and Bradley P. Feuston     
 *J. Chem. Inf. Comput. Sci. 2003, 43, 1947-1958*       
 [[paper]](https://pubs.acs.org/doi/10.1021/ci034160g)      
+
+
+16. **Binary Classification of Aqueous Solubility Using Support Vector Machines with Reduction and Recombination Feature Selection**            
+Cheng, T., Li, Q., Wang, Y., and Bryant, S.H.    
+*Journal of Chemical Information and Modeling, 2011, 51, 229-236*
+[[paper]](https://pubs.acs.org/doi/10.1021/ci100364a)    
+**Note: The measurements come from BioAssay AID:1996, and are done at pH=7.4. Not very useful for logS0 estimations.**              
+
 
 
 
