@@ -48,6 +48,7 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 | POG.2007.JCIM.test        | (+)            | Data obtained from authors               |
 | POG.2007.JCIM.train       | (+)            | Data obtained from authors               |
 | WKH.2007.JCIM.solubility  | (+)            | ADME website data                        |    
+| WXY.2009.JCIM             | (+/-)          | Data in SLN format. Set-003 broken.      |    
 | OCHEM.WaterSolubility     | (+/-)          | Lots of repeats, some sign error         |
 | PubChem                   | (+/-)          | No logS0 data, Measurements at pH=7.4    |
 
@@ -177,7 +178,7 @@ Cheng, T., Li, Q., Wang, Y., and Bryant, S.H.
 Accessible Surface Areas**      
 Junmei Wang, Tingjun Hou, and Xiaojie Xu      
 *J. Chem. Inf. Model. 2009, 49, 571–581*
-[[paper]](https://pubs.acs.org/doi/abs/10.1021/ci800406y)       
-
+[[paper]](https://pubs.acs.org/doi/abs/10.1021/ci800406y)         
+**Note: (i) Data in SLN format. CIRpy needed to translate to smiles. (ii) Set-003 is suspicious - exclude from the train data.**            
 
 
