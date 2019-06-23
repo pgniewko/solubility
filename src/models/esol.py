@@ -8,8 +8,6 @@ from rdkit import Chem
 from rdkit.Chem import Descriptors, Crippen, Lipinski
 from sklearn.linear_model import LinearRegression
 
-
-#from .predictor import Predictor
 from predictor import Predictor
 
 class ESOLCalculator(Predictor):
