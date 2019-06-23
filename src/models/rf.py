@@ -13,7 +13,7 @@ from rdkit import Chem, DataStructs
 from rdkit.Chem import MACCSkeys
 from rdkit.Chem.Fingerprints import FingerprintMols
 
-from .predictor import Predictor
+from predictor import Predictor
 
 
 class RFPredictor(Predictor):

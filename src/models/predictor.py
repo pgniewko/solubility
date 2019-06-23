@@ -37,14 +37,14 @@ class Predictor(ABC):
 
         kf = KFold(n_splits=cv, shuffle=True, random_state=None)
         fold = 0
-        for train_index, validate_index in kf.split(smiles_list):
+        for train_index, validate_index in kf.split(train_smiles):
             logging.info('*{}* model is training {} fold'.format(self._name, fold))
             X_train = [train_smiles[idx] for idx in list(train_index)]
             y_train = [logS_list[idx] for idx in list(train_index)]
             X_validate = [train_smiles[idx] for idx in list(validate_index)]
             y_validate = [logS_list[idx] for idx in list(validate_index)]
             self.fit(X_train, y_train)
-            scores.append( self.score(X_validate, y_validate, save_flag)  )
+            scores.append( self.score(X_validate, y_validate)  )
             fold += 1
 
         return np.mean(scores, axis=0), np.std(scores, axis=0)

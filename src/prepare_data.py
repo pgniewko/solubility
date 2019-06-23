@@ -161,7 +161,7 @@ def process_H_2000_JCIC_test2():
             if not line.startswith("#"):
                 try:
                     pairs = line.rstrip('\n').split()
-                    canon_smiles = canonicalize_smiles(pairs[6])
+                    canon_smiles = canonicalize_smiles(pairs[6], SLN=True)
                     logS = float(pairs[3])
                     cmpd_list.append((canon_smiles,logS))
                 except:
@@ -369,6 +369,50 @@ def process_WKH_2007_JCIM():
 
     logging.info(f"Saved to {fout}")
 
+
+def process_WHX_2009_JCIM():
+    files_in  = ["WHX.2009.JCIM.Set-001.csv",
+                 "WHX.2009.JCIM.Set-002.csv",
+                 "WHX.2009.JCIM.Set-003.csv",
+                 "WHX.2009.JCIM.Set-004.csv",
+                 "WHX.2009.JCIM.Set-005.csv"]
+    
+    files_out = ["WHX.2009.JCIM.Set-001.smi",
+                 "WHX.2009.JCIM.Set-002.smi",
+                 "WHX.2009.JCIM.Set-003.smi",
+                 "WHX.2009.JCIM.Set-004.smi",
+                 "WHX.2009.JCIM.Set-005.smi"]
+
+    for i, file_in in enumerate(files_in):
+        fname = f"{DATA_PATH}/{file_in}"
+        file_out = files_out[i]
+        fout = f"{PROCESSED_PATH}/{file_out}"
+        logging.info(f"Processing {fname}")
+
+        cmpd_list = []
+        with open(fname, 'r') as fin:
+            for line in fin:
+                if not line.startswith("#"):
+                    try:
+                        pairs = line.rstrip('\n').split(",")
+                        canon_smiles = canonicalize_smiles(pairs[1], SLN=True)
+                        logS = float(pairs[0])
+                        cmpd_list.append((canon_smiles,logS))
+                    except:
+                        smiles = pairs[1]
+                        logging.info(f"Failed to process {smiles}")
+        
+        with open(fout, 'w', encoding="ascii") as fo:
+            for el in cmpd_list:
+                smiles = el[0]
+                logS = el[1]
+                fo.write(f"{smiles},{logS}\n")
+
+        logging.info(f"Saved {fout}")
+
+    return 
+
+
 def process_OCHEM():
     fname = f"{DATA_PATH}/OCHEM.Water.Solublity.05.27.2019.txt"
     fout = f"{PROCESSED_PATH}/OCHEM.Water.Solublity.05.27.2019.smi"
@@ -479,7 +523,12 @@ def unique():
 #                  'OCHEM.Water.Solublity.05.27.2019.smi',
                   'POG.2007.JCIM.test.smi',
                   'POG.2007.JCIM.train.smi',
-                  'WKH.2007.JCIM.smi']
+                  'WKH.2007.JCIM.smi',
+                  "WHX.2009.JCIM.Set-001.smi",
+                  "WHX.2009.JCIM.Set-002.smi",
+#                  "WHX.2009.JCIM.Set-003.smi",
+                  "WHX.2009.JCIM.Set-004.smi", 
+                  "WHX.2009.JCIM.Set-005.smi"]
 
     smiles_logS = defaultdict(list)
     for fname in FILES_LIST:
@@ -599,6 +648,7 @@ def process():
     process_POG_2007_JCIM_test()
     process_POG_2007_JCIM_train()
     process_WKH_2007_JCIM()
+    process_WHX_2009_JCIM()
     process_OCHEM()
 
     process_test_100()
@@ -606,8 +656,9 @@ def process():
 
 
 if __name__ == "__main__":
-    logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-    
+    #logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+    logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+
     process()
     unique()
     exclude_test(max_val=5.0)

@@ -4,7 +4,7 @@
 import sys
 import logging
 
-from .predictor import Predictor
+from predictor import Predictor
 
 from autograd import grad
 import autograd.numpy as np
