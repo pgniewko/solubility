@@ -14,12 +14,13 @@ def ClusterFps(fps, cutoff=0.2):
     dists = []
     nfps = len(fps)
     for i in range(1, nfps):
-        sims = DataStructs.BulkTanimotoSimilarity(fps[i],fps[:i])
-        dists.extend([1-x for x in sims])
+        sims = DataStructs.BulkTanimotoSimilarity(fps[i], fps[:i])
+        dists.extend([1 - x for x in sims])
 
     # now cluster the data:
     cs = Butina.ClusterData(dists, nfps, cutoff, isDistData=True)
     return cs
+
 
 def get_mols_from_file(fname):
     smiles_list = []
@@ -36,9 +37,8 @@ def get_mols_from_file(fname):
     return mols, smiles_list, logS_list
 
 
-
 if __name__ == "__main__":
-    ms, smiles_list, logS_list = get_mols_from_file(sys.argv[1]) 
+    ms, smiles_list, logS_list = get_mols_from_file(sys.argv[1])
     fps = [AllChem.GetMorganFingerprintAsBitVect(x, 2, 1024) for x in ms]
     clusters = ClusterFps(fps, cutoff=0.4)
 
@@ -50,4 +50,3 @@ if __name__ == "__main__":
             if float(logS) > 0.5 or float(logS) < -10.0:
                 continue
             fout.write("{},{}\n".format(smiles, logS))
-
