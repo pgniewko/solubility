@@ -1,5 +1,3 @@
-
-
 def get_training_data(fname):
     cmpds_list = []
     logS_list = []
@@ -14,7 +12,6 @@ def get_training_data(fname):
     return cmpds_list, logS_list
 
 
-
 def get_test_data(fname):
     cmpds_list = []
     with open(fname, 'r') as fin:
@@ -23,6 +20,3 @@ def get_test_data(fname):
             cmpds_list.append(smiles)
 
     return cmpds_list
-
-
-

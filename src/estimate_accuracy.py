@@ -71,6 +71,7 @@ if __name__ == "__main__":
         cnt += 1
 
     plt.scatter(x, y, c=cols)
+    plt.plot([-7, 0],[-7, 0],'--',color='grey', lw=2)
     plt.show()
 
     rmsd_gse /= cnt

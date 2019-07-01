@@ -1,7 +1,6 @@
 
 import sys
 import logging
-from functools import partial
 from collections import defaultdict
 
 import numpy as np
@@ -9,10 +8,10 @@ from utils import canonicalize_smiles, mol_wt
 from rdkit import Chem
 
 
-DATA_PATH="/Users/pawel/Projects/solubility/data/raw"
-PROCESSED_PATH="/Users/pawel/Projects/solubility/data/processed"
-TRAINING_DIR="/Users/pawel/Projects/solubility/data/training"
-TEST_PATH="/Users/pawel/Projects/solubility/data/test"
+DATA_PATH = "/Users/pawel/Projects/solubility/data/raw"
+PROCESSED_PATH = "/Users/pawel/Projects/solubility/data/processed"
+TRAINING_DIR = "/Users/pawel/Projects/solubility/data/training"
+TEST_PATH = "/Users/pawel/Projects/solubility/data/test"
 
 
 def one_outlier(num_list):
@@ -28,7 +27,6 @@ def one_outlier(num_list):
         return (True, 1)
 
     return (False, None)
-
 
 
 def process_AB_2001_EJPS():
@@ -66,7 +64,7 @@ def process_ABB_2000_PR():
                 pairs = line.rstrip('\n').split(",")
                 canon_smiles = canonicalize_smiles(pairs[1])
                 logS = float(pairs[2])
-                cmpd_list.append((canon_smiles,logS))
+                cmpd_list.append((canon_smiles, logS))
 
     with open(fout, 'w') as fo:
         for el in cmpd_list:
@@ -88,7 +86,7 @@ def process_BOM_2017_JC():
             pairs = line.rstrip('\n').split(",")
             canon_smiles = canonicalize_smiles(pairs[0])
             logS = float(pairs[1])
-            cmpd_list.append((canon_smiles,logS))
+            cmpd_list.append((canon_smiles, logS))
 
     with open(fout, 'w', encoding='ascii') as fo:
         for el in cmpd_list:
@@ -111,7 +109,7 @@ def process_D_2008_JCIC():
                 pairs = line.rstrip('\n').split(",")
                 canon_smiles = canonicalize_smiles(pairs[-1])
                 logS = float(pairs[-3])
-                cmpd_list.append((canon_smiles,logS))
+                cmpd_list.append((canon_smiles, logS))
 
     with open(fout, 'w', encoding='ascii') as fo:
         for el in cmpd_list:
@@ -120,7 +118,6 @@ def process_D_2008_JCIC():
             fo.write(f"{smiles},{logS}\n")
 
     logging.info(f"Saved {fout}")
-
 
 
 def process_H_2000_JCIC_test1():

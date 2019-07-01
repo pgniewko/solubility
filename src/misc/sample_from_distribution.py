@@ -1,4 +1,6 @@
 #! /usr/bin/env python
+# Generate uniform distribution from another distribution.
+# 
 
 import sys
 import random

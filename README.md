@@ -127,7 +127,7 @@ Iurii Sushko et al.,
 
 10. **Solubility Challenge revisited after 10 years, with multi-lab shake- flask data, using tight (SD 0.17 log) and loose (SD 0.62 log) test sets**   
 Antonio Llinas, and Alex Avdeef       
-*J. Chem. Inf. Model., 2019*
+*J. Chem. Inf. Model., 2019*              
 [[paper]](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345)     
 **Note: The reference for the new challange.**      
 
@@ -156,7 +156,7 @@ David S. Palmer and John B. O. Mitchell
 
 14. **Convolutional Networks on Graphs for Learning Molecular Fingerprints**    
 David Duvenaud, Dougal Maclaurin, Jorge Aguilera-Iparraguirre, Rafael Gómez-Bombarelli, Timothy Hirzel, Alán Aspuru-Guzik, and Ryan P. Adams.      
-*arXiv, 2015*      
+*arXiv, 2015*      :
 [[paper]](https://arxiv.org/pdf/1509.09292.pdf)      
 [[code]](https://github.com/HIPS/neural-fingerprint)       
 **Note1: Original code in Python 2. In order to make it work use futurize to convert to Python 3**      
@@ -170,14 +170,14 @@ Vladimir Svetnik, Andy Liaw, Christopher Tong, J. Christopher Culberson, Robert 
 
 16. **Binary Classification of Aqueous Solubility Using Support Vector Machines with Reduction and Recombination Feature Selection**            
 Cheng, T., Li, Q., Wang, Y., and Bryant, S.H.    
-*Journal of Chemical Information and Modeling, 2011, 51, 229-236*
+*Journal of Chemical Information and Modeling, 2011, 51, 229-236*        
 [[paper]](https://pubs.acs.org/doi/10.1021/ci100364a)    
 **Note: The measurements come from BioAssay AID:1996, and are done at pH=7.4. Not very useful for logS0 estimations.**              
 
 17. **Aqueous Solubility Prediction Based on Weighted Atom Type Counts and Solvent
 Accessible Surface Areas**      
 Junmei Wang, Tingjun Hou, and Xiaojie Xu      
-*J. Chem. Inf. Model. 2009, 49, 571–581*
+*J. Chem. Inf. Model. 2009, 49, 571–581*       
 [[paper]](https://pubs.acs.org/doi/abs/10.1021/ci800406y)         
 **Note: (i) Data in SLN format. CIRpy needed to translate to smiles. (ii) Set-003 is suspicious - exclude from the train data.**            
 
