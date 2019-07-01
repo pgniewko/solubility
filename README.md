@@ -1,18 +1,29 @@
-## Solubility Challange
+## Solubility Challange       
+
+>Notice: This is research code that will not necessarily be maintained in the future.
+>The code is under development so make sure you are using the most recent version.
+>We welcome bug reports and PRs but make no guarantees about fixes or responses.
 
 ### Background
 Intrinsic solubility (water solubility): solubility of non-charged molecules, i.e. free acid and base free form. It is required that the solubility is determined in the presence of solid substance.     
 
-Put here an example (table) where I show how solubility changes with pH.     
+The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and this blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).     
 
-The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345). 
+### How to (i) prepare data (ii) train models (iii) make challange predictions:     
+* Process raw data, strore it in a usable format, and exclude test-cases from training:      
+```
+python prepare_data.py
+```
 
-### Potential sources of bulk data
-1. [PubChem](https://pubchem.ncbi.nlm.nih.gov/)
-2. [OCHEM](https://ochem.eu/home/show.do)
+* Train the ensemble model, and make a predictino for Set-100:        
+```
+python make_challange_prediction.py ../data/training/solubility.uniq.no-in-100.smi ../data/test/test_100.smi ../data/test/ensemble.test_100.preds.dat
+```
 
-### This work
-To be written.
+* Check out your challange prediction and compare to the data that could be find in a db:           
+```
+python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../data/test/ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
+```
 
 ### Results
 
@@ -156,9 +167,9 @@ David S. Palmer and John B. O. Mitchell
 
 14. **Convolutional Networks on Graphs for Learning Molecular Fingerprints**    
 David Duvenaud, Dougal Maclaurin, Jorge Aguilera-Iparraguirre, Rafael Gómez-Bombarelli, Timothy Hirzel, Alán Aspuru-Guzik, and Ryan P. Adams.      
-*arXiv, 2015*      :
+*arXiv, 2015*:          
 [[paper]](https://arxiv.org/pdf/1509.09292.pdf)      
-[[code]](https://github.com/HIPS/neural-fingerprint)       
+[[code]](https://github.com/HIPS/neural-fingerprint)         
 **Note1: Original code in Python 2. In order to make it work use futurize to convert to Python 3**      
 **Note2: install with `python setup.py install`**      
 
