@@ -14,13 +14,14 @@ The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs
 ```
 python prepare_data.py
 ```
+All the smiles are first canonicalized and standarized before the master training data set is creted. To change the list of files used for the train set comment out the lines in the `process()` function in prepare_data.py.    
 
 * Train the ensemble model, and make a predictino for Set-100:        
 ```
 python make_challange_prediction.py ../data/training/solubility.uniq.no-in-100.smi ../data/test/test_100.smi ../data/test/ensemble.test_100.preds.dat
 ```
 
-* Check out your challange prediction and compare to the data that could be find in a db:           
+* Check out your challange predictions and compare to the values that could be find in publicly available DBs:           
 ```
 python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../data/test/ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
 ```
@@ -44,8 +45,8 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 
 | Dataset                   | Do I trust it? | Comments                                 |
 |---------------------------|:--------------:|:-----------------------------------------|
-| AB.2001.EJPS              | (+/-)          | Given in weird unists log(1/S0)[mol/L]?  |
-| ABB.2000.PR               | (+/-)          | Given in weird unists log(1/S0)[mol/L]?  |
+| AB.2001.EJPS              | (+/-)          | Given in weird unists                    |
+| ABB.2000.PR               | (+/-)          | Given in weird unists                    |
 | BOM.2017.JC               | (+)            |                                          |
 | D.2008.JCIC               | (+)            |                                          |
 | H.2000.test1              | (+)            | Downloaded from the website              |
@@ -183,13 +184,13 @@ Vladimir Svetnik, Andy Liaw, Christopher Tong, J. Christopher Culberson, Robert 
 Cheng, T., Li, Q., Wang, Y., and Bryant, S.H.    
 *Journal of Chemical Information and Modeling, 2011, 51, 229-236*        
 [[paper]](https://pubs.acs.org/doi/10.1021/ci100364a)    
-**Note: The measurements come from BioAssay AID:1996, and are done at pH=7.4. Not very useful for logS0 estimations.**              
+**Note: The measurements come from BioAssay AID:1996, and are done at pH=7.4. Not very useful for a prediction of logS0.**              
 
 17. **Aqueous Solubility Prediction Based on Weighted Atom Type Counts and Solvent
 Accessible Surface Areas**      
 Junmei Wang, Tingjun Hou, and Xiaojie Xu      
 *J. Chem. Inf. Model. 2009, 49, 571–581*       
 [[paper]](https://pubs.acs.org/doi/abs/10.1021/ci800406y)         
-**Note: (i) Data in SLN format. CIRpy needed to translate to smiles. (ii) Set-003 is suspicious - exclude from the train data.**            
+**Note: (i) Data in SLN format. CIRpy needed to convert to smiles. (ii) Set-003 looks suspicious, so I excluded it from the train data.**            
 
 
