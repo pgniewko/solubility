@@ -18,7 +18,7 @@ All the smiles are first canonicalized and standarized before the master trainin
 
 * Train the ensemble model, and make a predictino for Set-100:        
 ```
-python make_challange_prediction.py ../data/training/solubility.uniq.no-in-100.smi ../data/test/test_100.smi ../data/test/ensemble.test_100.preds.dat
+python make_challenge_prediction.py ../data/training/solubility.uniq.no-in-100.smi ../data/test/test_100.smi ../data/test/ensemble.test_100.preds.dat
 ```
 
 * Check out your challange predictions and compare to the values that could be find in publicly available DBs:           
