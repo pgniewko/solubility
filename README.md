@@ -26,20 +26,9 @@ python make_challenge_prediction.py ../data/training/solubility.uniq.no-in-100.s
 python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../data/test/ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
 ```
 
-[Results](#results)    
+
 [Datasets](#datasets)    
 [Papers](#papers)    
-
-### Results
-Run the code with any setting that you like. The performance metrics will be printed out to `stdout`.
-Data from [PotentialNet paper](https://pubs.acs.org/doi/full/10.1021/acscentsci.8b00507) is provided as a reference: (it's not quite clear what are the Validation and Test sets that authors refer to):      
-
-| Network       | Valid RMSE | Test RMSE |
-| ------------- |:----------:| ---------:|
-| PotentialNet  | 0.517      |  0.490    |
-| Weave         | 0.549      |  0.553    |
-| GraphConv     | 0.721      |  0.648    |
-| XGBoost       | 1.182      |  0.912    |
 
 
 ### Datasets
@@ -193,5 +182,3 @@ Junmei Wang, Tingjun Hou, and Xiaojie Xu
 *J. Chem. Inf. Model. 2009, 49, 571–581*       
 [[paper]](https://pubs.acs.org/doi/abs/10.1021/ci800406y)         
 **Note: (i) Data in SLN format. [CIRpy](https://cirpy.readthedocs.io/en/latest/) needed to convert to smiles. (ii) Set-003 looks suspicious, so I excluded it from the train data.**            
-
-
