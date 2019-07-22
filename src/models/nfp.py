@@ -28,11 +28,11 @@ class NfpPredictor(Predictor):
                     fp_depth=radius,       # The depth of the network equals the fingerprint radius.
                     conv_width=20,         # Only the neural fps need this parameter.
                     h1_size=64,            # Size of hidden layer of network on top of fps.
-#                    h2_size=128,           # Size of hidden layer of network on top of fps.
+                    h2_size=128,           # Size of hidden layer of network on top of fps.
                     L2_reg=np.exp(-2))
 
         self.train_params = dict(
-                    num_iters=50,
+                    num_iters=100,
                     batch_size=64,
                     init_scale=np.exp(-4),
                     step_size=np.exp(-6))
@@ -50,8 +50,8 @@ class NfpPredictor(Predictor):
         net_arch_params = dict(
                 layer_sizes = [
                          self.model_params['fp_length'],
-                         self.model_params['h1_size']],
-#                         self.model_params['h2_size']],  # Two hidden layers
+                         self.model_params['h1_size'],
+                         self.model_params['h2_size']],  # Two hidden layers
                          normalize=True,
                          L2_reg = self.model_params['L2_reg'],
                          nll_func = rmse)

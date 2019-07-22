@@ -31,8 +31,8 @@ python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../data/test/ense
 [Papers](#papers)    
 
 ### Results
-
-For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org/doi/full/10.1021/acscentsci.8b00507)
+Run the code with any setting that suits you. The performance metrics will be printed out to `stdout`.
+Data from [PotentialNet paper](https://pubs.acs.org/doi/full/10.1021/acscentsci.8b00507) is provided as a reference: (it's not quite clear what are the Validation and Test sets that authors refer to - it's probably a subset of data used in this project):      
 
 | Network       | Valid RMSE | Test RMSE |
 | ------------- |:----------:| ---------:|
@@ -40,7 +40,6 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 | Weave         | 0.549      |  0.553    |
 | GraphConv     | 0.721      |  0.648    |
 | XGBoost       | 1.182      |  0.912    |
-
 
 
 ### Datasets
@@ -193,6 +192,6 @@ Accessible Surface Areas**
 Junmei Wang, Tingjun Hou, and Xiaojie Xu      
 *J. Chem. Inf. Model. 2009, 49, 571–581*       
 [[paper]](https://pubs.acs.org/doi/abs/10.1021/ci800406y)         
-**Note: (i) Data in SLN format. CIRpy needed to convert to smiles. (ii) Set-003 looks suspicious, so I excluded it from the train data.**            
+**Note: (i) Data in SLN format. [CIRpy](https://cirpy.readthedocs.io/en/latest/) needed to convert to smiles. (ii) Set-003 looks suspicious, so I excluded it from the train data.**            
 
 

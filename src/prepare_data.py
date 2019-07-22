@@ -518,7 +518,8 @@ def unique():
                   "WHX.2009.JCIM.Set-002.smi",
 #                  "WHX.2009.JCIM.Set-003.smi",
                   "WHX.2009.JCIM.Set-004.smi",
-                  "WHX.2009.JCIM.Set-005.smi"]
+                  "WHX.2009.JCIM.Set-005.smi"
+                   ]
 
     smiles_logS = defaultdict(list)
     for fname in FILES_LIST:
@@ -562,9 +563,14 @@ def unique():
             fo.write('\n')
 
 
-def exclude_test(max_val=1.0):
-    TEST_32_FILE = f"{TEST_PATH}/test_32.smi"
-    TEST_100_FILE = f"{TEST_PATH}/test_100.smi"
+def exclude_test(challenge_run=True):
+    if challenge_run:
+       TEST_32_FILE = f"{TEST_PATH}/test_32.smi"
+       TEST_100_FILE = f"{TEST_PATH}/test_100.smi"
+    else:
+       TEST_32_FILE = f"{PROCESSED_PATH}/LGG.2008.JCIM.32.smi"
+       TEST_100_FILE = f"{PROCESSED_PATH}/LGG.2008.JCIM.100.smi"
+
     UNIQUE_CMPDS = f"{TRAINING_DIR}/solubility.uniq.smi"
 
     test_32 = []
@@ -572,12 +578,12 @@ def exclude_test(max_val=1.0):
 
     with open(TEST_32_FILE, 'r') as fin:
         for line in fin:
-            smiles = line.rstrip('\n')
+            smiles = line.rstrip('\n').split(',')[0]
             test_32.append(smiles)
 
     with open(TEST_100_FILE, 'r') as fin:
         for line in fin:
-            smiles = line.rstrip('\n')
+            smiles = line.rstrip('\n').split(',')[0]
             test_100.append(smiles)
 
     unique = {}
@@ -606,13 +612,13 @@ def exclude_test(max_val=1.0):
     UNIQUE_CMPDS_32 = f"{TRAINING_DIR}/solubility.uniq.no-in-32.smi"
     with open(UNIQUE_CMPDS_32, 'w') as fo:
         for key, value in unique.items():
-            if key not in test_32 and value < max_val:
+            if key not in test_32:
                 fo.write(f"{key},{value}\n")
 
     UNIQUE_CMPDS_100 = f"{TRAINING_DIR}/solubility.uniq.no-in-100.smi"
     with open(UNIQUE_CMPDS_100, 'w') as fo:
         for key, value in unique.items():
-            if key not in test_100 and value < max_val:
+            if key not in test_100:
                 fo.write(f"{key},{value}\n")
 
     return
@@ -646,4 +652,4 @@ if __name__ == "__main__":
 
     process()
     unique()
-    exclude_test(max_val=5.0)
+    exclude_test(challenge_run=False)
