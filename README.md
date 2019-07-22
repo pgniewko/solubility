@@ -31,8 +31,8 @@ python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../data/test/ense
 [Papers](#papers)    
 
 ### Results
-Run the code with any setting that suits you. The performance metrics will be printed out to `stdout`.
-Data from [PotentialNet paper](https://pubs.acs.org/doi/full/10.1021/acscentsci.8b00507) is provided as a reference: (it's not quite clear what are the Validation and Test sets that authors refer to - it's probably a subset of data used in this project):      
+Run the code with any setting that you like. The performance metrics will be printed out to `stdout`.
+Data from [PotentialNet paper](https://pubs.acs.org/doi/full/10.1021/acscentsci.8b00507) is provided as a reference: (it's not quite clear what are the Validation and Test sets that authors refer to):      
 
 | Network       | Valid RMSE | Test RMSE |
 | ------------- |:----------:| ---------:|
