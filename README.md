@@ -26,6 +26,10 @@ python make_challenge_prediction.py ../data/training/solubility.uniq.no-in-100.s
 python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../data/test/ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
 ```
 
+[Results](#results)    
+[Datasets](#datasets)    
+[Papers](#papers)    
+
 ### Results
 
 For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org/doi/full/10.1021/acscentsci.8b00507)
@@ -38,8 +42,6 @@ For the comaprison I provide data from [PotentialNet paper](https://pubs.acs.org
 | XGBoost       | 1.182      |  0.912    |
 
 
-[Datasets](#datasets)    
-[Papers](#papers)    
 
 ### Datasets
 
