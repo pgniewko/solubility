@@ -1,4 +1,10 @@
+""" WRITE ME :-( """
+
 def get_training_data(fname):
+    """
+    TODO: 
+    """
+
     cmpds_list = []
     logS_list = []
     with open(fname, 'r') as fin:
@@ -13,6 +19,10 @@ def get_training_data(fname):
 
 
 def get_test_data(fname):
+    """
+    TODO:
+    """
+
     cmpds_list = []
     with open(fname, 'r') as fin:
         for line in fin:
