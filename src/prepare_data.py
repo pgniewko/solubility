@@ -8,25 +8,11 @@ from utils import canonicalize_smiles, mol_wt
 from rdkit import Chem
 
 
-DATA_PATH = "/Users/pawel/Projects/solubility/data/raw"
-PROCESSED_PATH = "/Users/pawel/Projects/solubility/data/processed"
-TRAINING_DIR = "/Users/pawel/Projects/solubility/data/training"
-TEST_PATH = "/Users/pawel/Projects/solubility/data/test"
-
-
-def one_outlier(num_list):
-    tot = len(num_list)
-    cnt = 0
-    for el in num_list:
-        if el > 0.0:
-            cnt += 1
-
-    if (tot - cnt) == 1 and tot > 1:
-        return (True, 0)
-    if cnt == 1 and tot > 1:
-        return (True, 1)
-
-    return (False, None)
+# Get rid of the hard coded paths
+DATA_PATH = "/Users/pawel/projects/solubility/data/raw"
+PROCESSED_PATH = "/Users/pawel/projects/solubility/data/processed"
+TRAINING_DIR = "/Users/pawel/projects/solubility/data/training"
+TEST_PATH = "/Users/pawel/projects/solubility/data/test"
 
 
 def process_AB_2001_EJPS():
@@ -538,38 +524,36 @@ def unique():
             vmin = values[0]
             vmax = values[-1]
 
+# Skip the case if the cmpound sign is assigned incorrectly.
             if vmin * vmax < 0:
-                if len(values) == 2:
-                    continue
-            #    flag, minmax = one_outlier(values)
-            #    if flag:
-            #        if minmax == 0:
-            #            values = values[1:]
-            #        else:
-            #            values = values[0:-1]
+                continue
 
+# Skip the data if there is too large discrepacy from the 
             if (vmax - vmin) > 1.0:
                 continue
 
+# Exclude the datapoint if there are some other problems with the measure data
             if sum(np.isinf(values)) != 0:
                 continue
 
+# Exclude compunds that are not drug-lie
             if mol_wt(key) > 600.0 or mol_wt(key) < 60.0:
                 continue
 
+# Save data, comma separated
             fo.write(f"{key};")
             for val in values:
                 fo.write(f"{val},")
             fo.write('\n')
 
 
-def exclude_test(challenge_run=True):
-    if challenge_run:
-       TEST_32_FILE = f"{TEST_PATH}/test_32.smi"
-       TEST_100_FILE = f"{TEST_PATH}/test_100.smi"
-    else:
-       TEST_32_FILE = f"{PROCESSED_PATH}/LGG.2008.JCIM.32.smi"
-       TEST_100_FILE = f"{PROCESSED_PATH}/LGG.2008.JCIM.100.smi"
+def exclude_test():
+    '''
+    Read all compunds for the trainig set, and exlcude all that are in the test (chellange) set.
+    '''
+
+    TEST_32_FILE = f"{TEST_PATH}/test_32.smi"
+    TEST_100_FILE = f"{TEST_PATH}/test_100.smi"
 
     UNIQUE_CMPDS = f"{TRAINING_DIR}/solubility.uniq.smi"
 
@@ -586,27 +570,27 @@ def exclude_test(challenge_run=True):
             smiles = line.rstrip('\n').split(',')[0]
             test_100.append(smiles)
 
-    unique = {}
+    unique_dict = {}
     with open(UNIQUE_CMPDS, 'r') as fin:
         for line in fin:
             pairs = line.rstrip('\n').split(';')
             smiles = pairs[0]
             vals_str = pairs[1].split(',')
             vals = [float(v) for v in vals_str[0:-1]]
-            unique[smiles] = np.mean(vals)
+            unique_dict[smiles] = np.mean(vals)
 
     TEST_32_FILE_IN_TRAIN = f"{TEST_PATH}/test_32.in-train.smi"
     with open(TEST_32_FILE_IN_TRAIN, 'w') as fo:
         for smiles in test_32:
-            if smiles in unique:
-                val = unique[smiles]
+            if smiles in unique_dict:
+                val = unique_dict[smiles]
                 fo.write(f"{smiles},{val}\n")
 
     TEST_100_FILE_IN_TRAIN = f"{TEST_PATH}/test_100.in-train.smi"
     with open(TEST_100_FILE_IN_TRAIN, 'w') as fo:
         for smiles in test_100:
-            if smiles in unique:
-                val = unique[smiles]
+            if smiles in unique_dict:
+                val = unique_dict[smiles]
                 fo.write(f"{smiles},{val}\n")
 
     UNIQUE_CMPDS_32 = f"{TRAINING_DIR}/solubility.uniq.no-in-32.smi"
@@ -640,7 +624,7 @@ def process():
     process_POG_2007_JCIM_train()
     process_WKH_2007_JCIM()
     process_WHX_2009_JCIM()
-    process_OCHEM()
+#    process_OCHEM()
 
     process_test_100()
     process_test_32()
@@ -650,6 +634,8 @@ if __name__ == "__main__":
 #    logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
+#TODO:
+# Make output dirs if they don't exist
     process()
     unique()
-    exclude_test(challenge_run=False)
+    exclude_test()
