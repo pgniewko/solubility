@@ -10,15 +10,20 @@ Intrinsic solubility (water solubility): solubility of non-charged molecules, i.
 The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and this blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).     
 
 ### How to (i) prepare data (ii) train models (iii) make challange predictions:     
-* Process raw data, strore it in a usable format, and exclude test-cases from training:      
+* Process raw data, strore it in a standarized format, and exclude test-cases (stored in test_32.smi and test_100.smi) from training:      
 ```
 python prepare_data.py
 ```
-All the smiles are first canonicalized and standarized before the master training data set is creted. To change the list of files used for the train set comment out the lines in the `process()` function in prepare_data.py.    
+All the SMILES are first canonicalized and standarized before the master training data set is creted. To change the list of files used for the train set comment out the lines in the `process()` and `unique()` functions in `prepare_data.py`.    
 
-* Train the ensemble model, and make a predictino for Set-100:        
+For this set-up, the challange datasets are our ultimate sets, and the trainig sets is further split (see below) into 5 corss-folds - meant for the accuracy estimation and hyper-parameters tuning.      
+
+* Train the `EnsemblePredictor` and make a prediction for Set-100:        
 ```
-python make_challenge_prediction.py ../data/training/solubility.uniq.no-in-100.smi ../data/test/test_100.smi ../data/test/ensemble.test_100.preds.dat
+python make_challenge_prediction.py --model ensemble \
+                                    --train_file ../data/training/solubility.uniq.no-in-100.smi \
+                                    --test_file ../data/test/test_100.smi \
+                                    --out_file ../data/results/ensemble.test_100.preds.dat
 ```
 
 * Check out your challange predictions and compare to the values that could be find in publicly available DBs:           
