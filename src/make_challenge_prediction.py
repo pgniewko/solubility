@@ -50,12 +50,13 @@ def main(args):
     return 0
 
 def parse_args():
-    parser = argparse.ArgmentPaser(description=__doc__)
+    parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--train_file', help='Path to the file with the train data')
     parser.add_argument('--test_file', help='Path to the file with the test data')
     parser.add_argument('--out_file', help='Path to the output file')
     parser.add_argument('--model', default='rf', help='Choose the model: [esol, rf, nfp, ensemble]')
-    return parser
+    args = parser.parse_args()
+    return args
 
 if __name__ == "__main__":
     args = parse_args()
