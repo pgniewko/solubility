@@ -93,8 +93,8 @@ class EnsemblePredictor(Predictor):
         for i, smiles in enumerate(smiles_list):
             mol = Chem.MolFromSmiles(smiles)
             props = [list(rdMolDescriptors.Properties([name]).ComputeProperties(mol))[0] for name in self._feats]
+# TODO: make this list a models parameter            
             vals = [logS_list_esol[i], logS_list_rf[i], logS_list_nfp[i]]
-#            vals = [logS_list_esol[i], logS_list_nfp[i]]
 
             x_row = vals + props
             X.append(x_row)

@@ -16,6 +16,7 @@ from predictor import Predictor
 
 class RFPredictor(Predictor):
     """
+    TODO:
     """
 
     def __init__(self, fp_type='ecfp', radius=2, fp_length=256, n_ests=500):
@@ -63,6 +64,6 @@ if __name__ == "__main__":
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     smiles_list, logS_list = get_training_data(sys.argv[1])
-    rf_regression = RFPredictor(fp_type='maccs')
+    rf_regression = RFPredictor()
     print(rf_regression.train(smiles_list, logS_list))
     rf_regression.plot()

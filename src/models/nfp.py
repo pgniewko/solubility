@@ -18,6 +18,7 @@ from neuralfingerprint.util import rmse
 
 class NfpPredictor(Predictor):
     """
+    TODO:
     """
     def __init__(self, radius=4, fplength=64):
         super().__init__()

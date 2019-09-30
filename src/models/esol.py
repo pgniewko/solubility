@@ -13,6 +13,7 @@ from predictor import Predictor
 
 class ESOLCalculator(Predictor):
     """
+    TODO:
     """
 
     def __init__(self):
