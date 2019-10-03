@@ -8,9 +8,11 @@ from sklearn.metrics import r2_score
 from sklearn.model_selection import KFold
 import matplotlib.pyplot as plt
 
+from model_utils import bootstrap_error_estimate
 
 class Predictor(ABC):
     """
+    TODO:
     """
 
     def __init__(self):
@@ -52,6 +54,23 @@ class Predictor(ABC):
                 stds = np.std(scores, axis=0)
                 for i, mean_ in enumerate(means):
                     fout.write('{}\t{}\t'.format(mean_, stds[i]))
+
+                mse_glob = mean_squared_error(self._logS_pred_data, self._logS_pred_data)
+                mae_glob = mean_absolute_error(self._logS_pred_data, self._logS_pred_data)
+                r2_glob = r2_score(self._logS_pred_data, self._logS_pred_data)
+                mse_lower, mse_upper = bootstrap_error_estimate(self._logS_pred_data,
+                                                                self._logS_pred_data,
+                                                                method=mean_squared_error)
+                mae_lower, mae_upper = bootstrap_error_estimate(self._logS_pred_data,
+                                                                self._logS_pred_data,
+                                                                method=mean_absolute_error)
+                
+                r2_lower, r2_upper = bootstrap_error_estimate(self._logS_pred_data,
+                                                                self._logS_pred_data,
+                                                                method=r2_score)
+                four.write(f'{mse_glob}\t{mae_lower}\t{mse_upper}\t')
+                four.write(f'{mae_glob}\t{mae_lower}\t{mae_upper}\t')
+                four.write(f'{r2_glob}\t{r2_lower}\t{r2_upper}\t')
                 fout.write('\n')
 
         return np.mean(scores, axis=0), np.std(scores, axis=0)
