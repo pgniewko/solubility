@@ -125,10 +125,16 @@ class EnsemblePredictor(Predictor):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print('usage: ...')
+        sys.exit(1)
+
     from model_utils import get_training_data
+    train_file = sys.argv[1]
+    results_file = sys.argv[2]
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-    smiles_list, logS_list = get_training_data(sys.argv[1])
-    enseble_regression = EnsemblePredictor(fp='maccs')
-    print(enseble_regression.train(smiles_list, logS_list))
+    smiles_list, logS_list = get_training_data(train_file)
+    enseble_regression = EnsemblePredictor()
+    print(enseble_regression.train(smiles_list, logS_list, fname=results_file))
     enseble_regression.plot()

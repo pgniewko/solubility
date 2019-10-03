@@ -16,6 +16,7 @@ class Predictor(ABC):
     def __init__(self):
         self._logS_pred_data = []
         self._logS_exp_data = []
+        self._name = None
         pass
 
     @abstractmethod
@@ -26,7 +27,10 @@ class Predictor(ABC):
     def predict(self):
         pass
 
-    def train(self, train_smiles, logS_list, cv=5):
+    def get_name(self):
+        return self._name
+
+    def train(self, train_smiles, logS_list, cv=5, fname=None):
         scores = []
 
         kf = KFold(n_splits=cv, shuffle=True, random_state=None)
@@ -41,7 +45,17 @@ class Predictor(ABC):
             scores.append(self.score(X_validate, y_validate))
             fold += 1
 
+        if fname != None:
+            with open(fname, 'w') as fout:
+                fout.write(f'{self._name}\t')
+                means = np.mean(scores, axis=0)
+                stds = np.std(scores, axis=0)
+                for i, mean_ in enumerate(means):
+                    fout.write('{}\t{}\t'.format(mean_, stds[i]))
+                fout.write('\n')
+
         return np.mean(scores, axis=0), np.std(scores, axis=0)
+
 
     def test(self, train_smiles, logS_list, test_smiles, cv=5):
         predictions = []

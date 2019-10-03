@@ -20,7 +20,7 @@ class NfpPredictor(Predictor):
     """
     TODO:
     """
-    def __init__(self, radius=4, fplength=64):
+    def __init__(self, radius=4, fplength=50):
         super().__init__()
         self._name = "NfpRegressor"
 
@@ -28,13 +28,12 @@ class NfpPredictor(Predictor):
                     fp_length=fplength,    # Usually neural fps need far fewer dimensions than morgan.
                     fp_depth=radius,       # The depth of the network equals the fingerprint radius.
                     conv_width=20,         # Only the neural fps need this parameter.
-                    h1_size=64,            # Size of hidden layer of network on top of fps.
-                    h2_size=128,           # Size of hidden layer of network on top of fps.
+                    h1_size=100,            # Size of hidden layer of network on top of fps.
                     L2_reg=np.exp(-2))
 
         self.train_params = dict(
                     num_iters=100,
-                    batch_size=64,
+                    batch_size=100,
                     init_scale=np.exp(-4),
                     step_size=np.exp(-6))
 
@@ -48,14 +47,10 @@ class NfpPredictor(Predictor):
         conv_arch_params = {'num_hidden_features': conv_layer_sizes, 'fp_length': self.model_params['fp_length'], 'normalize': 1}
 
         # Neural net architecture
-        net_arch_params = dict(
-                layer_sizes = [
-                         self.model_params['fp_length'],
-                         self.model_params['h1_size'],
-                         self.model_params['h2_size']],  # Two hidden layers
-                         normalize=True,
-                         L2_reg = self.model_params['L2_reg'],
-                         nll_func = rmse)
+        net_arch_params = dict(layer_sizes = [self.model_params['fp_length'], self.model_params['h1_size']],
+                               normalize=True,
+                               L2_reg = self.model_params['L2_reg'],
+                               nll_func = rmse)
 
         loss_fun, pred_fun, conv_parser = build_conv_deep_net(conv_arch_params, net_arch_params, self.model_params['L2_reg'])
 
@@ -88,10 +83,16 @@ class NfpPredictor(Predictor):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print('usage: ...')
+        sys.exit(1)
+
     from model_utils import get_training_data
+    train_file = sys.argv[1]
+    results_file = sys.argv[2]
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-    smiles_list, logS_list = get_training_data(sys.argv[1])
+    smiles_list, logS_list = get_training_data(train_file)
     nfp_regression = NfpPredictor()
-    print(nfp_regression.train(smiles_list, logS_list))
+    print(nfp_regression.train(smiles_list, logS_list, fname=results_file))
     nfp_regression.plot()

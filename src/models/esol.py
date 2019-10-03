@@ -83,10 +83,16 @@ class ESOLCalculator(Predictor):
 
 
 if __name__ == "__main__":
+    if len(sys.argv) < 3:
+        print('usage: ...')
+        sys.exit(1)
+ 
     from model_utils import get_training_data
+    train_file = sys.argv[1]
+    results_file = sys.argv[2]
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
-    smiles_list, logS_list = get_training_data(sys.argv[1])
+    smiles_list, logS_list = get_training_data(train_file)
     esol_calculator = ESOLCalculator()
-    print(esol_calculator.train(smiles_list, logS_list))
+    print(esol_calculator.train(smiles_list, logS_list, fname=results_file))
     esol_calculator.plot()
