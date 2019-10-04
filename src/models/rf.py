@@ -19,7 +19,7 @@ class RFPredictor(Predictor):
     TODO:
     """
 
-    def __init__(self, fp_type='ecfp', radius=2, fp_length=256, n_ests=500):
+    def __init__(self, fp_type='ecfp', radius=3, fp_length=1024, n_ests=500):
         super().__init__()
         self._name = "RFRegressor"
         self._fp_type = fp_type

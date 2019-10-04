@@ -6,9 +6,9 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import r2_score
 from sklearn.model_selection import KFold
+from scipy.stats import spearmanr
 import matplotlib.pyplot as plt
 
-from model_utils import bootstrap_error_estimate
 
 class Predictor(ABC):
     """
@@ -47,7 +47,7 @@ class Predictor(ABC):
             scores.append(self.score(X_validate, y_validate))
             fold += 1
 
-        if fname != None:
+        if fname is not None:
             with open(fname, 'w') as fout:
                 fout.write(f'{self._name}\t')
                 means = np.mean(scores, axis=0)
@@ -55,26 +55,9 @@ class Predictor(ABC):
                 for i, mean_ in enumerate(means):
                     fout.write('{}\t{}\t'.format(mean_, stds[i]))
 
-                mse_glob = mean_squared_error(self._logS_pred_data, self._logS_pred_data)
-                mae_glob = mean_absolute_error(self._logS_pred_data, self._logS_pred_data)
-                r2_glob = r2_score(self._logS_pred_data, self._logS_pred_data)
-                mse_lower, mse_upper = bootstrap_error_estimate(self._logS_pred_data,
-                                                                self._logS_pred_data,
-                                                                method=mean_squared_error)
-                mae_lower, mae_upper = bootstrap_error_estimate(self._logS_pred_data,
-                                                                self._logS_pred_data,
-                                                                method=mean_absolute_error)
-                
-                r2_lower, r2_upper = bootstrap_error_estimate(self._logS_pred_data,
-                                                                self._logS_pred_data,
-                                                                method=r2_score)
-                four.write(f'{mse_glob}\t{mae_lower}\t{mse_upper}\t')
-                four.write(f'{mae_glob}\t{mae_lower}\t{mae_upper}\t')
-                four.write(f'{r2_glob}\t{r2_lower}\t{r2_upper}\t')
                 fout.write('\n')
 
         return np.mean(scores, axis=0), np.std(scores, axis=0)
-
 
     def test(self, train_smiles, logS_list, test_smiles, cv=5):
         predictions = []
@@ -101,12 +84,13 @@ class Predictor(ABC):
         mse = mean_squared_error(y_true, y_pred)
         mae = mean_absolute_error(y_true, y_pred)
         r2 = r2_score(y_true, y_pred)
+        spearman_cc = spearmanr(y_true, y_pred)[0]
 
         if save_flag:
             self._logS_pred_data += list(y_pred)
             self._logS_exp_data += list(y_true)
 
-        return (mse, mae, r2)
+        return (mse, mae, r2, spearman_cc)
 
     def plot(self):
         plt.figure(figsize=(7, 7))
