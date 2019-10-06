@@ -31,23 +31,24 @@ python make_challenge_prediction.py --model ensemble \
                                     --out_file ../data/results/ensemble.test_100.preds.dat
 ```
 
-* Check out, your challange predictions and compare to the values that could be find in publicly available DBs:           
+* Check out the your challange predictions and compare to the values that could be find in publicly available DBs:           
 ```
-python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../data/test/ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
+python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../results//ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
 ```
 
 
 [Datasets](#datasets) information    
 Reference [papers](#papers)    
 [Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
-
+[License](#license)
 
 ### Datasets
 
 | Dataset                   | Do I trust it? | Comments                                 |
 |---------------------------|:--------------:|:-----------------------------------------|
-| AB.2001.EJPS              | (+/-)          | Given in weird unists                    |
-| ABB.2000.PR               | (+/-)          | Given in weird unists                    |
+| A.2019.ADMET_DMPK         | (+ but ...)    | Only compounds names are give, no SMILES |
+| AB.2001.EJPS              | (+/-)          | Units are not clear to me                |
+| ABB.2000.PR               | (+/-)          | Units are not clear to me                |
 | BOM.2017.JC               | (+)            |                                          |
 | D.2008.JCIC               | (+)            |                                          |
 | H.2000.test1              | (+)            | Downloaded from the website              |
@@ -193,3 +194,15 @@ Junmei Wang, Tingjun Hou, and Xiaojie Xu
 *J. Chem. Inf. Model. 2009, 49, 571–581*       
 [[paper]](https://pubs.acs.org/doi/abs/10.1021/ci800406y)         
 **Note: (i) Data in SLN format. [CIRpy](https://cirpy.readthedocs.io/en/latest/) needed to convert to smiles. (ii) Set-003 looks suspicious, so I excluded it from the train data.**            
+
+18. **Multi-lab intrinsic solubility measurement reproducibility in CheqSol and shake-flask methods**      
+Alex Avdeef      
+*ADMET & DMPK*     
+[[paper]](http://pub.iapchem.org/ojs/index.php/admet/article/view/698)       
+
+
+### License
+The library is open-source. If you want to cite the library in any published work please contact me at gniewko.pablo@gmail.com for an information about credits.         
+
+
+
