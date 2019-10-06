@@ -38,7 +38,7 @@ python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../results//ensem
 
 
 [Datasets](#datasets) information    
-Reference [papers](#papers)    
+[Papers](#papers)    
 [Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
 [License](#license)
 
