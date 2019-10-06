@@ -18,6 +18,11 @@ All the SMILES are first canonicalized and standarized before the master trainin
 
 For this set-up, the challange datasets are our ultimate sets, and the trainig sets is further split (see below) into 5 corss-folds - meant for the accuracy estimation and hyper-parameters tuning.      
 
+* Train the `RFPredictor` (or other model) on a dataset excluding Set-100 (solubility.uniq.no-in-100.smi), and save cross-fold validation metrics into a file (`rf-no-in-100.dat`):        
+```
+python rf.py ../../data/training/solubility.uniq.no-in-100.smi ../../results/rf-no-in-100.dat
+```
+
 * Train the `EnsemblePredictor` and make a prediction for Set-100:        
 ```
 python make_challenge_prediction.py --model ensemble \
@@ -26,14 +31,15 @@ python make_challenge_prediction.py --model ensemble \
                                     --out_file ../data/results/ensemble.test_100.preds.dat
 ```
 
-* Check out your challange predictions and compare to the values that could be find in publicly available DBs:           
+* Check out, your challange predictions and compare to the values that could be find in publicly available DBs:           
 ```
 python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../data/test/ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
 ```
 
 
-[Datasets](#datasets)    
-[Papers](#papers)    
+[Datasets](#datasets) information    
+Reference [papers](#papers)    
+[Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
 
 
 ### Datasets
