@@ -1,4 +1,6 @@
-""" Utility functions, some of which are borrowed from Pat Walters: https://github.com/PatWalters/metk """
+""" Utility functions, that for the purpose of this project,
+are borrowed from Pat Walters: https://github.com/PatWalters/metk """
+
 import math
 import numpy as np
 from scipy.stats import pearsonr
@@ -15,7 +17,7 @@ def pearson_confidence(r, num, interval=0.95):
     :return: lower bound, upper bound
     """
     stderr = 1.0 / math.sqrt(num - 3)
-    z_score = norm.ppf(interval)
+    z_score = norm.ppf(interval + (1.0 - interval) / 2.0)  # There was a bug in the original code
     delta = z_score * stderr
     lower = math.tanh(math.atanh(r) - delta)
     upper = math.tanh(math.atanh(r) + delta)
