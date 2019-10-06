@@ -86,4 +86,4 @@ if __name__ == "__main__":
     rmsd_pg /= cnt
     rmsd_pg = np.sqrt(rmsd_pg)
 
-    print("GSE (RMSD) = {}\nPG(RMSD) = {}".format(rmsd_gse, rmsd_pg))
+    print("GSE (RMSD) = {}\nPG(RMSD) = {}\ncnt={}".format(rmsd_gse, rmsd_pg, cnt))

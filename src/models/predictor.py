@@ -4,9 +4,8 @@ from abc import ABC, abstractmethod
 import numpy as np
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import mean_absolute_error
-from sklearn.metrics import r2_score
 from sklearn.model_selection import KFold
-from scipy.stats import spearmanr
+from scipy.stats import pearsonr
 import matplotlib.pyplot as plt
 
 
@@ -83,14 +82,14 @@ class Predictor(ABC):
         y_pred = self.predict(smiles_list)
         mse = mean_squared_error(y_true, y_pred)
         mae = mean_absolute_error(y_true, y_pred)
-        r2 = r2_score(y_true, y_pred)
-        spearman_cc = spearmanr(y_true, y_pred)[0]
+        pearson_r = pearsonr(y_true, y_pred)[0]
 
         if save_flag:
             self._logS_pred_data += list(y_pred)
             self._logS_exp_data += list(y_true)
 
-        return (mse, mae, r2, spearman_cc)
+        # Return Pearson's R^2
+        return (mse, mae, pearson_r**2.0)
 
     def plot(self):
         plt.figure(figsize=(7, 7))
