@@ -1,4 +1,3 @@
-
 import sys
 import logging
 from collections import defaultdict
@@ -500,12 +499,12 @@ def unique():
                   'POG.2007.JCIM.test.smi',
                   'POG.2007.JCIM.train.smi',
                   'WKH.2007.JCIM.smi',
-                  "WHX.2009.JCIM.Set-001.smi",
-                  "WHX.2009.JCIM.Set-002.smi",
+#                  "WHX.2009.JCIM.Set-001.smi",
+#                  "WHX.2009.JCIM.Set-002.smi",
 #                  "WHX.2009.JCIM.Set-003.smi",
-                  "WHX.2009.JCIM.Set-004.smi",
-                  "WHX.2009.JCIM.Set-005.smi"
-                   ]
+#                  "WHX.2009.JCIM.Set-004.smi",
+#                  "WHX.2009.JCIM.Set-005.smi"
+                  ]
 
     smiles_logS = defaultdict(list)
     for fname in FILES_LIST:
@@ -528,7 +527,7 @@ def unique():
             if vmin * vmax < 0:
                 continue
 
-# Skip the data if there is too large discrepacy from the 
+# Skip the data if there is too large discrepacy from the
             if (vmax - vmin) > 1.0:
                 continue
 
@@ -595,13 +594,13 @@ def exclude_test():
 
     UNIQUE_CMPDS_32 = f"{TRAINING_DIR}/solubility.uniq.no-in-32.smi"
     with open(UNIQUE_CMPDS_32, 'w') as fo:
-        for key, value in unique.items():
+        for key, value in unique_dict.items():
             if key not in test_32:
                 fo.write(f"{key},{value}\n")
 
     UNIQUE_CMPDS_100 = f"{TRAINING_DIR}/solubility.uniq.no-in-100.smi"
     with open(UNIQUE_CMPDS_100, 'w') as fo:
-        for key, value in unique.items():
+        for key, value in unique_dict.items():
             if key not in test_100:
                 fo.write(f"{key},{value}\n")
 
@@ -631,11 +630,11 @@ def process():
 
 
 if __name__ == "__main__":
-#    logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
-#TODO:
+# TODO:
 # Make output dirs if they don't exist
+
     process()
     unique()
     exclude_test()
