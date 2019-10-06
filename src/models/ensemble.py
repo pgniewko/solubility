@@ -78,7 +78,14 @@ class EnsemblePredictor(Predictor):
         return y_norm
 
     def _undo_norm_y(self, y_pred):
+        _,n = y_pred.shape
+        if n == 1:
+            y_pred = y_pred.flatten()
+        else:
+            # TODO: report error and terminate
+            pass
         y = []
+
         for i, smiles in enumerate(y_pred):
             y.append(y_pred[i] * self._std_logS + self._mean_logS)
         return y
@@ -93,7 +100,6 @@ class EnsemblePredictor(Predictor):
         for i, smiles in enumerate(smiles_list):
             mol = Chem.MolFromSmiles(smiles)
             props = [list(rdMolDescriptors.Properties([name]).ComputeProperties(mol))[0] for name in self._feats]
-# TODO: make this list a models parameter            
             vals = [logS_list_esol[i], logS_list_rf[i], logS_list_nfp[i]]
 
             x_row = vals + props
@@ -104,12 +110,12 @@ class EnsemblePredictor(Predictor):
             self._mean_props = np.mean(X, axis=0)
             self._std_props = np.std(X, axis=0)
 
-        logging.info("Size of props")
-        print(self._size)
-        logging.info("Means of X")
-        print(self._mean_props)
-        logging.info("Std of X")
-        print(self._std_props)
+        logging.debug("Size of props")
+        logging.debug(self._size)
+        logging.debug("Means of X")
+        logging.debug(self._mean_props)
+        logging.debug("Std of X")
+        logging.debug(self._std_props)
 
         for i in range(len(X)):
             for j, X_ij in enumerate(X[i]):
@@ -133,7 +139,7 @@ if __name__ == "__main__":
     train_file = sys.argv[1]
     results_file = sys.argv[2]
 
-    logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+    logging.basicConfig(stream=sys.stdout, level=logging.INFO)
     smiles_list, logS_list = get_training_data(train_file)
     enseble_regression = EnsemblePredictor()
     print(enseble_regression.train(smiles_list, logS_list, fname=results_file))
