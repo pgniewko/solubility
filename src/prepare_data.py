@@ -415,6 +415,43 @@ def process_OCHEM():
 
     logging.info(f"Saved {fout}")
 
+def process_A_2019_ADMET_DMPK():
+    """ XXXX """
+
+    fname = f"{DATA_PATH}/A.2019.ADMET_DMPK.csv"
+    fout_1 = f"{PROCESSED_PATH}/A.2019.ADMET_DMPK.SSF.smi"
+    fout_2 = f"{PROCESSED_PATH}/A.2019.ADMET_DMPK.CS.smi"
+    logging.info(f"Processing {fname}")
+
+    try:
+        import pubchempy as pcp
+    except ModuleNotFoundError as e:
+        print (e)
+        return
+
+    with open(fname, 'r') as fin, open(fout_1, 'w') as fout1, open(fout_2, 'w') as fout2:
+        fin.readline()
+        for line in fin:
+            if line.startswith("\""):
+                pairs = line.rstrip().split("\"")
+                name = pairs[1]
+                pairs = pairs[2].split(',')
+                logS0_SFF = pairs[0]
+                logS0_CS = pairs[2]
+            else:
+                pairs = line.rstrip().split(',')
+                name = pairs[0]
+                logS0_SFF = pairs[1]
+                logS0_CS  = pairs[3]
+
+            name = name.replace('\"','')
+            results = pcp.get_compounds(name, 'name')
+            if len(results) > 0:
+                isomeric_smiles = results[0].isomeric_smiles
+                canon_smiles = canonicalize_smiles(isomeric_smiles)
+                fout1.write("{},{}\n".format(canon_smiles, logS0_SFF))
+                fout2.write("{},{}\n".format(canon_smiles, logS0_CS))
+
 
 def process_test_100():
     """
@@ -499,6 +536,8 @@ def unique():
                   'POG.2007.JCIM.test.smi',
                   'POG.2007.JCIM.train.smi',
                   'WKH.2007.JCIM.smi',
+                  'A.2019.ADMET_DMPK.SSF.smi',
+                  'A.2019.ADMET_DMPK.CS.smi'
 #                  "WHX.2009.JCIM.Set-001.smi",
 #                  "WHX.2009.JCIM.Set-002.smi",
 #                  "WHX.2009.JCIM.Set-003.smi",
@@ -623,6 +662,7 @@ def process():
     process_POG_2007_JCIM_train()
     process_WKH_2007_JCIM()
     process_WHX_2009_JCIM()
+    process_A_2019_ADMET_DMPK()
 #    process_OCHEM()
 
     process_test_100()
