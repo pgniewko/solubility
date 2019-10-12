@@ -202,7 +202,7 @@ Alex Avdeef
 
 
 ### License
-The library is open-source. If you want to cite the library in any published work please contact me at gniewko.pablo@gmail.com for an information about credits.         
-
+The library is open-source for academic and educational purposes. If you want to use the library in any of your work please cite: Pawel Gniewek, Solubility of drug-like compounds, https://github.com/pgniewko/solubility.       
+If you want to use this work in any commercial work contact me at gniewko.pablo@gmail.com for the commercial license.          
 
 
