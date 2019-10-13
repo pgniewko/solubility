@@ -1,3 +1,4 @@
+import os
 import sys
 import logging
 from collections import defaultdict
@@ -577,7 +578,7 @@ def unique():
             if sum(np.isinf(values)) != 0:
                 continue
 
-# Exclude compunds that are not drug-lie
+# Exclude compounds that are not drug-like
             if mol_wt(key) > 600.0 or mol_wt(key) < 60.0:
                 continue
 
@@ -675,8 +676,18 @@ def process():
 if __name__ == "__main__":
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 
-# TODO:
-# Make output dirs if they don't exist
+    PROCESSED_DIR = '../data/processed/'
+    TRAIN_DIR = '../data/training/'
+    TEST_DIR = '../data/test/'
+
+    if not os.path.exists(PROCESSED_DIR):
+        os.makedirs(PROCESSED_DIR)
+
+    if not os.path.exists(TRAIN_DIR):
+        os.makedirs(TRAIN_DIR)
+    
+    if not os.path.exists(TEST_DIR):
+        os.makedirs(TEST_DIR)
 
     process()
     unique()
