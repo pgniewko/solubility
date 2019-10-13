@@ -42,7 +42,11 @@ python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../results//ensem
 [Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
 [License](#license)
 
-### Datasets
+### Datasets     
+
+
+_Note:_ The training set was prepared with two additional constaints: (i) molecular weight > 600 or weight < 60 (ii) if multiple measurements are present exclude compounds with max difference larger than  1 log unit or having the opposite signs, e.g. logS0=3 and logS0=-3.     
+
 
 | Dataset                   | Do I trust it? | Comments                                 |
 |---------------------------|:--------------:|:-----------------------------------------|
@@ -202,7 +206,9 @@ Alex Avdeef
 
 
 ### License
-The library is open-source for academic and educational purposes. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.       
+The library is open-source for academic and education community. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.        
+
+
 If you want to use this work in any commercial work contact me at gniewko.pablo@gmail.com for the commercial license.          
 
 
