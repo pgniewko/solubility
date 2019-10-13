@@ -415,8 +415,11 @@ def process_OCHEM():
 
     logging.info(f"Saved {fout}")
 
+
 def process_A_2019_ADMET_DMPK():
-    """ XXXX """
+    """ Process A.2019_ADMET_DMPK data.
+    Two values are gien in the raw file, so two output files are saved.
+    """
 
     fname = f"{DATA_PATH}/A.2019.ADMET_DMPK.csv"
     fout_1 = f"{PROCESSED_PATH}/A.2019.ADMET_DMPK.SSF.smi"
@@ -426,7 +429,7 @@ def process_A_2019_ADMET_DMPK():
     try:
         import pubchempy as pcp
     except ModuleNotFoundError as e:
-        print (e)
+        print(e)
         return
 
     with open(fname, 'r') as fin, open(fout_1, 'w') as fout1, open(fout_2, 'w') as fout2:
@@ -442,9 +445,9 @@ def process_A_2019_ADMET_DMPK():
                 pairs = line.rstrip().split(',')
                 name = pairs[0]
                 logS0_SFF = pairs[1]
-                logS0_CS  = pairs[3]
+                logS0_CS = pairs[3]
 
-            name = name.replace('\"','')
+            name = name.replace('\"', '')
             results = pcp.get_compounds(name, 'name')
             if len(results) > 0:
                 isomeric_smiles = results[0].isomeric_smiles

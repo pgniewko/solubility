@@ -27,6 +27,7 @@ def save_predictions(test_smiles, results_data, fname):
                 fout.write("{},".format(float(results_data[j][i])))
             fout.write('\n')
 
+
 def main(args):
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     train_smiles, train_logS = get_training_data(args.train_file)
@@ -49,6 +50,7 @@ def main(args):
 
     return 0
 
+
 def parse_args():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--train_file', help='Path to the file with the train data')
@@ -58,7 +60,7 @@ def parse_args():
     args = parser.parse_args()
     return args
 
+
 if __name__ == "__main__":
     args = parse_args()
     sys.exit(main(args))
-
