@@ -45,12 +45,12 @@ python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../results//ensem
 ### Datasets     
 
 
-_Note:_ The training set was prepared with two additional constaints: (i) molecular weight > 600 or weight < 60 (ii) if multiple measurements are present exclude compounds with max difference larger than  1 log unit or having the opposite signs, e.g. logS0=3 and logS0=-3.     
+_Note:_ The training set was curated with two constaints: (i) molecular weight > 600 or weight < 60 (ii) if multiple measurements are present exclude compounds with max difference larger than  1 log unit or having the opposite signs, e.g. logS0=3 and logS0=-3.     
 
 
 | Dataset                   | Do I trust it? | Comments                                 |
 |---------------------------|:--------------:|:-----------------------------------------|
-| A.2019.ADMET_DMPK         | (+ but ...)    | Only compounds names are give, no SMILES |
+| A.2019.ADMET_DMPK         | (+)            | Had to get SMILES from name (some failed)|
 | AB.2001.EJPS              | (+/-)          | Units are not clear to me                |
 | ABB.2000.PR               | (+/-)          | Units are not clear to me                |
 | BOM.2017.JC               | (+)            |                                          |
@@ -140,7 +140,6 @@ Iurii Sushko et al.,
 *J Comput Aided Mol Des (2011) 25:533–554*      
 [[paper]](https://www.ncbi.nlm.nih.gov/pubmed/21660515)      
 [[server]](https://ochem.eu/home/show.do)      
-**Note: Reference for OCHEM. Not yet sure how to download the data :-( **    
 
 
 10. **Solubility Challenge revisited after 10 years, with multi-lab shake- flask data, using tight (SD 0.17 log) and loose (SD 0.62 log) test sets**   
