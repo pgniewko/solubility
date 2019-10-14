@@ -45,7 +45,7 @@ python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../results//ensem
 ### Datasets     
 
 
-_Note:_ The training set was curated with two constaints: (i) molecular weight > 600 or weight < 60 (ii) if multiple measurements are present exclude compounds with max difference larger than  1 log unit or having the opposite signs, e.g. logS0=3 and logS0=-3.     
+_Note:_ The training dataset was only mildly curated: (i) filtered out compounds with MolW > 600 or MolW < 60 (ii) if multiple measurements are available, compounds with differences larger than 1 log unit or having the opposite signs (e.g. logS0=3 and logS0=-3) were excluded (iii) OCHEM db is excluded completely (plenty of dubious datapoints)    
 
 
 | Dataset                   | Do I trust it? | Comments                                 |
