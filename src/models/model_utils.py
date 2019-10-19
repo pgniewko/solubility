@@ -1,9 +1,7 @@
-""" WRITE ME :-( """
-
+import argparse
 
 def get_training_data(fname):
     """
-    TODO:
     """
 
     cmpds_list = []
@@ -21,7 +19,6 @@ def get_training_data(fname):
 
 def get_test_data(fname):
     """
-    TODO:
     """
 
     cmpds_list = []
@@ -31,3 +28,12 @@ def get_test_data(fname):
             cmpds_list.append(smiles)
 
     return cmpds_list
+
+def parse_args():
+    parser = argparse.ArgumentParser(description='__doc__')
+    parser.add_argument('--input', help='Training file')
+    parser.add_argument('--output', help='Output file')
+    parser.add_argument('--y_rand', default=False, action='store_true', help='Run in y-randomization mode')
+    args = parser.parse_args()
+    return args
+

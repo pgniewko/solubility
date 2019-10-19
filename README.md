@@ -20,8 +20,11 @@ For this set-up, the challange datasets are our ultimate sets, and the trainig s
 
 * Train the `RFPredictor` (or other model) on a dataset excluding Set-100 (solubility.uniq.no-in-100.smi), and save cross-fold validation metrics into a file (`rf-no-in-100.dat`):        
 ```
-python rf.py ../../data/training/solubility.uniq.no-in-100.smi ../../results/rf-no-in-100.dat
+python rf.py --input ../../data/training/solubility.uniq.no-in-100.smi \
+             --ouput ../../results/rf-no-in-100.dat
 ```
+The run a training in `y-randomization` mode (as a baseline), add `--y_rand` to the command options.     
+
 
 * Train the `EnsemblePredictor` and make a prediction for Set-100:        
 ```

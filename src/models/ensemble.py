@@ -15,7 +15,8 @@ from predictor import Predictor
 from esol import ESOLCalculator
 from rf import RFPredictor
 from nfp import NfpPredictor
-
+from model_utils import get_training_data
+from model_utils import parse_args
 
 class EnsemblePredictor(Predictor):
     """
@@ -131,16 +132,12 @@ class EnsemblePredictor(Predictor):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print('usage: ...')
-        sys.exit(1)
-
-    from model_utils import get_training_data
-    train_file = sys.argv[1]
-    results_file = sys.argv[2]
+    args = parse_args()
+    train_file = args.input
+    results_file = args.output
 
     logging.basicConfig(stream=sys.stdout, level=logging.INFO)
     smiles_list, logS_list = get_training_data(train_file)
     enseble_regression = EnsemblePredictor()
-    print(enseble_regression.train(smiles_list, logS_list, fname=results_file))
+    print(enseble_regression.train(smiles_list, logS_list, fname=results_file, y_randomization=args.y_rand))
     enseble_regression.plot()

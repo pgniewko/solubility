@@ -31,7 +31,12 @@ class Predictor(ABC):
     def get_name(self):
         return self._name
 
-    def train(self, train_smiles, logS_list, cv=5, fname=None):
+    def train(self, train_smiles, logS_list, cv=5, fname=None, y_randomization=False):
+        if y_randomization:
+            logging.info('y-Randomization mode is chosen. Shuffling logS0 values.')
+            import random
+            random.shuffle(logS_list)
+
         scores = []
 
         kf = KFold(n_splits=cv, shuffle=True, random_state=None)
@@ -67,11 +72,8 @@ class Predictor(ABC):
             logging.info('*{}* model is training {} fold'.format(self._name, fold))
             X_train = [train_smiles[idx] for idx in list(train_index)]
             y_train = [logS_list[idx] for idx in list(train_index)]
-#            X_validate = [train_smiles[idx] for idx in list(validate_index)]
-#            y_validate = [logS_list[idx] for idx in list(validate_index)]
             self.fit(X_train, y_train)
 
-            # Don't do validation - go to testing with the model at hand
             y_pred = self.predict(test_smiles)
             predictions.append(y_pred)
             fold += 1

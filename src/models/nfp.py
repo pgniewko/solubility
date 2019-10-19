@@ -4,7 +4,6 @@
 import sys
 import logging
 
-from predictor import Predictor
 
 from autograd import grad
 import autograd.numpy as np
@@ -15,6 +14,9 @@ from neuralfingerprint import normalize_array, adam
 from neuralfingerprint import build_batched_grad
 from neuralfingerprint.util import rmse
 
+from predictor import Predictor
+from model_utils import get_training_data
+from model_utils import parse_args
 
 class NfpPredictor(Predictor):
     """
@@ -83,16 +85,12 @@ class NfpPredictor(Predictor):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print('usage: ...')
-        sys.exit(1)
-
-    from model_utils import get_training_data
-    train_file = sys.argv[1]
-    results_file = sys.argv[2]
+    args = parse_args()
+    train_file = args.input
+    results_file = args.output
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     smiles_list, logS_list = get_training_data(train_file)
     nfp_regression = NfpPredictor()
-    print(nfp_regression.train(smiles_list, logS_list, fname=results_file))
+    print(nfp_regression.train(smiles_list, logS_list, fname=results_file, y_randomization=args.y_rand))
     nfp_regression.plot()

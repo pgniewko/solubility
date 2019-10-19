@@ -9,7 +9,8 @@ from rdkit.Chem import Descriptors, Crippen, Lipinski
 from sklearn.linear_model import LinearRegression
 
 from predictor import Predictor
-
+from model_utils import get_training_data
+from model_utils import parse_args
 
 class ESOLCalculator(Predictor):
     """
@@ -83,16 +84,12 @@ class ESOLCalculator(Predictor):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print('usage: ...')
-        sys.exit(1)
- 
-    from model_utils import get_training_data
-    train_file = sys.argv[1]
-    results_file = sys.argv[2]
+    args = parse_args()
+    train_file = args.input
+    results_file = args.output
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     smiles_list, logS_list = get_training_data(train_file)
     esol_calculator = ESOLCalculator()
-    print(esol_calculator.train(smiles_list, logS_list, fname=results_file))
+    print(esol_calculator.train(smiles_list, logS_list, fname=results_file, y_randomization=args.y_rand))
     esol_calculator.plot()
