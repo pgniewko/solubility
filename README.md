@@ -39,6 +39,7 @@ python make_challenge_prediction.py --model ensemble \
 python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../results//ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
 ```
 
+## Table of contents       
 
 [Datasets](#datasets) information    
 [Papers](#papers)    
@@ -100,7 +101,7 @@ Jarmo Huuskonen
 *J. Chem. Inf. Comput. Sci. 2000, 40, 773-777*      
 [[paper]](https://pubs.acs.org/doi/10.1021/ci9901338)     
 [[website]](http://cheminformatics.org/datasets/huuskonen/index.html)     
-**Note: Quite a few repeats from Delaney Set. Different measurements though.**     
+**Note: Quite a few repeats from Delaney Set. Different measurements, though.**     
 
 
 4. **ADME evaluation in drug discovery. 4. Prediction of aqueous solubility based on atom contribution approach**
@@ -208,9 +209,5 @@ Alex Avdeef
 
 
 ### License
-The library is open-source for academic and education community. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.        
-
-
-If you want to use this work in any commercial work contact me at gniewko.pablo@gmail.com for the commercial license.          
-
+The library is open-source for academic and education communities. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.        
 
