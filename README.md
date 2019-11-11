@@ -6,8 +6,8 @@
 
 ## Table of contents       
 
-[Solubility](#Solubility)
-[Raw data](Raw data preparation)
+[Solubility](#Solubility)     
+[Raw data](#Raw data preparation)
 [Datasets](#datasets) information    
 [Papers](#papers)    
 [Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
