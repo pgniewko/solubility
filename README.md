@@ -2,14 +2,25 @@
 
 >Notice: This is research code that will not necessarily be maintained in the future.
 >The code is under development so make sure you are using the most recent version.
->We welcome bug reports and PRs but make no guarantees about fixes or responses.
+>I welcome bug reports and PRs but make no guarantees about fixes or responses.
 
-### Background
+## Table of contents       
+
+[Solubility](#Solubility)
+[Raw data](Raw data preparation)
+[Datasets](#datasets) information    
+[Papers](#papers)    
+[Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
+[License](#license)
+
+
+### Solubility (some background)
 Intrinsic solubility (water solubility): solubility of non-charged molecules, i.e. free acid and base free form. It is required that the solubility is determined in the presence of solid substance.     
 
-The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and this blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).     
+The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and the following blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).     
 
-### How to (i) prepare data (ii) train models (iii) make challange predictions:     
+### Raw data preparation     
+In this section we discuss how to (1) prepare data, (2) train models, and (iii) make challange predictions with the code in this repository:      
 * Process raw data, strore it in a standarized format, and exclude test-cases (stored in test_32.smi and test_100.smi) from training:      
 ```
 python prepare_data.py
@@ -34,22 +45,14 @@ python make_challenge_prediction.py --model ensemble \
                                     --out_file ../data/results/ensemble.test_100.preds.dat
 ```
 
-* Check out the your challange predictions and compare to the values that could be find in publicly available DBs:           
+* Check out your challange predictions and compare to the values that could be found in public sources:           
 ```
 python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../results//ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
 ```
 
-## Table of contents       
-
-[Datasets](#datasets) information    
-[Papers](#papers)    
-[Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
-[License](#license)
-
 ### Datasets     
 
-
-_Note:_ The training dataset was only mildly curated: (i) filtered out compounds with MolW > 600 or MolW < 60 (ii) if multiple measurements are available, compounds with differences larger than 1 log unit or having the opposite signs (e.g. logS0=3 and logS0=-3) were excluded (iii) OCHEM db is excluded completely (plenty of dubious datapoints)    
+_Note:_ The training dataset (i.e. all unique SMILES extracted from the raw data) was only mildly curated: (i) filtered out compounds with MolW > 600 or MolW < 60 (ii) if multiple measurements are available, compounds with differences larger than 1 log unit or having the opposite signs (e.g. logS0=3 and logS0=-3) were excluded (iii) OCHEM db is excluded completely (plenty of dubious datapoints)    
 
 
 | Dataset                   | Do I trust it? | Comments                                 |
@@ -209,5 +212,5 @@ Alex Avdeef
 
 
 ### License
-The library is open-source for academic and education communities. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.        
+The library is open-source for academic and education users. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.        
 
