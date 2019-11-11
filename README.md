@@ -7,7 +7,7 @@
 ## Table of contents       
 
 [Solubility](#solubility)     
-[Raw data](#preparation-of-the-raw-data)           
+[Raw data](#data-preparation-and-model-training)           
 [Datasets](#datasets) information        
 [Papers](#papers)    
 [Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
@@ -15,26 +15,26 @@
 
 
 ### Solubility      
-Intrinsic solubility (water solubility): solubility of non-charged molecules, i.e. free acid and base free form. It is required that the solubility is determined in the presence of solid substance.     
+Intrinsic solubility (water solubility): solubility of non-charged molecules, i.e. free acid and base free form. It is required that the solubility of the compound is determined in the presence of its solid substance.     
 
-The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and the following blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).     
+The project is motivated by the [challenge](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and the following blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).     
 
-### Preparation of the raw data      
-In this section we discuss how to (1) prepare data, (2) train models, and (iii) make challange predictions with the code in this repository:      
+### Data preparation and model training        
+In this section we discuss how to (1) prepare data, (2) train models, and (3) make challenge predictions with the code in this repository:      
 * Process raw data, strore it in a standarized format, and exclude test-cases (stored in test_32.smi and test_100.smi) from training:      
 ```
 python prepare_data.py
 ```
-All the SMILES are first canonicalized and standarized before the master training data set is creted. To change the list of files used for the train set comment out the lines in the `process()` and `unique()` functions in `prepare_data.py`.    
+All the SMILES are first canonicalized and standardized before the master training data set is created. To change the list of files used for the training set, comment out the lines in the `process()` and `unique()` functions in `prepare_data.py`.    
 
-For this set-up, the challange datasets are our ultimate sets, and the trainig sets is further split (see below) into 5 corss-folds - meant for the accuracy estimation and hyper-parameters tuning.      
+For this set-up, the challenge datasets are our external validation sets, and the trainig sets is further split (see below) into 5 cross-folds.      
 
 * Train the `RFPredictor` (or other model) on a dataset excluding Set-100 (solubility.uniq.no-in-100.smi), and save cross-fold validation metrics into a file (`rf-no-in-100.dat`):        
 ```
 python rf.py --input ../../data/training/solubility.uniq.no-in-100.smi \
              --ouput ../../results/rf-no-in-100.dat
 ```
-The run a training in `y-randomization` mode (as a baseline), add `--y_rand` to the command options.     
+To run a model training in `y-randomization` mode (as a baseline), add `--y_rand` to the command options.     
 
 
 * Train the `EnsemblePredictor` and make a prediction for Set-100:        
@@ -45,14 +45,14 @@ python make_challenge_prediction.py --model ensemble \
                                     --out_file ../data/results/ensemble.test_100.preds.dat
 ```
 
-* Check out your challange predictions and compare to the values that could be found in public sources:           
+* Check out your challenge predictions and compare them to the values that could be found in public sources:           
 ```
 python estimate_accuracy.py ../data/test/test_100.with.gse.smi ../results//ensemble.test_100.preds.dat ../data/test/test_100.in-train.smi
 ```
 
 ### Datasets     
 
-_Note:_ The training dataset (i.e. all unique SMILES extracted from the raw data) was only mildly curated: (i) filtered out compounds with MolW > 600 or MolW < 60 (ii) if multiple measurements are available, compounds with differences larger than 1 log unit or having the opposite signs (e.g. logS0=3 and logS0=-3) were excluded (iii) OCHEM db is excluded completely (plenty of dubious datapoints)    
+_Note:_ The training dataset (i.e. all unique SMILES extracted from the raw data) was only mildly curated: (1) filtered out compounds with MolW > 600 or MolW < 60 (2) if multiple measurements are available, compounds with differences larger than 1 log unit or having the opposite signs (e.g. logS0=3 and logS0=-3) were excluded (3) OCHEM db is excluded completely (because of too many dubious datapoints).    
 
 
 | Dataset                   | Do I trust it? | Comments                                 |
