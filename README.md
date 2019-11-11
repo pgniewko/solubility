@@ -7,7 +7,7 @@
 ## Table of contents       
 
 [Solubility](#solubility)     
-[Raw data](#raw)           
+[Raw data](#preparation-of-the-raw-data)           
 [Datasets](#datasets) information        
 [Papers](#papers)    
 [Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
@@ -19,7 +19,7 @@ Intrinsic solubility (water solubility): solubility of non-charged molecules, i.
 
 The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and the following blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).     
 
-### Raw Data Preparation      
+### Preparation of the raw data      
 In this section we discuss how to (1) prepare data, (2) train models, and (iii) make challange predictions with the code in this repository:      
 * Process raw data, strore it in a standarized format, and exclude test-cases (stored in test_32.smi and test_100.smi) from training:      
 ```
