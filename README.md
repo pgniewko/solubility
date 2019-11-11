@@ -7,19 +7,19 @@
 ## Table of contents       
 
 [Solubility](#solubility)     
-[Raw data](#Rraw)           
+[Raw data](#raw)           
 [Datasets](#datasets) information        
 [Papers](#papers)    
 [Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
 [License](#license)
 
 
-### Solubility (some background)
+### Solubility      
 Intrinsic solubility (water solubility): solubility of non-charged molecules, i.e. free acid and base free form. It is required that the solubility is determined in the presence of solid substance.     
 
 The project is motivated by the [challange](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and the following blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).     
 
-### Raw Data Preparation     
+### Raw Data Preparation      
 In this section we discuss how to (1) prepare data, (2) train models, and (iii) make challange predictions with the code in this repository:      
 * Process raw data, strore it in a standarized format, and exclude test-cases (stored in test_32.smi and test_100.smi) from training:      
 ```
