@@ -11,6 +11,7 @@
 [Datasets](#datasets) information        
 [Papers](#papers)    
 [Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
+[Ideas](#ideas)        
 [License](#license)
 
 
@@ -210,6 +211,8 @@ Alex Avdeef
 *ADMET & DMPK*     
 [[paper]](http://pub.iapchem.org/ojs/index.php/admet/article/view/698)       
 
+### Ideas     
+1. Check what we can learn/use from this [post](https://github.com/rdkit/UGM_2016/blob/master/Tutorials/Part2_Descriptors_and_regression.ipynb)               
 
 ### License
 The library is open-source for academic and education users. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.        
