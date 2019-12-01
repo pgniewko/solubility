@@ -215,7 +215,6 @@ Alex Avdeef
 1. Check what we can learn/use from this [post](https://github.com/rdkit/UGM_2016/blob/master/Tutorials/Part2_Descriptors_and_regression.ipynb)               
 2. Improve ESOL model with outliers detection and [robust](https://en.wikipedia.org/wiki/Huber_loss) [regression](https://en.wikipedia.org/wiki/Robust_regression).     
 3. What can we learn from detected outliers for our 4 methods?       
-4. Look for some sorts of "solubility cliffs" (similar structure, but significantly different slubility; how do we perform on these cases).      
 
 ### License
 The library is open-source for academic and education users. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.        
