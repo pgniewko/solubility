@@ -212,12 +212,8 @@ Alex Avdeef
 [[paper]](http://pub.iapchem.org/ojs/index.php/admet/article/view/698)       
 
 ### Ideas     
-1. Check what we can learn/use from this [post](https://github.com/rdkit/UGM_2016/blob/master/Tutorials/Part2_Descriptors_and_regression.ipynb)               
-2. Improve ESOL model with outliers detection and [robust](https://en.wikipedia.org/wiki/Huber_loss) [regression](https://en.wikipedia.org/wiki/Robust_regression).     
-3. What can we learn from detected outliers for our 4 methods?       
-4. tSNE of the training set, and put a test set on top of that.      
-5. For the "redundancy" plot (with Butina clustering) plot the distribution of all Tanimoto similarities.      
-6. Investigate if different splits can give a better predictions on TS-1 and TS-2.     
+1. Improve ESOL model with outliers detection and [robust](https://en.wikipedia.org/wiki/Huber_loss) [regression](https://en.wikipedia.org/wiki/Robust_regression).     
+2. For the "redundancy" plot (with Butina clustering) plot the distribution of all Tanimoto similarities.      
 
 ### License
 The library is open-source for academic and education users. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.        
