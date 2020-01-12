@@ -7,6 +7,9 @@ import logging
 from rdkit import Chem
 from rdkit.Chem import Descriptors, Crippen, Lipinski
 from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import HuberRegressor
+from sklearn.linear_model import RANSACRegressor
+from sklearn.linear_model import TheilSenRegressor
 
 from predictor import Predictor
 from model_utils import get_training_data
@@ -17,7 +20,7 @@ class ESOLCalculator(Predictor):
     TODO:
     """
 
-    def __init__(self):
+    def __init__(self, model='linear'):
         super().__init__()
         self._name = "ESOLCalculator"
         self.aromatic_query = Chem.MolFromSmarts("a")
@@ -29,6 +32,8 @@ class ESOLCalculator(Predictor):
         self._intercept_esol = 0.16
         self._coef_pat = {"logP": -0.74, "MW": -0.0066, "RB": 0.0034, "AP": -0.42}
         self._intercept_pat = 0.26
+
+        self.model = model
 
     def _calc_ap(self, mol):
         """
@@ -60,7 +65,19 @@ class ESOLCalculator(Predictor):
             X.append([mw, logp, rotors, ap])
             y.append(logS_list[i])
 
-        model = LinearRegression()
+        if self.model == 'linear':
+            logging.debug(f'Model: {self.model}')
+            model = LinearRegression()
+        elif self.model == 'huber':
+            logging.debug(f'Model: {self.model}')
+            model = HuberRegressor(epsilon=1.5, alpha=2.0)
+        elif self.model == 'ts':
+            logging.debug(f'Model: {self.model}')
+            model = TheilSenRegressor()
+        else:
+            logging.debug(f'Model: linear')
+            model = LinearRegression()
+
         model.fit(X, y)
         self._intercept = model.intercept_
         self._coef["MW"] = model.coef_[0]
@@ -90,6 +107,6 @@ if __name__ == "__main__":
 
     logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
     smiles_list, logS_list = get_training_data(train_file)
-    esol_calculator = ESOLCalculator()
+    esol_calculator = ESOLCalculator(model=args.model)
     print(esol_calculator.train(smiles_list, logS_list, fname=results_file, y_randomization=args.y_rand))
-    esol_calculator.plot()
+    esol_calculator.plot(out_file=args.predictions_file)

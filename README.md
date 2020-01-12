@@ -33,7 +33,7 @@ For this set-up, the challenge datasets are our external validation sets, and th
 * Train the `RFPredictor` (or other model) on a dataset excluding Set-100 (solubility.uniq.no-in-100.smi), and save cross-fold validation metrics into a file (`rf-no-in-100.dat`):        
 ```
 python rf.py --input ../../data/training/solubility.uniq.no-in-100.smi \
-             --ouput ../../results/rf-no-in-100.dat
+             --output ../../results/rf-no-in-100.dat
 ```
 To run a model training in `y-randomization` mode (as a baseline), add `--y_rand` to the command options.     
 
@@ -210,10 +210,6 @@ Junmei Wang, Tingjun Hou, and Xiaojie Xu
 Alex Avdeef      
 *ADMET & DMPK*     
 [[paper]](http://pub.iapchem.org/ojs/index.php/admet/article/view/698)       
-
-### Ideas     
-1. Improve ESOL model with outliers detection and [robust](https://en.wikipedia.org/wiki/Huber_loss) [regression](https://en.wikipedia.org/wiki/Robust_regression).     
-2. For the "redundancy" plot (with Butina clustering) plot the distribution of all Tanimoto similarities.      
 
 ### License
 The library is open-source for academic and education users. If you want to use the library in any of your work please cite: *Pawel Gniewek*, _Solubility prediction of drug-like compounds_, https://github.com/pgniewko/solubility.        

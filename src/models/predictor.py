@@ -21,11 +21,11 @@ class Predictor(ABC):
         pass
 
     @abstractmethod
-    def fit(self):
+    def fit(self, **kwargs):
         pass
 
     @abstractmethod
-    def predict(self):
+    def predict(self, **kwargs):
         pass
 
     def get_name(self):
@@ -93,9 +93,16 @@ class Predictor(ABC):
         # Return Pearson's R^2
         return (mse, mae, pearson_r**2.0)
 
-    def plot(self):
+    def plot(self, out_file=None):
+        if out_file is not None:
+            logging.info(f"Saving predictions and measurements in {out_file}")
+            with open(out_file, 'w') as fout:
+                for i, _ in enumerate(self._logS_exp_data):
+                    fout.write(f'{self._logS_exp_data[i]}\t{self._logS_pred_data[i]}\n')
+ 
         plt.figure(figsize=(7, 7))
         plt.plot(self._logS_exp_data, self._logS_pred_data, 'o', alpha=0.05)
+        plt.plot([-11, 3], [-11, 3], '--', color='grey')
         plt.xlabel('logS0 [mol/L] (measured)', fontsize=14)
         plt.ylabel('logS0 [mol/L] (predicted)', fontsize=14)
         plt.title('Model: {}'.format(self._name))
