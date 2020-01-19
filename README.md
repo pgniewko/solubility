@@ -8,11 +8,10 @@
 
 [Solubility](#solubility)     
 [Raw data](#data-preparation-and-model-training)           
-[Datasets](#datasets) information        
+[Datasets](#datasets) information         
 [Papers](#papers)    
 [Results](https://github.com/pgniewko/solubility/blob/master/src/notebooks/Analysis.ipynb) and some comments      
-[Ideas](#ideas)        
-[License](#license)
+[License](#license)         
 
 
 ### Solubility      
