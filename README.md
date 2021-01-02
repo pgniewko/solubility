@@ -17,7 +17,9 @@
 ### Solubility      
 Intrinsic solubility (water solubility): solubility of non-charged molecules, i.e. free acid and base free form. It is required that the solubility of the compound is determined in the presence of its solid substance.     
 
-The project is motivated by the [challenge](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and the following blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).     
+The project is motivated by the [challenge](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00345) and the following blog [post](http://practicalcheminformatics.blogspot.com/2018/09/predicting-aqueous-solubility-its.html).           
+
+(Upate 01/02/2021): The analysis of the challenge results have been recently [published](https://pubs.acs.org/doi/abs/10.1021/acs.jcim.0c00701).            
 
 ### Data preparation and model training        
 In this section we discuss how to (1) prepare data, (2) train models, and (3) make challenge predictions with the code in this repository:      
@@ -27,7 +29,7 @@ python prepare_data.py
 ```
 All the SMILES are first canonicalized and standardized before the master training data set is created. To change the list of files used for the training set, comment out the lines in the `process()` and `unique()` functions in `prepare_data.py`.    
 
-For this set-up, the challenge datasets are our external validation sets, and the trainig sets is further split (see below) into 5 cross-folds.      
+For this set-up, the challenge datasets are our external test sets, and the trainig sets is further split (see below) into 5 cross-fold validation sets.      
 
 * Train the `RFPredictor` (or other model) on a dataset excluding Set-100 (solubility.uniq.no-in-100.smi), and save cross-fold validation metrics into a file (`rf-no-in-100.dat`):        
 ```
