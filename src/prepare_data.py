@@ -252,7 +252,11 @@ def process_LGG_2008_JCIM_32():
                 pairs = line.rstrip('\n').split(',')
                 canon_smiles = canonicalize_smiles(pairs[0])
                 mg = float(pairs[1]) / 1000
-                mw = mol_wt(canon_smiles)
+                try:
+                    mw = mol_wt(canon_smiles)
+                except TypeError as e:
+                    logging.error(f"TypeError for {key}: {e}")
+                    continue
                 logS = np.log10(mg/mw)
                 cmpd_list.append((canon_smiles, logS))
                 cnt += 1
@@ -579,7 +583,11 @@ def unique():
                 continue
 
 # Exclude compounds that are not drug-like
-            if mol_wt(key) > 600.0 or mol_wt(key) < 60.0:
+            try:
+                if mol_wt(key) > 600.0 or mol_wt(key) < 60.0:
+                    continue
+            except TypeError as e:
+                loggine.error(f"TypeError for {key}: {e}")
                 continue
 
 # Save data, comma separated
