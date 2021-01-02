@@ -1,0 +1,33 @@
+﻿COMPOUND,SET,log S0,SD,n,mp (oC),log P,GSE-log S,SMILES
+Amantadine,SET2,-2.19,0.5,3,180,1.91,-2.96,NC12CC3CC(CC(C3)C1)C2
+Amiodarone,SET2,-10.4,0.5,5,156,6.94,-7.75,CCCCc1oc2ccccc2c1C(=O)c1cc(I)c(OCCN(CC)CC)c(I)c1
+Amodiaquine,SET2,-5.49,0.65,3,208,5.18,-6.51,CCN(CC)Cc1cc(Nc2ccnc3cc(Cl)ccc23)ccc1O
+Bisoprolol,SET2,-2.09,0.59,3,100,2.37,-2.62,CC(C)NCC(O)COc1ccc(COCCOC(C)C)cc1
+Bromocriptine,SET2,-5.5,0.51,5,217,3.19,-4.61,CC(C)CC1C(=O)N2CCCC2C2(O)OC(NC(=O)C3C=C4c5cccc6[nH]c(Br)c(c56)CC4N(C)C3)(C(C)C)C(=O)N12
+Buprenorphine,SET2,-6.07,0.83,3,210,4.41,-5.76,COC12CCC3(CC1C(C)(O)C(C)(C)C)C1Cc4ccc(O)c5c4C3(CCN1CC1CC1)C2O5
+Chlorprothixene,SET2,-5.99,0.51,6,98,5.19,-5.42,CN(C)CCC=C1c2ccccc2Sc2ccc(Cl)cc21
+Clofazimine,SET2,-9.05,0.93,5,211,7.49,-8.85,CC(C)N=c1cc2n(-c3ccc(Cl)cc3)c3ccccc3nc-2cc1Nc1ccc(Cl)cc1
+Curcumin,SET2,-5.36,0.68,3,177,3.37,-4.39,COc1cc(C=CC(=O)CC(=O)C=Cc2ccc(O)c(OC)c2)ccc1O
+Danazol,SET2,-6.1,0.52,10,229,4.22,-5.76,C#CC1(O)CCC2C3CCC4=Cc5oncc5CC4(C)C3CCC21C
+Didanosine,SET2,-1.24,0.54,3,162,-0.21,-0.66,O=c1[nH]cnc2c1ncn2C1CCC(CO)O1
+Diflunisal,SET2,-4.99,0.56,11,214,3.04,-4.43,O=C(O)c1cc(-c2ccc(F)cc2F)ccc1O
+Diphenhydramine,SET2,-3.21,0.55,4,169,3.35,-4.29,CN(C)CCOC(c1ccccc1)c1ccccc1
+Etoxadrol,SET2,-1.96,0.55,3,124 b,2.81,-3.3,CCC1(c2ccccc2)OCC(C2CCCCN2)O1
+Ezetimibe,SET2,-4.94,0.51,4,165,4.89,-5.79,O=C1C(CCC(O)c2ccc(F)cc2)C(c2ccc(O)cc2)N1c1ccc(F)cc1
+Fentiazac,SET2,-5.84,0.65,4,161,4.76,-5.62,O=C(O)Cc1sc(-c2ccccc2)nc1-c1ccc(Cl)cc1
+Iopanoic Acid,SET2,-5.49,0.66,3,155,3.74,-4.54,CCC(Cc1c(I)cc(I)c(N)c1I)C(=O)O
+Itraconazole,SET2,-8.98,0.61,3,165,5.58,-6.48,CCC(C)n1ncn(-c2ccc(N3CCN(c4ccc(OCC5COC(Cn6cncn6)(c6ccc(Cl)cc6Cl)O5)cc4)CC3)cc2)c1=O
+Miconazole,SET2,-5.82,0.5,6,161,6.45,-7.31,Clc1ccc(COC(Cn2ccnc2)c2ccc(Cl)cc2Cl)c(Cl)c1
+Mifepristone,SET2,-5.22,0.75,4,194,5.41,-6.6,CC#CC1(O)CCC2C3CCC4=CC(=O)CCC4=C3C(c3ccc(N(C)C)cc3)CC21C
+Omeprazole,SET2,-3.7,0.5,3,156,2.9,-3.71,COc1ccc2[nH]c(S(=O)Cc3ncc(C)c(OC)c3C)nc2c1
+Pioglitazone,SET2,-6.2,0.66,4,184,3.16,-4.25,CCc1ccc(CCOc2ccc(CC3SC(=O)NC3=O)cc2)nc1
+Procaine,SET2,-2.3,0.6,3,61,1.77,-1.63,CCN(CC)CCOC(=O)c1ccc(N)cc1
+Quinine,SET2,-3.06,0.57,7,177,3.17,-4.19,C=CC1CN2CCC1CC2C(O)c1ccnc2ccc(OC)cc12
+Raloxifene,SET2,-6.82,0.56,6,145,6.08,-6.78,O=C(c1ccc(OCCN2CCCCC2)cc1)c1c(-c2ccc(O)cc2)sc2cc(O)ccc12
+Rifabutin,SET2,-4.09,0.66,3,176 b,4.62,-5.63,COC1C=COC2(C)Oc3c(C)c(O)c4c(c3C2=O)C2=NC3(CCN(CC(C)C)CC3)NC2=C(NC(=O)C(C)=CC=CC(C)C(O)C(C)C(O)C(C)C(OC(C)=O)C1C)C4=O
+Saquinavir,SET2,-5.92,0.58,3,350,3.09,-5.84,CC(C)(C)NC(=O)C1CC2CCCCC2CN1CC(O)C(Cc1ccccc1)NC(=O)C(CC(N)=O)NC(=O)c1ccc2ccccc2n1
+Sulfadimethoxine,SET2,-3.74,0.7,3,204,0.88,-2.17,COc1cc(NS(=O)(=O)c2ccc(N)cc2)nc(OC)n1
+Tamoxifen,SET2,-7.52,0.72,7,98,6,-6.23,CCC(=C(c1ccccc1)c1ccc(OCCN(C)C)cc1)c1ccccc1
+Telmisartan,SET2,-6.73,0.84,5,262,7.26,-9.13,CCCc1nc2c(C)cc(-c3nc4ccccc4n3C)cc2n1Cc1ccc(-c2ccccc2C(=O)O)cc1
+Terfenadine,SET2,-7.74,0.71,11,150,6.45,-7.2,CC(C)(C)c1ccc(C(O)CCCN2CCC(C(O)(c3ccccc3)c3ccccc3)CC2)cc1
+Thiabendazole,SET2,-3.97,0.5,4,305,2.69,-4.99,c1ccc2[nH]c(-c3cscn3)nc2c1
