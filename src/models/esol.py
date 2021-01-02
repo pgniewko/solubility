@@ -10,6 +10,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import HuberRegressor
 from sklearn.linear_model import RANSACRegressor
 from sklearn.linear_model import TheilSenRegressor
+from sklearn.cross_decomposition import PLSRegression
 
 from predictor import Predictor
 from model_utils import get_training_data
@@ -66,17 +67,19 @@ class ESOLCalculator(Predictor):
             y.append(logS_list[i])
 
         if self.model == 'linear':
-            logging.debug(f'Model: {self.model}')
             model = LinearRegression()
+        elif self.model == 'pls':
+            model = PLSRegression(n_components=2)
         elif self.model == 'huber':
-            logging.debug(f'Model: {self.model}')
             model = HuberRegressor(epsilon=1.5, alpha=2.0)
         elif self.model == 'ts':
             logging.debug(f'Model: {self.model}')
             model = TheilSenRegressor()
         else:
-            logging.debug(f'Model: linear')
+            self.model = 'linear'
             model = LinearRegression()
+
+        logging.debug(f'Model: {self.model}')
 
         model.fit(X, y)
         self._intercept = model.intercept_
