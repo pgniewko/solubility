@@ -255,7 +255,7 @@ def process_LGG_2008_JCIM_32():
                 try:
                     mw = mol_wt(canon_smiles)
                 except TypeError as e:
-                    logging.error(f"TypeError for {key}: {e}")
+                    logging.error(f"TypeError for {canon_smiles}: {e}")
                     continue
                 logS = np.log10(mg/mw)
                 cmpd_list.append((canon_smiles, logS))
