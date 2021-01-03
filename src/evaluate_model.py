@@ -5,25 +5,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def read_smiles_and_gse(fname):
-    data = {}
-    with open(fname, 'r') as fin:
-        for line in fin:
-            pairs = line.rstrip('\n').split(',')
-            smiles = pairs[0]
-            gse = float(pairs[1])
-            data[smiles] = gse
-
-    return data
-
-
 def read_measured_from_test(fname):
     data = {}
-    with open(fname, 'r') as fin:
+    with open(fname, "r") as fin:
+        fin.readline()
         for line in fin:
-            pairs = line.rstrip('\n').split(',')
-            smiles = pairs[0]
-            logS0 = float(pairs[1])
+            pairs = line.rstrip("\n").split(",")
+            smiles = pairs[8]
+            logS0 = float(pairs[2])
             data[smiles] = logS0
 
     return data
@@ -31,11 +20,10 @@ def read_measured_from_test(fname):
 
 def read_predicted_values(fname):
     data = {}
-    with open(fname, 'r') as fin:
+    with open(fname, "r") as fin:
         for line in fin:
-            pairs = line.rstrip('\n').split(',')
+            pairs = line.rstrip("\n").split(",")
             smiles = pairs[0]
-            print(pairs[1:-1])
             logS0_pred = [float(x) for x in pairs[1:-1]]
             data[smiles] = logS0_pred
 
@@ -43,47 +31,39 @@ def read_predicted_values(fname):
 
 
 if __name__ == "__main__":
-    smiles_gse = read_smiles_and_gse(sys.argv[1])
-    smiles_pred = read_predicted_values(sys.argv[2])
-    smiles_meas = read_measured_from_test(sys.argv[3])
+    smiles_pred = read_predicted_values(sys.argv[1])
+    smiles_meas = read_measured_from_test(sys.argv[2])
+
+    plot = False
 
     x = []
     y = []
     cols = []
 
-    cnt = 0
-    rmsd_gse = 0.0
-    rmsd_pg = 0.0
+    COUNT = 0
+    RMSE = 0.0
+    CORRECT = 0
 
     for key in smiles_meas.keys():
-        gse_val = smiles_gse[key]
         pred_vals = smiles_pred[key]
         meas_val = smiles_meas[key]
 
-        rmsd_gse += (gse_val - meas_val)**2.0
-        rmsd_pg += (np.mean(pred_vals) - meas_val)**2.0
-
-        x.append(meas_val)
-        y.append(gse_val)
-        cols.append('red')
-
-        for val_ in pred_vals:
-            x.append(meas_val)
-            y.append(val_)
-            cols.append('blue')
+        RMSE += (np.mean(pred_vals) - meas_val) ** 2.0
+        if abs(np.mean(pred_vals) - meas_val) <= 0.5:
+            CORRECT += 1
+        COUNT += 1
 
         x.append(meas_val)
         y.append(np.mean(pred_vals))
-        cols.append('green')
-        cnt += 1
 
-    plt.scatter(x, y, c=cols)
-    plt.plot([-7, 0], [-7, 0], '--', color='grey', lw=2)
-    plt.show()
+    if plot:
+        plt.scatter(x, y)
+        plt.plot([-7, 0], [-7, 0], "--", color="grey", lw=2)
+        plt.show()
 
-    rmsd_gse /= cnt
-    rmsd_gse = np.sqrt(rmsd_gse)
-    rmsd_pg /= cnt
-    rmsd_pg = np.sqrt(rmsd_pg)
+    RMSE /= COUNT
+    RMSE = np.sqrt(RMSE)
 
-    print("GSE (RMSD) = {}\nPG(RMSD) = {}\ncnt={}".format(rmsd_gse, rmsd_pg, cnt))
+    CORRECT /= COUNT
+
+    print(f"RMSE={RMSE}; \tCORRECT={CORRECT*100}%")

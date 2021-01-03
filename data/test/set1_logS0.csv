@@ -7,7 +7,7 @@ Aripiprazole,SET1,-6.64,0.21,3,139,4.86,-5.5,O=C1CCc2ccc(OCCCCN3CCN(c4cccc(Cl)c4
 Atovaquone,SET1,-6.07,0.18,3,224,5.51,-7,O=C1C(O)=C(C2CCC(c3ccc(Cl)cc3)CC2)C(=O)c2ccccc21
 Atrazine,SET1,-3.69,0.15,6,173,1.78,-2.76,CCNc1nc(Cl)nc(NC(C)C)n1
 Baclofen,SET1,-1.78,0.15,4,208,1.86,-3.19,NCC(CC(=O)O)c1ccc(Cl)cc1
-"Barbital,Buta-",SET1,-2.22,0.16,10,167,0.79,-1.71,CCC(C)C1(CC)C(=O)NC(=O)NC1=O
+"BarbitalButa-",SET1,-2.22,0.16,10,167,0.79,-1.71,CCC(C)C1(CC)C(=O)NC(=O)NC1=O
 Benzthiazide,SET1,-4.84,0.22,6,232,2.43,-4,NS(=O)(=O)c1cc2c(cc1Cl)NC(CSCc1ccccc1)=NS2(=O)=O
 Bromazepam,SET1,-3.39,0.13,3,193 b,2.63,-3.81,O=C1CN=C(c2ccccn2)c2cc(Br)ccc2N1
 Candesartan Cilexetil,SET1,-6.79,0.15,6,167,6.32,-7.24,CCOc1nc2cccc(C(=O)OC(C)OC(=O)OC3CCCCC3)c2n1Cc1ccc(-c2ccccc2-c2nn[nH]n2)cc1
@@ -19,7 +19,7 @@ Cefprozil,SET1,-1.68,0.2,4,222,0.71,-2.18,CC=CC1=C(C(=O)O)N2C(=O)C(NC(=O)C(N)c3c
 Celecoxib,SET1,-5.89,0.18,6,158,3.51,-4.34,Cc1ccc(-c2cc(C(F)(F)F)nn2-c2ccc(S(N)(=O)=O)cc2)cc1
 Cephradine,SET1,-1.18,0.13,8,140,0.35,-1,CC1=C(C(=O)O)N2C(=O)C(NC(=O)C(N)C3=CCC=CC3)C2SC1
 Chlorpropamide,SET1,-3.17,0.14,7,128,1.74,-2.27,CCCNC(=O)NS(=O)(=O)c1ccc(Cl)cc1
-"Cholic Acid, Deoxy-",SET1,-4.62,0.15,7,176,4.48,-5.49,CC(CCC(=O)O)C1CCC2C3CCC4CC(O)CCC4(C)C3CC(O)C12C
+Cholic Acid Deoxy-,SET1,-4.62,0.15,7,176,4.48,-5.49,CC(CCC(=O)O)C1CCC2C3CCC4CC(O)CCC4(C)C3CC(O)C12C
 Cilostazol,SET1,-4.93,0.13,3,160,3.46,-4.31,O=C1CCc2cc(OCCCCc3nnnn3C3CCCCC3)ccc2N1
 Cimetidine,SET1,-1.52,0.22,8,142,0.6,-1.27,CN=C(NC#N)NCCSCc1nc[nH]c1C
 Ciprofloxacin,SET1,-3.57,0.18,20,267,1.58,-3.5,O=C(O)c1cn(C2CC2)c2cc(N3CCNCC3)c(F)cc2c1=O
@@ -36,9 +36,9 @@ Diflorasone Diacetate,SET1,-4.82,0.16,3,223,2.99,-4.47,CC(=O)OCC(=O)C1(OC(C)=O)C
 Difloxacin,SET1,-3.83,0.21,3,211,2.72,-4.08,CN1CCN(c2cc3c(cc2F)c(=O)c(C(=O)O)cn3-c2ccc(F)cc2)CC1
 Diltiazem,SET1,-3.02,0.13,3,210,3.37,-4.72,COc1ccc(C2Sc3ccccc3N(CCN(C)C)C(=O)C2OC(C)=O)cc1
 Diphenylamine,SET1,-3.53,0.14,3,54,3.43,-3.22,c1ccc(Nc2ccccc2)cc1
-"DOPA,L-",SET1,-1.76,0.17,6,270,0.05,-2,NC(Cc1ccc(O)c(O)c1)C(=O)O
+DOPAL-,SET1,-1.76,0.17,6,270,0.05,-2,NC(Cc1ccc(O)c(O)c1)C(=O)O
 Enalapril,SET1,-1.36,0.21,3,144,1.6,-2.29,CCOC(=O)C(CCc1ccccc1)NC(C)C(=O)N1CCCC1C(=O)O
-"Estradiol, 17α-",SET1,-5,0.18,5,215,3.61,-5.01,CC12CCC3c4ccc(O)cc4CCC3C1CCC2O
+Estradiol 17a-,SET1,-5,0.18,5,215,3.61,-5.01,CC12CCC3c4ccc(O)cc4CCC3C1CCC2O
 Estrone,SET1,-5.38,0.19,8,255,3.82,-5.62,CC12CCC3c4ccc(O)cc4CCC3C1CCC2=O
 Ethoxzolamide,SET1,-3.76,0.17,3,189,1.34,-2.48,CCOc1ccc2nc(S(N)(=O)=O)sc2c1
 Etoposide,SET1,-3.6,0.2,4,244,1.34,-3.03,COc1cc(C2c3cc4c(cc3C(OC3OC5COC(C)OC5C(O)C3O)C3COC(=O)C23)OCO4)cc(OC)c1O
@@ -76,13 +76,13 @@ Phenacetin,SET1,-2.3,0.14,10,135,2.04,-2.64,CCOc1ccc(NC(C)=O)cc1
 Phenazopyridine,SET1,-4.02,0.16,7,139,2.66,-3.3,Nc1ccc(N=Nc2ccccc2)c(N)n1
 Pindolol,SET1,-3.75,0.15,9,170,1.91,-2.86,CC(C)NCC(O)COc1cccc2[nH]ccc12
 Pravastatin,SET1,-4.86,0.15,10,326,2.44,-4.95,CCC(C)C(=O)OC1CC(O)C=C2C=CC(C)C(CCC(O)CC(O)CC(=O)O)C21
-"Prednisolone, Methyl-",SET1,-3.33,0.18,5,233,1.8,-3.38,CC1CC2C(C(O)CC3(C)C2CCC3(O)C(=O)CO)C2(C)C=CC(=O)C=C12
+Prednisolone Methyl-,SET1,-3.33,0.18,5,233,1.8,-3.38,CC1CC2C(C(O)CC3(C)C2CCC3(O)C(=O)CO)C2(C)C=CC(=O)C=C12
 Primidone,SET1,-2.53,0.14,4,282,0.54,-2.61,CCC1(c2ccccc2)C(=O)NCNC1=O
 Probenecid,SET1,-4.83,0.2,4,197,2.2,-3.42,CCCN(CCC)S(=O)(=O)c1ccc(C(=O)O)cc1
 Promazine,SET1,-4.45,0.13,4,33,4.24,-3.82,CN(C)CCCN1c2ccccc2Sc2ccccc21
 Promethazine,SET1,-4.38,0.19,11,60,4.24,-4.09,CC(CN1c2ccccc2Sc2ccccc21)N(C)C
 Repaglinide,SET1,-4.77,0.17,4,131,5.22,-5.78,CCOc1cc(CC(=O)NC(CC(C)C)c2ccccc2N2CCCCC2)ccc1C(=O)O
-"Resveratrol, trans-",SET1,-3.75,0.18,7,254,2.97,-4.76,Oc1ccc(C=Cc2cc(O)cc(O)c2)cc1
+Resveratrol trans-,SET1,-3.75,0.18,7,254,2.97,-4.76,Oc1ccc(C=Cc2cc(O)cc(O)c2)cc1
 Ritonavir,SET1,-5.17,0.16,5,121,5.91,-6.37,CC(C)c1nc(CN(C)C(=O)NC(C(=O)NC(Cc2ccccc2)CC(O)C(Cc2ccccc2)NC(=O)OCc2cncs2)C(C)C)cs1
 Rofecoxib,SET1,-4.61,0.16,5,207,2.56,-3.88,CS(=O)(=O)c1ccc(C2=C(c3ccccc3)C(=O)OC2)cc1
 Spironolactone,SET1,-4.21,0.16,6,135,4.85,-5.45,CC(=O)SC1CC2=CC(=O)CCC2(C)C2CCC3(C)C(CCC34CCC(=O)O4)C12

@@ -673,9 +673,9 @@ def process():
     process_POG_2007_JCIM_test()
     process_POG_2007_JCIM_train()
     process_WKH_2007_JCIM()
-    process_WHX_2009_JCIM()
+##    process_WHX_2009_JCIM()
     process_A_2019_ADMET_DMPK()
-#    process_OCHEM()
+##    process_OCHEM()
 
     process_test_100()
     process_test_32()
