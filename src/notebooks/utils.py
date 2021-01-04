@@ -95,12 +95,14 @@ def cluster_fps(fps, cutoff=0.2):
     return cs
 
 
-def get_data(fname):
+def get_data(fname, col=1, header=False):
     vals = []
     with open(fname, 'r') as fin:
+        if header:
+            fin.readline()
         for line in fin:
             pairs = line.rstrip('\n').split(',')
-            vals.append(float(pairs[1]))
+            vals.append(float(pairs[col]))
 
     return vals
 
